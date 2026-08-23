@@ -86,5 +86,12 @@
     "pass_at_1_pct": 54.3,
     "path": "/data/ppnm/RG-CTO/results/iter0/HMMT25/Qwen3_4B_Thinking_2507/results",
     "n_completions": 30
+  },
+  "HMMT25/Qwen3_4B_Instruct_2507": {
+    "pass_at_1": 0.21770833333333334,
+    "pass_at_1_pct": 21.8,
+    "path": "/data/ppnm/RG-CTO/results/iter0/HMMT25/Qwen3_4B_Instruct_2507/results",
+    "n_completions": 30,
+    "source": "CTO runs_instruct crossq_pseudo_cf_exp step1"
   }
 }

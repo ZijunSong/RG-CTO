@@ -324,6 +324,7 @@ Protocol 统一：
 | HMMT24 | Phi-4-Reasoning | 28.0 | RSE reproduce run0 |
 | HMMT25 | Qwen3-30B-Thinking | 66.2 | CTO step1 |
 | HMMT25 | Qwen3-4B-Thinking | 54.3 | CTO step1 |
+| HMMT25 | Qwen3-4B-Instruct | 21.8 | CTO runs_instruct step1 |
 | HLE-Math-text | Qwen3-30B-Thinking | 23.4 | RSE reproduce run0 |
 | HLE-Math-text | Qwen3-4B-Thinking | 13.5 | RSE reproduce run0 |
 | HLE-Math-text | Qwen3-4B-Instruct | 8.3 | RSE reproduce run0 |
