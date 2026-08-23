@@ -1,0 +1,201 @@
+{
+  "index": 47,
+  "question_id": 47,
+  "question": "Who is the mother of the father of George Washington?",
+  "answer": "Mildred Warner",
+  "completions": [
+    {
+      "text": "Let's solve this step by step:\n\n1. We are asked for the mother of the father of George Washington.\n\n2. George Washington's father was named **George Washington Sr.** (sometimes referred to as \"Colonel George Washington\").\n\n3. To find the mother of George Washington Sr., we need to identify the mother of George Washington Sr.\n\n4. Historical records show that George Washington Sr.'s mother was **Mary Ball Washington**.\n\n5. Therefore, Mary Ball Washington is the mother of George Washington Sr., who was the father of George Washington.\n\nFinal answer: Mary Ball Washington",
+      "reasoning_content": "",
+      "tokens": 119,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's solve this step by step:\n\n1. We are looking for the mother of the father of George Washington.\n\n2. George Washington's father was named **George Washington Sr.** (sometimes referred to as \"Colonel George Washington\").\n\n3. The mother of George Washington Sr. would be the mother of George Washington's father.\n\n4. Historical records show that George Washington Sr.'s mother was **Mary Ball Washington**.\n\nWait — correction: George Washington Sr. was the son of Mary Ball Washington. So Mary Ball Washington is the mother of George Washington Sr.\n\nTherefore, Mary Ball Washington is the mother of the father of George Washington.\n\nFinal answer: Mary Ball Washington",
+      "reasoning_content": "",
+      "tokens": 136,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's solve this step by step:\n\n1) We are looking for the mother of the father of George Washington.\n\n2) George Washington's father was **George Washington Sr.** (sometimes referred to as \"Colonel George Washington\").\n\n3) The mother of George Washington Sr. is the person we're looking for.\n\n4) Historical records indicate that George Washington Sr.'s mother was **Mary Ball Washington**.\n\n5) Mary Ball Washington was the mother of George Washington (the future president), and she was also the mother of George Washington Sr. — so she is the mother of the father of George Washington.\n\nTherefore, the mother of the father of George Washington is Mary Ball Washington.\n\nFinal answer: Mary Ball Washington",
+      "reasoning_content": "",
+      "tokens": 145,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's solve this step by step:\n\n1) We are asked for the mother of the father of George Washington.\n\n2) George Washington's father was named **George Washington Sr.** (sometimes referred to as \"Old George\" or \"George Washington the father\").\n\n3) George Washington Sr.'s mother was **Mary Ball Washington**.\n\n4) Therefore, Mary Ball Washington is the mother of George Washington Sr., who was the father of George Washington.\n\nFinal answer: Mary Ball Washington",
+      "reasoning_content": "",
+      "tokens": 98,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's solve this step by step:\n\n1) We are looking for the mother of the father of George Washington.\n\n2) George Washington's father was named **George Washington Sr.** (sometimes referred to as \"Old George\").\n\n3) The mother of George Washington Sr. would be the mother of George Washington's father.\n\n4) George Washington Sr.'s mother was **Mary Ball Washington**.\n\n5) Therefore, Mary Ball Washington is the mother of George Washington's father.\n\nFinal answer: Mary Ball Washington",
+      "reasoning_content": "",
+      "tokens": 103,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's solve this step by step:\n\n1) We are asked for the mother of the father of George Washington.\n\n2) George Washington's father was **George Washington Sr.** (also known as \"Old George\" Washington).\n\n3) To find the mother of George Washington Sr., we need to identify who his mother was.\n\n4) Historical records show that George Washington Sr.'s mother was **Mary Ball Washington**.\n\n5) Therefore, Mary Ball Washington is the mother of George Washington Sr., who was the father of George Washington.\n\nFinal answer: Mary Ball Washington",
+      "reasoning_content": "",
+      "tokens": 115,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's reason step by step:\n\n1. George Washington's father was **George Washington Sr.**  \n2. We are asked for the mother of George Washington Sr.  \n3. George Washington Sr.'s mother was **Mary Ball Washington**.  \n   - She was the wife of George Washington Sr. and the mother of George Washington (the future president).  \n   - So, Mary Ball Washington is the mother of George Washington Sr.\n\nTherefore, the mother of the father of George Washington is Mary Ball Washington.\n\nFinal answer: Mary Ball Washington",
+      "reasoning_content": "",
+      "tokens": 111,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's solve this step by step:\n\n1. We are looking for the mother of the father of George Washington.\n\n2. George Washington's father was named **George Washington Sr.** (sometimes referred to as \"Old George\" or \"Father George\").\n\n3. The mother of George Washington Sr. is the person we are looking for.\n\n4. George Washington Sr.'s mother was **Mary Ball Washington**.\n\n5. Mary Ball Washington was the mother of George Washington (the father of George Washington, the first U.S. president).\n\nWait — correction: George Washington Sr. is the father of George Washington (the president), so Mary Ball Washington is the mother of George Washington Sr.\n\nTherefore, Mary Ball Washington is the mother of the father of George Washington (the president).\n\nFinal answer: Mary Ball Washington",
+      "reasoning_content": "",
+      "tokens": 163,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's reason step by step:\n\n1. George Washington's father was **George Washington Sr.**  \n2. We are looking for the mother of George Washington Sr.  \n3. George Washington Sr.'s mother was **Mary Ball Washington**.  \n   - She was the wife of George Washington Sr. and the mother of George Washington (the father of the first U.S. president).\n\nTherefore, the mother of the father of George Washington is Mary Ball Washington.\n\nFinal answer: Mary Ball Washington",
+      "reasoning_content": "",
+      "tokens": 101,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's reason step by step:\n\n1. We are asked for the mother of the father of George Washington.\n\n2. George Washington's father was **George Washington Sr.** (also known as Colonel George Washington).\n\n3. The mother of George Washington Sr. would be the mother of the father of George Washington.\n\n4. Historical records indicate that George Washington Sr.'s mother was **Mary Ball Washington**.\n\n5. Therefore, Mary Ball Washington is the mother of George Washington Sr., who is the father of George Washington.\n\nFinal answer: Mary Ball Washington",
+      "reasoning_content": "",
+      "tokens": 112,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's solve this step by step:\n\n1) We are looking for the mother of the father of George Washington.\n\n2) George Washington's father was named **George Washington Sr.** (sometimes referred to as \"Old George\").\n\n3) The mother of George Washington Sr. would be the mother of George Washington's father.\n\n4) Historical records indicate that George Washington Sr.'s mother was **Mary Ball Washington**.\n\nWait — actually, this is a common point of confusion.\n\nLet’s clarify:\n\n- George Washington's father was **George Washington Sr.**\n- The mother of George Washington Sr. was **Mary Ball Washington**.\n\nTherefore, Mary Ball Washington is the mother of George Washington's father.\n\nFinal answer: Mary Ball Washington\n\nFinal answer: Mary Ball Washington",
+      "reasoning_content": "",
+      "tokens": 155,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's solve this step by step:\n\n1) We are asked for the mother of the father of George Washington.\n\n2) George Washington's father was **George Washington Sr.** (sometimes referred to as \"Old George\" or \"Father of the Father\").\n\n3) George Washington Sr.'s mother was **Mary Ball Washington**.\n\n4) Therefore, Mary Ball Washington is the mother of George Washington Sr., who is the father of George Washington.\n\nFinal answer: Mary Ball Washington",
+      "reasoning_content": "",
+      "tokens": 97,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's solve this step by step:\n\n1) We are asked to find the mother of the father of George Washington.\n\n2) George Washington's father was named **George Washington Sr.** (commonly known as \"Old George\" or \"the father of the father\").\n\n3) George Washington Sr. was born in 1622 and died in 1683.\n\n4) To find the mother of George Washington Sr., we need to identify his mother.\n\n5) George Washington Sr.'s mother was **Jane Washington** (also known as **Jane Button** or **Jane Washington**).\n\n6) Jane Washington was the daughter of **William Button**, and she married **George Washington Sr.**.\n\n7) Therefore, the mother of George Washington Sr. (the father of George Washington) is **Jane Washington**.\n\nFinal answer: Jane Washington",
+      "reasoning_content": "",
+      "tokens": 175,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's reason step by step:\n\n1. George Washington's father was **George Washington Sr.** (also known as George Washington the elder).\n\n2. To find the mother of George Washington's father, we need to identify the mother of George Washington Sr.\n\n3. George Washington Sr.'s mother was **Mary Ball Washington**.\n\n4. Mary Ball Washington was the mother of George Washington (the future president), and also the mother of George Washington Sr. — meaning she is the mother of the father of George Washington.\n\nTherefore, the mother of the father of George Washington is Mary Ball Washington.\n\nFinal answer: Mary Ball Washington",
+      "reasoning_content": "",
+      "tokens": 127,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's solve this step by step:\n\n1) We are looking for the mother of the father of George Washington.\n\n2) George Washington's father was **George Washington Sr.** (also known as Colonel George Washington).\n\n3) The mother of George Washington Sr. is **Mary Ball Washington**.\n\n4) Mary Ball Washington was the wife of George Washington Sr. and the mother of George Washington, the first U.S. President.\n\nTherefore, Mary Ball Washington is the mother of George Washington Sr., who was the father of George Washington.\n\nFinal answer: Mary Ball Washington",
+      "reasoning_content": "",
+      "tokens": 115,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's solve this step by step:\n\n1. We are looking for the mother of the father of George Washington.\n2. George Washington's father was named **George Washington Sr.** (often referred to as \"Father of the Father\" in genealogical terms).\n3. The mother of George Washington Sr. would be the mother of George Washington's father.\n4. George Washington Sr.'s mother was **Mary Ball Washington**.\n\nTherefore, Mary Ball Washington is the mother of the father of George Washington.\n\nFinal answer: Mary Ball Washington",
+      "reasoning_content": "",
+      "tokens": 110,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's solve this step by step:\n\n1) We are looking for the mother of the father of George Washington.\n\n2) George Washington's father was **George Washington Sr.**\n\n3) George Washington Sr.'s mother was **Mary Ball Washington**.\n\n4) Therefore, Mary Ball Washington is the mother of George Washington's father.\n\nFinal answer: Mary Ball Washington",
+      "reasoning_content": "",
+      "tokens": 74,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's solve this step by step:\n\n1) We are asked for the mother of the father of George Washington.\n\n2) George Washington's father was **George Washington Sr.** (sometimes referred to as \"Colonel George Washington\").\n\n3) The mother of George Washington Sr. is the person we are looking for.\n\n4) Historical records indicate that George Washington Sr.'s mother was **Mary Ball Washington**.\n\n5) Mary Ball Washington was the mother of George Washington (the father of George Washington, the first U.S. president).\n\nTherefore, the mother of the father of George Washington is Mary Ball Washington.\n\nFinal answer: Mary Ball Washington",
+      "reasoning_content": "",
+      "tokens": 130,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's solve this step by step:\n\n1. We are looking for the mother of the father of George Washington.\n2. George Washington's father was named **George Washington Sr.** (often referred to as \"Colonel George Washington\").\n3. To find the mother of George Washington Sr., we need to identify who his mother was.\n4. Historical records indicate that George Washington Sr.'s mother was **Mary Ball Washington**.\n5. Therefore, Mary Ball Washington is the mother of George Washington Sr., who is the father of George Washington.\n\nFinal answer: Mary Ball Washington",
+      "reasoning_content": "",
+      "tokens": 117,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's solve this step by step:\n\n1. We are asked for the mother of the father of George Washington.\n\n2. George Washington's father was **George Washington Sr.** (also known as Augustine Washington, though the common name is George Washington Sr.).\n\n3. The mother of George Washington Sr. is the person we're looking for.\n\n4. George Washington Sr.'s mother was **Mary Ball Washington**.\n\n5. Mary Ball Washington is well-documented in historical records as the mother of George Washington.\n\nTherefore, the mother of the father of George Washington is Mary Ball Washington.\n\nFinal answer: Mary Ball Washington",
+      "reasoning_content": "",
+      "tokens": 125,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's solve this step by step:\n\n1) We are looking for the mother of the father of George Washington.\n\n2) George Washington's father was **George Washington Sr.** (also known as Colonel George Washington).\n\n3) The mother of George Washington Sr. would be the mother of George Washington's father.\n\n4) Historical records show that George Washington Sr.'s mother was **Mary Ball Washington**.\n\n5) Therefore, Mary Ball Washington is the mother of George Washington's father.\n\nFinal answer: Mary Ball Washington",
+      "reasoning_content": "",
+      "tokens": 105,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's solve this step by step:\n\n1) We are asked for the mother of the father of George Washington.\n\n2) George Washington's father was named **George Washington Sr.** (sometimes referred to as \"Old George\").\n\n3) The mother of George Washington Sr. would be the mother of George Washington's father.\n\n4) Historical records show that George Washington Sr.'s mother was **Mary Ball Washington**.\n\nWait — that’s a common point of confusion.\n\nActually, Mary Ball Washington was the mother of George Washington (the father of George Washington the Founding Father), not the mother of George Washington Sr.\n\nGeorge Washington Sr. was born in 1621, and his mother was **Mary Ball** — yes, Mary Ball Washington.\n\nSo, Mary Ball Washington is the mother of George Washington Sr., who was the father of George Washington.\n\nTherefore, the mother of the father of George Washington is Mary Ball Washington.\n\nFinal answer: Mary Ball Washington",
+      "reasoning_content": "",
+      "tokens": 195,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's solve this step by step:\n\n1) We are asked for the mother of the father of George Washington.\n\n2) George Washington's father was named **George Washington Sr.** (often referred to as \"Old George\").\n\n3) The mother of George Washington Sr. would be the mother of the father of George Washington (the younger).\n\n4) George Washington Sr.'s mother was **Mary Ball Washington**.\n\n5) Mary Ball Washington was the mother of George Washington (the father), and thus she is the mother of the father of George Washington (the younger).\n\nTherefore, the mother of the father of George Washington is Mary Ball Washington.\n\nFinal answer: Mary Ball Washington",
+      "reasoning_content": "",
+      "tokens": 137,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's solve this step by step:\n\n1) We are asked for the mother of the father of George Washington.\n\n2) George Washington's father was **George Washington Sr.** (often referred to as \"Old George\" or \"Father Washington\").\n\n3) The mother of George Washington Sr. would be the mother of George Washington's father.\n\n4) George Washington Sr.'s mother was **Mary Ball Washington**.\n\n5) Therefore, Mary Ball Washington is the mother of George Washington's father.\n\nFinal answer: Mary Ball Washington",
+      "reasoning_content": "",
+      "tokens": 107,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's reason step by step:\n\n1. George Washington's father was **George Washington Sr.**  \n2. We are asked for the mother of George Washington Sr.  \n3. George Washington Sr.'s mother was **Mary Ball Washington**.  \n   - Mary Ball was the wife of George Washington Sr. and the mother of George Washington (the future first president).  \n   - Therefore, Mary Ball Washington is the mother of George Washington Sr. (the father of George Washington).\n\nSo, the mother of the father of George Washington is Mary Ball Washington.\n\nFinal answer: Mary Ball Washington",
+      "reasoning_content": "",
+      "tokens": 120,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's solve this step by step:\n\n1. We are looking for the mother of the father of George Washington.\n2. George Washington's father was named **George Washington Sr.** (sometimes referred to as \"Colonel George Washington\").\n3. The mother of George Washington Sr. is the person we are looking for.\n4. Historical records indicate that George Washington Sr.'s mother was **Jane Washington** (also known as Jane Butler).\n5. Therefore, Jane Washington is the mother of George Washington Sr., who is the father of George Washington.\n\nFinal answer: Jane Washington",
+      "reasoning_content": "",
+      "tokens": 117,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's solve this step by step:\n\n1. We are asked for the mother of the father of George Washington.\n\n2. George Washington's father was **George Washington Sr.** (sometimes referred to as \"Colonel George Washington\").\n\n3. The mother of George Washington Sr. was **Mary Ball Washington**.\n\n4. Therefore, Mary Ball Washington is the mother of George Washington's father.\n\nFinal answer: Mary Ball Washington",
+      "reasoning_content": "",
+      "tokens": 86,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's solve this step by step:\n\n1) We are looking for the mother of the father of George Washington.\n\n2) George Washington's father was **George Washington Sr.** (often referred to as \"Old George\" or \"the father of George Washington\").\n\n3) The mother of George Washington Sr. would be the mother of the father of George Washington.\n\n4) George Washington Sr.'s mother was **Mary Ball Washington**.\n\n5) Therefore, Mary Ball Washington is the mother of George Washington's father.\n\nFinal answer: Mary Ball Washington",
+      "reasoning_content": "",
+      "tokens": 111,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's reason step by step:\n\n1. George Washington's father was **George Washington Sr.**  \n2. We are asked for the mother of George Washington Sr.  \n3. George Washington Sr.'s mother was **Mary Ball Washington**.\n\nTherefore, Mary Ball Washington is the mother of George Washington's father.\n\nFinal answer: Mary Ball Washington",
+      "reasoning_content": "",
+      "tokens": 71,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's solve this step by step:\n\n1) We are asked for the mother of the father of George Washington.\n\n2) George Washington's father was **George Washington Sr.** (sometimes referred to as \"Colonel George Washington\").\n\n3) The mother of George Washington Sr. would be the mother of George Washington's father.\n\n4) Historical records show that George Washington Sr.'s mother was **Mary Ball Washington**.\n\n5) Therefore, Mary Ball Washington is the mother of George Washington's father.\n\nFinal answer: Mary Ball Washington",
+      "reasoning_content": "",
+      "tokens": 108,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's solve this step by step:\n\n1. We are looking for the mother of the father of George Washington.\n2. George Washington's father was named George Washington Sr. (often referred to as \"Colonel George Washington\").\n3. To find the mother of George Washington Sr., we need to identify the mother of George Washington Sr.\n4. Historical records show that George Washington Sr.'s mother was Mary Ball Washington.\n\nTherefore, Mary Ball Washington is the mother of the father of George Washington.\n\nFinal answer: Mary Ball Washington",
+      "reasoning_content": "",
+      "tokens": 107,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's solve this step by step:\n\n1. We are asked for the mother of the father of George Washington.\n\n2. George Washington's father was named **George Washington Sr.** (often referred to as \"Colonel George Washington\").\n\n3. To find the mother of George Washington Sr., we need to identify who his mother was.\n\n4. George Washington Sr.'s mother was **Mary Ball Washington**.\n\n5. Therefore, Mary Ball Washington is the mother of George Washington Sr., who is the father of George Washington.\n\nFinal answer: Mary Ball Washington",
+      "reasoning_content": "",
+      "tokens": 113,
+      "finish_reason": "stop"
+    }
+  ],
+  "n_completions": 32
+}

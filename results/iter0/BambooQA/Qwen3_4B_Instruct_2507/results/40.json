@@ -1,0 +1,201 @@
+{
+  "index": 40,
+  "question_id": 40,
+  "question": "How much protein in four boiled egg yolks?",
+  "answer": "10.8",
+  "completions": [
+    {
+      "text": "Let's break this down step by step:\n\n1. First, determine the protein content in a single boiled egg yolk.\n2. A whole boiled egg (both yolk and white) contains about 6–7 grams of protein, with roughly 1.6 grams of protein in the yolk alone.\n3. Therefore, one boiled egg yolk contains approximately 1.6 grams of protein.\n4. For four egg yolks:  \n   4 × 1.6 grams = 6.4 grams of protein.\n\nFinal answer: 6.4 grams of protein.",
+      "reasoning_content": "",
+      "tokens": 121,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's reason step by step:\n\n1. First, determine the protein content in a single boiled egg yolk.\n2. A whole boiled egg (including both yolk and white) contains about 6 grams of protein, with approximately 1.6 grams of protein in the yolk alone.\n3. Therefore, one boiled egg yolk contains about 1.6 grams of protein.\n4. Four boiled egg yolks would then have:  \n   4 × 1.6 = 6.4 grams of protein.\n\nFinal answer: 6.4 grams of protein.",
+      "reasoning_content": "",
+      "tokens": 120,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's break this down step by step:\n\n1. First, determine the protein content of a single boiled egg yolk.\n2. Most nutritional sources state that a whole boiled egg (yolk and white) contains about 6 grams of protein, with approximately 1.6 grams of protein in the yolk alone.\n3. The white of the egg contains about 3.6 grams of protein, so the yolk contributes the remainder.\n4. Therefore, one boiled egg yolk contains roughly 1.6 grams of protein.\n5. Multiply that by four:  \n   1.6 grams/yolk × 4 yolks = 6.4 grams of protein.\n\nFinal answer: 6.4 grams of protein.",
+      "reasoning_content": "",
+      "tokens": 151,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's break this down step by step:\n\n1. First, determine the protein content in a single boiled egg yolk.\n   - A whole boiled egg (yolk + white) contains about 6 grams of protein.\n   - The egg white contains about 3.6 grams of protein.\n   - Therefore, the yolk alone contains approximately 6 - 3.6 = 2.4 grams of protein.\n\n2. Now, multiply that by four:\n   - 4 yolks × 2.4 grams of protein per yolk = 9.6 grams of protein.\n\nFinal answer: 9.6 grams",
+      "reasoning_content": "",
+      "tokens": 130,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's break this down step by step:\n\n1. First, determine the protein content of a single boiled egg yolk.\n2. A whole boiled egg (yolk + white) contains about 6 grams of protein, with approximately 1.6 grams of protein in the yolk alone.\n3. Therefore, one boiled egg yolk has about 1.6 grams of protein.\n4. For four egg yolks: 4 × 1.6 grams = 6.4 grams.\n\nFinal answer: 6.4 grams of protein.",
+      "reasoning_content": "",
+      "tokens": 114,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's solve this step by step:\n\n1) First, determine the protein content in a single boiled egg yolk.  \n   - A whole boiled egg (yolk + white) contains about 6 grams of protein, with approximately 1.6 grams of protein in the yolk alone.  \n   - The white contains most of the protein (about 4.4 grams), and the yolk has significantly less.\n\n2) So, one boiled egg yolk contains about 1.6 grams of protein.\n\n3) Multiply that by 4:  \n   1.6 grams/yolk × 4 yolks = 6.4 grams of protein.\n\nFinal answer: 6.4 grams of protein.  \n\nFinal answer: 6.4 grams",
+      "reasoning_content": "",
+      "tokens": 157,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's solve this step by step:\n\n1. First, determine the protein content in a single boiled egg yolk.\n2. A whole boiled egg (yolk + white) contains about 6 grams of protein, but the majority of that protein is in the white.\n3. The yolk itself contains approximately 0.6 grams of protein per yolk.\n4. Therefore, four egg yolks would contain:  \n   4 yolks × 0.6 grams of protein = 2.4 grams of protein.\n\nFinal answer: 2.4 grams",
+      "reasoning_content": "",
+      "tokens": 117,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's solve this step by step:\n\n1) First, determine the protein content in a single boiled egg yolk.\n   - A whole boiled egg (yolk + white) contains about 6 grams of protein.\n   - The egg white contains about 3.6 grams of protein.\n   - Therefore, the egg yolk alone contains approximately 6 - 3.6 = 2.4 grams of protein.\n\n2) Now, multiply that by 4:\n   - 4 yolks × 2.4 grams of protein per yolk = 9.6 grams of protein.\n\nFinal answer: 9.6 grams",
+      "reasoning_content": "",
+      "tokens": 131,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's break this down step by step:\n\n1. First, determine the protein content of a single boiled egg yolk.\n2. A whole boiled egg (including both yolk and white) contains about 6 grams of protein, with approximately 1.6 grams of protein in the yolk alone.\n3. Therefore, one boiled egg yolk contains about 1.6 grams of protein.\n4. For four boiled egg yolks:  \n   4 × 1.6 grams = 6.4 grams of protein.\n\nFinal answer: 6.4 grams of protein.",
+      "reasoning_content": "",
+      "tokens": 121,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's break this down step by step:\n\n1. First, determine the protein content in a single boiled egg yolk.\n2. A whole boiled egg (including both yolk and white) contains about 6–7 grams of protein, with roughly 1.6 grams of protein in the yolk alone.\n3. The egg white contains most of the protein (about 3.6 grams per whole egg), so the yolk contributes less.\n4. Therefore, one boiled egg yolk contains approximately 1.6 grams of protein.\n5. For four yolks:  \n   4 × 1.6 grams = 6.4 grams of protein.\n\nFinal answer: 6.4 grams of protein.",
+      "reasoning_content": "",
+      "tokens": 149,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's break this down step by step:\n\n1. First, determine the protein content in a single boiled egg yolk.\n2. A whole boiled egg (yolk and white) contains about 6 grams of protein, with approximately 1.6 grams of protein in the yolk alone.\n3. Therefore, one boiled egg yolk contains about 1.6 grams of protein.\n4. Four boiled egg yolks would then be:  \n   4 × 1.6 grams = 6.4 grams of protein.\n\nFinal answer: 6.4 grams",
+      "reasoning_content": "",
+      "tokens": 118,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's break this down step by step:\n\n1. First, determine the protein content of a single boiled egg yolk.\n2. A whole boiled egg (including both yolk and white) contains about 6–7 grams of protein, with approximately 1.6 grams of protein in the yolk alone.\n3. Therefore, one boiled egg yolk contains about 1.6 grams of protein.\n4. Four boiled egg yolks would then contain:  \n   4 × 1.6 grams = 6.4 grams of protein.\n\nFinal answer: 6.4 grams",
+      "reasoning_content": "",
+      "tokens": 122,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's reason step by step:\n\n1. First, determine the protein content in a single boiled egg yolk.\n2. A whole boiled egg (including both yolk and white) contains about 6–7 grams of protein, with approximately 1.6 grams of protein in the yolk alone.\n3. Therefore, one boiled egg yolk contains about 1.6 grams of protein.\n4. Four boiled egg yolks would then be:  \n   4 × 1.6 grams = 6.4 grams of protein.\n\nFinal answer: 6.4 grams",
+      "reasoning_content": "",
+      "tokens": 120,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's break this down step by step:\n\n1. First, determine the protein content of a single boiled egg yolk.\n2. A whole boiled egg (yolk and white) contains about 6–7 grams of protein, with roughly 1.6 grams of protein in the yolk alone.\n3. The white of the egg contains most of the protein (about 3.6 grams), so the yolk contributes only a small portion.\n4. Therefore, one boiled egg yolk contains approximately 1.6 grams of protein.\n5. Four boiled egg yolks would then be:  \n   4 × 1.6 grams = 6.4 grams of protein.\n\nFinal answer: 6.4 grams of protein.",
+      "reasoning_content": "",
+      "tokens": 153,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's break this down step by step:\n\n1. First, determine the protein content in a single boiled egg yolk.\n2. A whole boiled egg (yolk + white) contains about 6 grams of protein, with approximately 1.6 grams of protein in the yolk alone.\n3. Therefore, each boiled egg yolk contains about 1.6 grams of protein.\n4. For four boiled egg yolks:  \n   4 × 1.6 grams = 6.4 grams of protein.\n\nFinal answer: 6.4 grams",
+      "reasoning_content": "",
+      "tokens": 116,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's reason step by step:\n\n1. First, determine the protein content of a single boiled egg yolk.\n2. A whole boiled egg (yolk + white) contains about 6 grams of protein, with approximately 1.6 grams of protein in the yolk alone.\n3. Therefore, one boiled egg yolk has about 1.6 grams of protein.\n4. Four boiled egg yolks would then have:  \n   4 × 1.6 = 6.4 grams of protein.\n\nFinal answer: 6.4 grams of protein.",
+      "reasoning_content": "",
+      "tokens": 118,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's solve this step by step:\n\n1) First, determine the protein content in a single boiled egg yolk.\n   - A whole boiled egg (including both yolk and white) contains about 6 grams of protein.\n   - The egg white contains about 3.6 grams of protein.\n   - Therefore, the yolk alone contains approximately 6 - 3.6 = 2.4 grams of protein.\n\n2) Now, multiply that by four:\n   - 2.4 grams/yolk × 4 yolks = 9.6 grams of protein.\n\nFinal answer: 9.6 grams",
+      "reasoning_content": "",
+      "tokens": 128,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's break this down step by step:\n\n1. First, determine the protein content of a single boiled egg yolk.\n2. A whole boiled egg (including both yolk and white) contains about 6–7 grams of protein, with approximately 1.6 grams of protein in the yolk alone.\n3. Therefore, one boiled egg yolk contains about 1.6 grams of protein.\n4. For four egg yolks: 4 × 1.6 grams = 6.4 grams of protein.\n\nFinal answer: 6.4 grams of protein.",
+      "reasoning_content": "",
+      "tokens": 120,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's break this down step by step:\n\n1. First, determine the protein content of a single boiled egg yolk.\n2. A whole boiled egg (including both yolk and white) contains about 6 grams of protein, with approximately 1.6 grams of protein in the yolk alone.\n3. Therefore, one boiled egg yolk contains about 1.6 grams of protein.\n4. For four egg yolks:  \n   4 × 1.6 grams = 6.4 grams of protein.\n\nFinal answer: 6.4 grams of protein.",
+      "reasoning_content": "",
+      "tokens": 120,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's break this down step by step:\n\n1. First, determine the protein content in a single boiled egg yolk.\n2. A whole boiled egg (including both yolk and white) contains about 6–7 grams of protein, with approximately 1.6 grams of protein in the yolk alone.\n3. Therefore, four boiled egg yolks would contain 4 × 1.6 grams = 6.4 grams of protein.\n\nNote: Some sources may slightly vary, but the average protein content in one egg yolk is about 1.6 grams.\n\nFinal answer: 6.4 grams of protein.  \n\nFinal answer: 6.4 grams",
+      "reasoning_content": "",
+      "tokens": 139,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's solve this step by step:\n\n1) First, determine the protein content of a single boiled egg yolk.\n   - A whole boiled egg (yolk + white) contains about 6 grams of protein.\n   - The egg white contains about 3.6 grams of protein.\n   - Therefore, the yolk alone contains approximately 6 - 3.6 = 2.4 grams of protein.\n\n2) Multiply that by four:\n   - 2.4 grams/yolk × 4 yolks = 9.6 grams of protein.\n\nFinal answer: 9.6 grams",
+      "reasoning_content": "",
+      "tokens": 124,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's solve this step by step:\n\n1) First, determine the protein content in a single boiled egg yolk.  \n   - A whole boiled egg (yolk + white) contains about 6 grams of protein.  \n   - The white of the egg contains about 3.6 grams of protein.  \n   - Therefore, the yolk alone contains approximately 6 - 3.6 = 2.4 grams of protein.\n\n2) Now, multiply that by four:  \n   2.4 grams/yolk × 4 yolks = 9.6 grams of protein.\n\nFinal answer: 9.6 grams",
+      "reasoning_content": "",
+      "tokens": 131,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's break this down step by step:\n\n1. First, determine the protein content in a single boiled egg yolk.\n2. Most nutritional data shows that a single boiled egg yolk contains about 0.6 grams of protein.\n3. Therefore, four boiled egg yolks would have:  \n   4 × 0.6 grams = 2.4 grams of protein.\n\nNote: This is only for the yolks. The white of the egg has more protein (about 3.6 grams per whole egg), but we are only considering yolks here.\n\nFinal answer: 2.4 grams of protein.  \n\nFinal answer: 2.4 grams",
+      "reasoning_content": "",
+      "tokens": 138,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's solve this step by step:\n\n1) First, determine the protein content of a single boiled egg yolk.  \n   - A whole boiled egg (yolk + white) contains about 6–7 grams of protein.  \n   - The egg white contains about 3.6 grams of protein.  \n   - Therefore, the yolk alone contains approximately 1–2 grams of protein.\n\n2) Most nutritional sources indicate that a single boiled egg yolk contains about **1.5 grams of protein**.\n\n3) Multiply that by 4:  \n   1.5 grams/yolk × 4 yolks = **6 grams of protein**.\n\nFinal answer: 6 grams of protein.  \n\nFinal answer: 6 grams",
+      "reasoning_content": "",
+      "tokens": 153,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's break this down step by step:\n\n1. First, determine the protein content in a single boiled egg yolk.\n2. Most nutritional data shows that a whole boiled egg (yolk and white) contains about 6 grams of protein, with approximately 1.6 grams of protein in the yolk alone.\n3. The white of the egg contains about 4.4 grams of protein, so the yolk contributes the remainder.\n4. Therefore, one boiled egg yolk contains roughly 1.6 grams of protein.\n5. Multiply that by 4:  \n   1.6 grams/yolk × 4 yolks = 6.4 grams of protein.\n\nFinal answer: 6.4 grams of protein.",
+      "reasoning_content": "",
+      "tokens": 152,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's break this down step by step:\n\n1. First, determine the protein content in a single boiled egg yolk.\n2. A whole boiled egg (including both yolk and white) contains about 6 grams of protein, with approximately 1.6 grams of protein in the yolk alone.\n3. Therefore, one boiled egg yolk contains about 1.6 grams of protein.\n4. Multiply that by 4:  \n   1.6 grams/yolk × 4 yolks = 6.4 grams of protein.\n\nFinal answer: 6.4 grams",
+      "reasoning_content": "",
+      "tokens": 121,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's break this down step by step:\n\n1. First, determine the protein content in a single boiled egg yolk.\n2. Most nutritional data shows that a whole boiled egg (including both yolk and white) contains about 6 grams of protein, with approximately 1.6 grams of protein in the yolk alone.\n3. Therefore, one boiled egg yolk contains about 1.6 grams of protein.\n4. For four boiled egg yolks:  \n   4 × 1.6 grams = 6.4 grams of protein.\n\nFinal answer: 6.4 grams of protein.",
+      "reasoning_content": "",
+      "tokens": 126,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's solve this step by step:\n\n1) First, determine the protein content in a single boiled egg yolk.\n   - A whole boiled egg (yolk + white) contains about 6 grams of protein.\n   - The egg white contains about 3.6 grams of protein.\n   - Therefore, the yolk alone contains approximately 6 - 3.6 = 2.4 grams of protein.\n\n2) Multiply that by four:\n   - 2.4 grams/yolk × 4 yolks = 9.6 grams of protein.\n\nFinal answer: 9.6 grams",
+      "reasoning_content": "",
+      "tokens": 124,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's reason step by step:\n\n1. First, determine the protein content of a single boiled egg yolk.\n2. A whole boiled egg (yolk + white) contains about 6 grams of protein, with approximately 1.6 grams of protein in the yolk alone.\n3. Therefore, one boiled egg yolk contains about 1.6 grams of protein.\n4. Four boiled egg yolks would then contain:  \n   4 × 1.6 grams = 6.4 grams of protein.\n\nFinal answer: 6.4 grams",
+      "reasoning_content": "",
+      "tokens": 116,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's break this down step by step:\n\n1. First, determine the protein content in a single boiled egg yolk.\n   - A whole boiled egg (yolk + white) contains about 6–7 grams of protein.\n   - The egg white contains most of the protein (about 3.6 grams per whole egg).\n   - The yolk contains significantly less protein — approximately 0.6 grams per yolk.\n\n2. So, one boiled egg yolk has about 0.6 grams of protein.\n\n3. Multiply that by four:\n   - 4 × 0.6 grams = 2.4 grams of protein.\n\nFinal answer: 2.4 grams of protein.",
+      "reasoning_content": "",
+      "tokens": 145,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's break this down step by step:\n\n1. First, determine the protein content in a single boiled egg yolk.\n2. A whole boiled egg (yolk + white) contains about 6 grams of protein, with approximately 1.6 grams of protein in the yolk alone.\n3. So, one boiled egg yolk has about 1.6 grams of protein.\n4. Therefore, four boiled egg yolks would have:  \n   4 × 1.6 grams = 6.4 grams of protein.\n\nFinal answer: 6.4 grams of protein.",
+      "reasoning_content": "",
+      "tokens": 122,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's break this down step by step:\n\n1. First, determine the protein content in a single boiled egg yolk.\n2. A whole boiled egg (yolk + white) contains about 6 grams of protein, but most of that is in the white.\n3. The yolk itself contains significantly less protein. On average, one boiled egg yolk contains about 0.6 grams of protein.\n4. Therefore, four boiled egg yolks would contain:  \n   4 × 0.6 grams = 2.4 grams of protein.\n\nFinal answer: 2.4 grams of protein.",
+      "reasoning_content": "",
+      "tokens": 126,
+      "finish_reason": "stop"
+    }
+  ],
+  "n_completions": 32
+}

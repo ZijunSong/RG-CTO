@@ -1,0 +1,309 @@
+{
+  "total_problems": 30,
+  "total_null_text": 0,
+  "pass_at_k": {
+    "pass@1": 0.28020833333333334
+  },
+  "problem_stats": [
+    {
+      "index": 0,
+      "total": 32,
+      "correct": 32,
+      "null_text": 0,
+      "accuracy": 1.0,
+      "pass_at_k": {
+        "pass@1": 1.0
+      }
+    },
+    {
+      "index": 1,
+      "total": 32,
+      "correct": 32,
+      "null_text": 0,
+      "accuracy": 1.0,
+      "pass_at_k": {
+        "pass@1": 1.0
+      }
+    },
+    {
+      "index": 2,
+      "total": 32,
+      "correct": 32,
+      "null_text": 0,
+      "accuracy": 1.0,
+      "pass_at_k": {
+        "pass@1": 1.0
+      }
+    },
+    {
+      "index": 3,
+      "total": 32,
+      "correct": 1,
+      "null_text": 0,
+      "accuracy": 0.03125,
+      "pass_at_k": {
+        "pass@1": 0.03125
+      }
+    },
+    {
+      "index": 4,
+      "total": 32,
+      "correct": 0,
+      "null_text": 0,
+      "accuracy": 0.0,
+      "pass_at_k": {
+        "pass@1": 0.0
+      }
+    },
+    {
+      "index": 5,
+      "total": 32,
+      "correct": 10,
+      "null_text": 0,
+      "accuracy": 0.3125,
+      "pass_at_k": {
+        "pass@1": 0.3125
+      }
+    },
+    {
+      "index": 6,
+      "total": 32,
+      "correct": 13,
+      "null_text": 0,
+      "accuracy": 0.40625,
+      "pass_at_k": {
+        "pass@1": 0.40625
+      }
+    },
+    {
+      "index": 7,
+      "total": 32,
+      "correct": 4,
+      "null_text": 0,
+      "accuracy": 0.125,
+      "pass_at_k": {
+        "pass@1": 0.125
+      }
+    },
+    {
+      "index": 8,
+      "total": 32,
+      "correct": 0,
+      "null_text": 0,
+      "accuracy": 0.0,
+      "pass_at_k": {
+        "pass@1": 0.0
+      }
+    },
+    {
+      "index": 9,
+      "total": 32,
+      "correct": 0,
+      "null_text": 0,
+      "accuracy": 0.0,
+      "pass_at_k": {
+        "pass@1": 0.0
+      }
+    },
+    {
+      "index": 10,
+      "total": 32,
+      "correct": 2,
+      "null_text": 0,
+      "accuracy": 0.0625,
+      "pass_at_k": {
+        "pass@1": 0.0625
+      }
+    },
+    {
+      "index": 11,
+      "total": 32,
+      "correct": 30,
+      "null_text": 0,
+      "accuracy": 0.9375,
+      "pass_at_k": {
+        "pass@1": 0.9375
+      }
+    },
+    {
+      "index": 12,
+      "total": 32,
+      "correct": 20,
+      "null_text": 0,
+      "accuracy": 0.625,
+      "pass_at_k": {
+        "pass@1": 0.625
+      }
+    },
+    {
+      "index": 13,
+      "total": 32,
+      "correct": 0,
+      "null_text": 0,
+      "accuracy": 0.0,
+      "pass_at_k": {
+        "pass@1": 0.0
+      }
+    },
+    {
+      "index": 14,
+      "total": 32,
+      "correct": 1,
+      "null_text": 0,
+      "accuracy": 0.03125,
+      "pass_at_k": {
+        "pass@1": 0.03125
+      }
+    },
+    {
+      "index": 15,
+      "total": 32,
+      "correct": 2,
+      "null_text": 0,
+      "accuracy": 0.0625,
+      "pass_at_k": {
+        "pass@1": 0.0625
+      }
+    },
+    {
+      "index": 16,
+      "total": 32,
+      "correct": 0,
+      "null_text": 0,
+      "accuracy": 0.0,
+      "pass_at_k": {
+        "pass@1": 0.0
+      }
+    },
+    {
+      "index": 17,
+      "total": 32,
+      "correct": 0,
+      "null_text": 0,
+      "accuracy": 0.0,
+      "pass_at_k": {
+        "pass@1": 0.0
+      }
+    },
+    {
+      "index": 18,
+      "total": 32,
+      "correct": 0,
+      "null_text": 0,
+      "accuracy": 0.0,
+      "pass_at_k": {
+        "pass@1": 0.0
+      }
+    },
+    {
+      "index": 19,
+      "total": 32,
+      "correct": 0,
+      "null_text": 0,
+      "accuracy": 0.0,
+      "pass_at_k": {
+        "pass@1": 0.0
+      }
+    },
+    {
+      "index": 20,
+      "total": 32,
+      "correct": 1,
+      "null_text": 0,
+      "accuracy": 0.03125,
+      "pass_at_k": {
+        "pass@1": 0.03125
+      }
+    },
+    {
+      "index": 21,
+      "total": 32,
+      "correct": 30,
+      "null_text": 0,
+      "accuracy": 0.9375,
+      "pass_at_k": {
+        "pass@1": 0.9375
+      }
+    },
+    {
+      "index": 22,
+      "total": 32,
+      "correct": 25,
+      "null_text": 0,
+      "accuracy": 0.78125,
+      "pass_at_k": {
+        "pass@1": 0.78125
+      }
+    },
+    {
+      "index": 23,
+      "total": 32,
+      "correct": 32,
+      "null_text": 0,
+      "accuracy": 1.0,
+      "pass_at_k": {
+        "pass@1": 1.0
+      }
+    },
+    {
+      "index": 24,
+      "total": 32,
+      "correct": 0,
+      "null_text": 0,
+      "accuracy": 0.0,
+      "pass_at_k": {
+        "pass@1": 0.0
+      }
+    },
+    {
+      "index": 25,
+      "total": 32,
+      "correct": 2,
+      "null_text": 0,
+      "accuracy": 0.0625,
+      "pass_at_k": {
+        "pass@1": 0.0625
+      }
+    },
+    {
+      "index": 26,
+      "total": 32,
+      "correct": 0,
+      "null_text": 0,
+      "accuracy": 0.0,
+      "pass_at_k": {
+        "pass@1": 0.0
+      }
+    },
+    {
+      "index": 27,
+      "total": 32,
+      "correct": 0,
+      "null_text": 0,
+      "accuracy": 0.0,
+      "pass_at_k": {
+        "pass@1": 0.0
+      }
+    },
+    {
+      "index": 28,
+      "total": 32,
+      "correct": 0,
+      "null_text": 0,
+      "accuracy": 0.0,
+      "pass_at_k": {
+        "pass@1": 0.0
+      }
+    },
+    {
+      "index": 29,
+      "total": 32,
+      "correct": 0,
+      "null_text": 0,
+      "accuracy": 0.0,
+      "pass_at_k": {
+        "pass@1": 0.0
+      }
+    }
+  ]
+}

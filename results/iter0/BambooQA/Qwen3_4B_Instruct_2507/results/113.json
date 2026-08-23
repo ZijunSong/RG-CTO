@@ -1,0 +1,201 @@
+{
+  "index": 113,
+  "question_id": 113,
+  "question": "What's the capital of the state that the Space Needle is at?",
+  "answer": "Olympia",
+  "completions": [
+    {
+      "text": "Step 1: Identify the location of the Space Needle.  \nThe Space Needle is a well-known landmark located in Seattle, Washington.\n\nStep 2: Determine the capital of the state where Seattle is located.  \nSeattle is in the state of Washington.\n\nStep 3: Find the capital city of Washington state.  \nThe capital of Washington state is Seattle.\n\nWait — that seems off. Seattle is a major city, but is it the capital?\n\nActually, no. The capital of Washington state is Olympia, not Seattle.\n\nTherefore, the capital of the state where the Space Needle is located (Washington) is Olympia.\n\nFinal answer: Olympia",
+      "reasoning_content": "",
+      "tokens": 129,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of the Space Needle.  \nThe Space Needle is a well-known landmark located in Seattle, Washington.\n\nStep 2: Determine the capital of the state where Seattle is located.  \nSeattle is in the state of Washington.\n\nStep 3: Find the capital city of Washington state.  \nThe capital of Washington state is Olympia.\n\nFinal answer: Olympia",
+      "reasoning_content": "",
+      "tokens": 77,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of the Space Needle.  \nThe Space Needle is a well-known landmark located in Seattle, Washington.\n\nStep 2: Determine the capital of the state where Seattle is located.  \nSeattle is in the state of Washington. The capital of Washington state is Olympia.\n\nFinal answer: Olympia",
+      "reasoning_content": "",
+      "tokens": 64,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of the Space Needle.  \nThe Space Needle is a well-known landmark located in Seattle, Washington.\n\nStep 2: Determine the capital of the state where Seattle is located.  \nSeattle is in the state of Washington.\n\nStep 3: Find the capital of Washington state.  \nThe capital of Washington state is Olympia.\n\nFinal answer: Olympia",
+      "reasoning_content": "",
+      "tokens": 76,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of the Space Needle.  \nThe Space Needle is a well-known landmark located in Seattle, Washington.\n\nStep 2: Determine the capital of the state where Seattle is located.  \nSeattle is in the state of Washington. The capital of Washington state is Olympia.\n\nFinal answer: Olympia",
+      "reasoning_content": "",
+      "tokens": 64,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of the Space Needle.  \nThe Space Needle is a well-known landmark located in Seattle, Washington.\n\nStep 2: Determine the capital of the state where Seattle is located.  \nSeattle is in the state of Washington. The capital of Washington state is Olympia.\n\nFinal answer: Olympia",
+      "reasoning_content": "",
+      "tokens": 64,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of the Space Needle.  \nThe Space Needle is a well-known landmark located in Seattle, Washington.\n\nStep 2: Determine the capital of the state where Seattle is located.  \nSeattle is in the state of Washington. The capital of Washington state is Olympia.\n\nFinal answer: Olympia",
+      "reasoning_content": "",
+      "tokens": 64,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of the Space Needle.  \nThe Space Needle is a well-known landmark located in Seattle, Washington.\n\nStep 2: Determine the capital of the state where Seattle is located.  \nSeattle is in the state of Washington. The capital of Washington state is Olympia.\n\nFinal answer: Olympia",
+      "reasoning_content": "",
+      "tokens": 64,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of the Space Needle.  \nThe Space Needle is a well-known landmark located in Seattle, Washington.\n\nStep 2: Determine the capital of the state where Seattle is located.  \nSeattle is in the state of Washington.\n\nStep 3: Find the capital city of Washington state.  \nThe capital of Washington state is Olympia.\n\nFinal answer: Olympia",
+      "reasoning_content": "",
+      "tokens": 77,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of the Space Needle.  \nThe Space Needle is a well-known landmark located in Seattle, Washington.\n\nStep 2: Determine the capital of the state where Seattle is located.  \nSeattle is in the state of Washington. The capital of Washington state is Olympia.\n\nFinal answer: Olympia",
+      "reasoning_content": "",
+      "tokens": 64,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of the Space Needle.  \nThe Space Needle is a well-known landmark located in Seattle, Washington.\n\nStep 2: Determine the capital of the state where Seattle is located.  \nSeattle is in the state of Washington.\n\nStep 3: Find the capital city of Washington state.  \nThe capital of Washington state is Olympia.\n\nFinal answer: Olympia",
+      "reasoning_content": "",
+      "tokens": 77,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of the Space Needle.  \nThe Space Needle is a well-known landmark located in Seattle, Washington.\n\nStep 2: Determine the capital of the state where Seattle is located.  \nSeattle is in the state of Washington.\n\nStep 3: Find the capital city of Washington state.  \nThe capital of Washington state is Olympia.\n\nFinal answer: Olympia",
+      "reasoning_content": "",
+      "tokens": 77,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of the Space Needle.  \nThe Space Needle is a well-known landmark located in Seattle, Washington.\n\nStep 2: Determine the capital of the state where Seattle is located.  \nSeattle is in the state of Washington. The capital of Washington state is Olympia.\n\nFinal answer: Olympia",
+      "reasoning_content": "",
+      "tokens": 64,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of the Space Needle.  \nThe Space Needle is a well-known landmark located in Seattle, Washington.\n\nStep 2: Determine the capital of the state where Seattle is located.  \nSeattle is in the state of Washington.\n\nStep 3: Find the capital city of Washington state.  \nThe capital of Washington state is Olympia.\n\nFinal answer: Olympia",
+      "reasoning_content": "",
+      "tokens": 77,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of the Space Needle.  \nThe Space Needle is a well-known landmark located in Seattle, Washington.\n\nStep 2: Determine the capital of the state where Seattle is located.  \nSeattle is in the state of Washington.\n\nStep 3: Find the capital city of Washington state.  \nThe capital of Washington state is Olympia.\n\nFinal answer: Olympia",
+      "reasoning_content": "",
+      "tokens": 77,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of the Space Needle.  \nThe Space Needle is a well-known landmark located in Seattle, Washington.\n\nStep 2: Determine the capital of the state where Seattle is located.  \nSeattle is in the state of Washington.\n\nStep 3: Find the capital city of Washington state.  \nThe capital of Washington state is Olympia.\n\nFinal answer: Olympia",
+      "reasoning_content": "",
+      "tokens": 77,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of the Space Needle.  \nThe Space Needle is a well-known landmark located in Seattle, Washington.\n\nStep 2: Determine the capital of the state where Seattle is located.  \nSeattle is in the state of Washington. The capital of Washington state is Olympia.\n\nFinal answer: Olympia",
+      "reasoning_content": "",
+      "tokens": 64,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of the Space Needle.  \nThe Space Needle is a well-known landmark located in Seattle, Washington.\n\nStep 2: Determine the capital of the state where Seattle is located.  \nSeattle is in the state of Washington.\n\nStep 3: Find the capital city of Washington state.  \nThe capital of Washington state is Olympia.\n\nFinal answer: Olympia",
+      "reasoning_content": "",
+      "tokens": 77,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of the Space Needle.  \nThe Space Needle is a well-known landmark located in Seattle, Washington.\n\nStep 2: Determine the capital of the state where Seattle is located.  \nSeattle is in the state of Washington.\n\nStep 3: Find the capital of Washington state.  \nThe capital of Washington state is Olympia.\n\nFinal answer: Olympia",
+      "reasoning_content": "",
+      "tokens": 76,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of the Space Needle.  \nThe Space Needle is a well-known landmark located in Seattle, Washington.\n\nStep 2: Determine the capital of the state where Seattle is located.  \nSeattle is in the state of Washington.\n\nStep 3: Find the capital city of Washington state.  \nThe capital of Washington state is Olympia.\n\nFinal answer: Olympia",
+      "reasoning_content": "",
+      "tokens": 77,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of the Space Needle.  \nThe Space Needle is a well-known landmark located in Seattle, Washington.\n\nStep 2: Determine the capital of the state where Seattle is located.  \nSeattle is in the state of Washington.\n\nStep 3: Find the capital of Washington state.  \nThe capital of Washington state is Olympia.\n\nFinal answer: Olympia",
+      "reasoning_content": "",
+      "tokens": 76,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of the Space Needle.  \nThe Space Needle is a well-known landmark located in Seattle, Washington.\n\nStep 2: Determine the capital of the state where Seattle is located.  \nSeattle is in the state of Washington. The capital of Washington state is Olympia.\n\nFinal answer: Olympia",
+      "reasoning_content": "",
+      "tokens": 64,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of the Space Needle.  \nThe Space Needle is a well-known landmark located in Seattle, Washington.\n\nStep 2: Determine the capital of the state where Seattle is located.  \nSeattle is in the state of Washington.\n\nStep 3: Find the capital of Washington state.  \nThe capital of Washington state is Olympia.\n\nFinal answer: Olympia",
+      "reasoning_content": "",
+      "tokens": 76,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of the Space Needle.  \nThe Space Needle is a well-known landmark located in Seattle, Washington.\n\nStep 2: Determine the capital of the state where Seattle is located.  \nSeattle is in the state of Washington.\n\nStep 3: Find the capital city of Washington state.  \nThe capital of Washington state is Seattle.\n\nWait — that would mean the capital is Seattle, which is correct, but let's double-check:  \nYes, Seattle is both a major city and the capital of Washington state.\n\nFinal answer: Seattle\n\nFinal answer: Seattle",
+      "reasoning_content": "",
+      "tokens": 118,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of the Space Needle.  \nThe Space Needle is a well-known landmark located in Seattle, Washington.\n\nStep 2: Determine the capital of the state where Seattle is located.  \nSeattle is in the state of Washington.\n\nStep 3: Find the capital city of Washington state.  \nThe capital of Washington state is Olympia.\n\nFinal answer: Olympia",
+      "reasoning_content": "",
+      "tokens": 77,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of the Space Needle.  \nThe Space Needle is a well-known landmark located in Seattle, Washington.\n\nStep 2: Determine the capital of the state where Seattle is located.  \nSeattle is in the state of Washington. The capital of Washington state is Olympia.\n\nFinal answer: Olympia",
+      "reasoning_content": "",
+      "tokens": 64,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of the Space Needle.  \nThe Space Needle is a well-known landmark located in Seattle, Washington.\n\nStep 2: Determine the capital of the state where Seattle is located.  \nSeattle is in the state of Washington.\n\nStep 3: Find the capital city of Washington state.  \nThe capital of Washington state is Olympia.\n\nFinal answer: Olympia",
+      "reasoning_content": "",
+      "tokens": 77,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of the Space Needle.  \nThe Space Needle is a well-known landmark located in Seattle, Washington.\n\nStep 2: Determine the capital of the state where Seattle is located.  \nSeattle is in the state of Washington.\n\nStep 3: Find the capital city of Washington state.  \nThe capital of Washington state is Seattle.\n\nWait — this seems contradictory. The Space Needle is in Seattle, which is a city, not the capital of the state. But is Seattle the capital of Washington?\n\nNo — the capital of Washington state is actually Olympia.\n\nSo, correction:  \n- The Space Needle is in Seattle, Washington.  \n- The capital of Washington state is Olympia.\n\nFinal answer: Olympia",
+      "reasoning_content": "",
+      "tokens": 146,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of the Space Needle.  \nThe Space Needle is a well-known landmark located in Seattle, Washington.\n\nStep 2: Determine the capital of the state where Seattle is located.  \nSeattle is in the state of Washington. The capital of Washington state is Olympia.\n\nFinal answer: Olympia",
+      "reasoning_content": "",
+      "tokens": 64,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of the Space Needle.  \nThe Space Needle is a well-known landmark located in Seattle, Washington.\n\nStep 2: Determine the capital of the state where Seattle is located.  \nSeattle is in the state of Washington.\n\nStep 3: Find the capital city of Washington state.  \nThe capital of Washington state is Olympia.\n\nFinal answer: Olympia",
+      "reasoning_content": "",
+      "tokens": 77,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of the Space Needle.  \nThe Space Needle is a well-known landmark located in Seattle, Washington.\n\nStep 2: Determine the capital of the state where Seattle is located.  \nSeattle is in the state of Washington.\n\nStep 3: Find the capital city of Washington state.  \nThe capital of Washington state is Olympia.\n\nFinal answer: Olympia",
+      "reasoning_content": "",
+      "tokens": 77,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of the Space Needle.  \nThe Space Needle is a well-known landmark located in Seattle, Washington.\n\nStep 2: Determine the capital of the state where Seattle is located.  \nSeattle is in the state of Washington.\n\nStep 3: Find the capital of Washington state.  \nThe capital of Washington state is Olympia.\n\nFinal answer: Olympia",
+      "reasoning_content": "",
+      "tokens": 76,
+      "finish_reason": "stop"
+    }
+  ],
+  "n_completions": 32
+}

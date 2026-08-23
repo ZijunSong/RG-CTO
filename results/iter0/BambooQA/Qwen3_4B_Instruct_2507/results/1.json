@@ -1,0 +1,201 @@
+{
+  "index": 1,
+  "question_id": 1,
+  "question": "What rocket was the first spacecraft that ever approached Uranus launched on?",
+  "answer": "Titan IIIE",
+  "completions": [
+    {
+      "text": "Let's reason step by step:\n\n1. The question asks about the \"first spacecraft that ever approached Uranus\" and which rocket it was launched on.\n\n2. There is no spacecraft that has ever approached Uranus in the sense of being the first to do so — the first spacecraft to approach Uranus was Voyager 2.\n\n3. Voyager 2 was launched on August 20, 1977, on a trajectory that took it past Jupiter, Saturn, Uranus, and Neptune.\n\n4. The rocket used to launch Voyager 2 was the **Space Shuttle-era Titan IV**, specifically the **Titan IV-B** rocket.\n\n5. However, it's important to clarify: Voyager 2 was actually launched on a **Titan IV** rocket, not a Space Shuttle. The Titan IV was developed by Lockheed Martin and used for heavy payloads.\n\n6. So, the first spacecraft to approach Uranus was Voyager 2, launched on the **Titan IV** rocket.\n\nFinal answer: Titan IV",
+      "reasoning_content": "",
+      "tokens": 204,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's reason step by step:\n\n1. The question asks about the \"first spacecraft that ever approached Uranus\" and which rocket launched it.\n\n2. First, we must clarify that no spacecraft has ever *approached* Uranus in the sense of being launched from Earth and reaching it. However, there *has* been a spacecraft that flew by Uranus — Voyager 2.\n\n3. Voyager 2 was the only spacecraft to visit Uranus. It was launched by NASA in 1977.\n\n4. The rocket used to launch Voyager 2 was the **Titan IIIE**.\n\n5. The Titan IIIE was a heavy-lift rocket developed by Lockheed Martin (originally by the Lockheed Corporation) and used for launching large interplanetary probes.\n\n6. Voyager 2 was launched on August 20, 1977, aboard a Titan IIIE rocket.\n\n7. Therefore, the rocket that launched the first spacecraft to approach Uranus (Voyager 2) was the Titan IIIE.\n\nFinal answer: Titan IIIE",
+      "reasoning_content": "",
+      "tokens": 217,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's reason step by step:\n\n1. The question asks about the \"first spacecraft that ever approached Uranus\" and which rocket it was launched on.\n\n2. There is no spacecraft that has ever \"approached\" Uranus in the sense of being launched on a rocket that reached Uranus and made a close approach — because no spacecraft has ever reached Uranus.\n\n3. In reality, the first spacecraft to visit Uranus is NASA's Voyager 2. It flew by Uranus in 1986.\n\n4. Voyager 2 was launched on a rocket called the **Titan IV-B**.\n\n5. The Titan IV-B was used to launch Voyager 2 on its journey to the outer planets.\n\n6. Therefore, the rocket that launched the first spacecraft to approach Uranus (Voyager 2) was the Titan IV-B.\n\nFinal answer: Titan IV-B",
+      "reasoning_content": "",
+      "tokens": 179,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's reason step by step:\n\n1. The question asks about the \"first spacecraft that ever approached Uranus\" and specifically which rocket it was launched on.\n\n2. There is no spacecraft that has ever \"approached\" Uranus in the sense of being launched from Earth and reaching it. The first spacecraft to visit Uranus was Voyager 2.\n\n3. Voyager 2 was launched on August 20, 1977, on a rocket known as the **Titan IIIE** (specifically, a Titan IIIE rocket with a 4000-pound payload).\n\n4. Voyager 2 flew by Uranus in January 1986, making it the first spacecraft to do so.\n\n5. Therefore, the rocket used to launch the first spacecraft to approach Uranus (Voyager 2) was the Titan IIIE.\n\nFinal answer: Titan IIIE",
+      "reasoning_content": "",
+      "tokens": 182,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's reason step by step:\n\n1. The question asks about the \"first spacecraft that ever approached Uranus\" and which rocket it was launched on.\n\n2. No spacecraft has ever been launched to approach Uranus in the sense of a mission that reached or orbited Uranus — but there have been missions that approached Uranus.\n\n3. The only spacecraft that has visited Uranus is NASA's Voyager 2.\n\n4. Voyager 2 was launched on August 20, 1977, on a rocket called the **Space Shuttle-era launch vehicle**, but actually, it was launched on a **Titan IIIC** rocket.\n\n5. The Titan IIIC was a large expendable launch vehicle used by NASA and the U.S. Air Force, and it was used to launch Voyager 2.\n\n6. Voyager 2 flew by Uranus in 1986, making it the first spacecraft to approach and study Uranus.\n\n7. Therefore, the rocket used to launch the first spacecraft to approach Uranus (Voyager 2) was the Titan IIIC.\n\nFinal answer: Titan IIIC",
+      "reasoning_content": "",
+      "tokens": 228,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's reason step by step:\n\n1. The question asks about the \"first spacecraft that ever approached Uranus\" and what rocket it was launched on.\n\n2. Uranus is one of the outer planets in our solar system, and no spacecraft has been launched specifically to Uranus in the sense of being the first to approach it.\n\n3. The first spacecraft to approach Uranus was Voyager 2. It flew by Uranus in 1986.\n\n4. Voyager 2 was launched on a rocket known as the Titan IV B (specifically, the Titan IV-B rocket).\n\n5. The launch vehicle used for Voyager 2 was the Titan IV-B, which was developed by the United States' aerospace industry and operated by NASA.\n\n6. Therefore, the rocket that launched the first spacecraft to approach Uranus (Voyager 2) was the Titan IV-B.\n\nFinal answer: Titan IV-B",
+      "reasoning_content": "",
+      "tokens": 185,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's reason step by step:\n\n1. The question asks about the \"first spacecraft that ever approached Uranus\" and what rocket it was launched on.\n\n2. No spacecraft has ever been launched specifically to \"approach\" Uranus in the sense of a direct mission — the first spacecraft to visit Uranus was Voyager 2.\n\n3. Voyager 2 was launched by NASA in 1977.\n\n4. The launch vehicle used for Voyager 2 was the **Titan IIIE** rocket.\n\n5. Voyager 2 was the first spacecraft to visit Uranus, achieving a flyby in 1986.\n\n6. The question says \"the first spacecraft that ever approached Uranus launched on\" — this is a misstatement because \"approached\" is not accurate in the context of a spacecraft mission; it's a flyby or visit. However, if interpreted as the first spacecraft to visit Uranus, then Voyager 2 is correct.\n\n7. Therefore, the rocket used to launch Voyager 2 — the first spacecraft to approach Uranus — was the Titan IIIE.\n\nFinal answer: Titan IIIE",
+      "reasoning_content": "",
+      "tokens": 228,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's reason step by step:\n\n1. The question asks about the \"first spacecraft that ever approached Uranus\" and which rocket it was launched on.\n\n2. No spacecraft has ever been launched to approach Uranus in the sense of a \"first\" mission to Uranus. The first spacecraft to approach Uranus was Voyager 2.\n\n3. Voyager 2 was launched on August 20, 1977, on the **Space Shuttle-era** rocket, specifically the **Titan IV** rocket (not the Space Shuttle).\n\n4. Voyager 2 was launched on a **Titan IV** rocket, which was a large expendable launch vehicle developed by the United States.\n\n5. The Titan IV was used to launch several deep-space missions, including Voyager 2, which flew by Uranus in 1986.\n\n6. Therefore, the rocket used to launch the first spacecraft to approach Uranus (Voyager 2) was the **Titan IV**.\n\nFinal answer: Titan IV",
+      "reasoning_content": "",
+      "tokens": 205,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's reason step by step:\n\n1. The question asks about the \"first spacecraft that ever approached Uranus\" and which rocket it was launched on.\n\n2. No spacecraft has ever \"approached\" Uranus in the sense of a single launch that reached it — rather, only one spacecraft has visited Uranus: NASA's Voyager 2.\n\n3. Voyager 2 was launched on August 20, 1977, on a rocket called the **Titan IIIE**.\n\n4. Voyager 2 is the only spacecraft to have visited Uranus. It flew by Uranus in January 1986.\n\n5. The Titan IIIE was a heavy-lift launch vehicle developed by NASA and used to launch several deep space missions, including Voyager 1 and Voyager 2.\n\n6. Therefore, the rocket used to launch the first spacecraft to approach Uranus (Voyager 2) was the Titan IIIE.\n\nFinal answer: Titan IIIE",
+      "reasoning_content": "",
+      "tokens": 198,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's reason step by step:\n\n1. The question asks about the \"first spacecraft that ever approached Uranus\" and which rocket it was launched on.\n\n2. No spacecraft has ever been launched to approach Uranus in the sense of being the first to do so. The first spacecraft to visit Uranus was Voyager 2.\n\n3. Voyager 2 was launched on August 20, 1977, on a trajectory that included flybys of Jupiter, Saturn, Uranus, and Neptune.\n\n4. The rocket used to launch Voyager 2 was the **Titan IIIE**.\n\n5. This is a key point: the question says \"the first spacecraft that ever approached Uranus\" — that is Voyager 2 — and it was launched on the Titan IIIE rocket.\n\n6. Therefore, the rocket used to launch the first spacecraft to approach Uranus (Voyager 2) was the Titan IIIE.\n\nFinal answer: Titan IIIE",
+      "reasoning_content": "",
+      "tokens": 197,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's reason step by step:\n\n1. The question asks about the \"first spacecraft that ever approached Uranus\" and what rocket it was launched on.\n\n2. There is no spacecraft that has ever approached Uranus in the sense of being launched on a rocket that went directly to Uranus and successfully approached it — the first spacecraft to visit Uranus was Voyager 2.\n\n3. Voyager 2 was launched by NASA on August 20, 1977, on the **Space Shuttle-era** (but actually, it was launched on a **Titan IV** rocket).\n\n4. More precisely, Voyager 2 was launched on a **Titan IV-B** rocket, which was a variant of the Titan IV family.\n\n5. The Titan IV-B was used to launch Voyager 2, which became the first spacecraft to visit Uranus in 1986.\n\n6. The key point: the question says \"what rocket was the first spacecraft that ever approached Uranus launched on?\" — so the spacecraft is Voyager 2, and the rocket is the Titan IV-B.\n\n7. Note: There is no \"first spacecraft\" that approached Uranus before Voyager 2. Voyager 2 was the first to do so.\n\nFinal answer: Titan IV-B",
+      "reasoning_content": "",
+      "tokens": 256,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's reason step by step:\n\n1. The question asks about the \"first spacecraft that ever approached Uranus\" and what rocket it was launched on.\n\n2. There is no spacecraft that has \"approached\" Uranus in the sense of being launched from Earth and reaching Uranus. The only spacecraft that has visited Uranus is Voyager 2.\n\n3. Voyager 2 was launched on August 20, 1977, as part of NASA's Voyager program.\n\n4. Voyager 2 was launched on a rocket called the **Titan IIIE** (a variant of the Titan rocket family).\n\n5. The Titan IIIE was specifically used for the Voyager 2 launch, as it provided the necessary thrust to send the spacecraft on its long journey to the outer planets.\n\n6. Voyager 2 flew by Uranus in 1986, making it the first spacecraft to approach and study Uranus.\n\nTherefore, the rocket used to launch the first spacecraft to approach Uranus (Voyager 2) was the Titan IIIE.\n\nFinal answer: Titan IIIE",
+      "reasoning_content": "",
+      "tokens": 221,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's reason step by step:\n\n1. The question asks about the \"first spacecraft that ever approached Uranus\" and specifically which rocket it was launched on.\n\n2. There is no spacecraft that has ever \"approached\" Uranus in the sense of being launched from Earth and reaching Uranus. The first spacecraft to visit Uranus was Voyager 2.\n\n3. Voyager 2 was launched on August 20, 1977, on a NASA mission.\n\n4. The rocket used to launch Voyager 2 was the **Titan IIIE**.\n\n5. Voyager 2 flew by Uranus in 1986, making it the first spacecraft to approach and study the planet.\n\n6. Therefore, the rocket used to launch the first spacecraft to approach Uranus (Voyager 2) was the Titan IIIE.\n\nFinal answer: Titan IIIE",
+      "reasoning_content": "",
+      "tokens": 178,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's reason step by step:\n\n1. The question asks about the \"first spacecraft that ever approached Uranus\" and which rocket it was launched on.\n\n2. Uranus is one of the outer planets in our solar system, and no spacecraft has been launched specifically to approach Uranus in the sense of a dedicated mission—however, there have been missions that have flown by or approached it.\n\n3. The only spacecraft to have visited Uranus is NASA's Voyager 2.\n\n4. Voyager 2 was launched on August 20, 1977, on a launch vehicle known as the **Titan IV** rocket (specifically, the Titan IV-B variant).\n\n5. Voyager 2 is the only spacecraft to have made a close approach to Uranus, which it did in January 1986.\n\n6. Therefore, the rocket used to launch the first spacecraft to approach Uranus (Voyager 2) was the **Titan IV**.\n\nFinal answer: Titan IV",
+      "reasoning_content": "",
+      "tokens": 203,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's reason step by step:\n\n1. The question asks about the \"first spacecraft that ever approached Uranus\" and which rocket it was launched on.\n\n2. Uranus is one of the gas giants in our solar system, and no spacecraft has been launched specifically to approach Uranus in the sense of a dedicated mission to Uranus — but there have been missions to the outer planets.\n\n3. The only spacecraft that has ever approached Uranus is NASA's Voyager 2. It flew by Uranus in January 1986.\n\n4. Voyager 2 was launched on a rocket called the **Space Shuttle**? No — that's incorrect. Voyager 2 was not launched on a space shuttle. The Space Shuttle program began in the 1980s, and Voyager 2 was launched in 1977, before the Shuttle existed.\n\n5. Voyager 2 was launched on the **Titan IV** rocket? No — actually, Voyager 1 and Voyager 2 were launched on the **Titan IIIC** rocket.\n\n6. Correct historical fact: Voyager 2 was launched on a **Titan IIIC** rocket on August 20, 1977.\n\n7. Therefore, the first spacecraft to approach Uranus — Voyager 2 — was launched on the **Titan IIIC** rocket.\n\nFinal answer: Titan IIIC",
+      "reasoning_content": "",
+      "tokens": 277,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's reason step by step:\n\n1. The question asks about the \"first spacecraft that ever approached Uranus\" and what rocket it was launched on.\n\n2. There is no spacecraft that has \"approached\" Uranus in the sense of being launched from Earth and going to Uranus, and then returning — but there have been missions that flew by Uranus.\n\n3. The first spacecraft to visit Uranus was Voyager 2. It was launched by NASA in 1977.\n\n4. Voyager 2 was launched on a rocket known as the Titan IV B. However, it's important to clarify: Voyager 2 was actually launched on a Titan IV B rocket, but the launch vehicle used was a Titan IV, which is a variant of the Titan family.\n\n5. However, the initial launch vehicle for Voyager 2 was the Titan IV B, which was used to carry the spacecraft into space.\n\n6. But the question says: \"What rocket was the first spacecraft that ever approached Uranus launched on?\"\n\n7. So, the spacecraft that approached Uranus is Voyager 2, and it was launched on a Titan IV B rocket.\n\n8. Therefore, the correct answer is the Titan IV B.\n\nFinal answer: Titan IV B",
+      "reasoning_content": "",
+      "tokens": 253,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's reason step by step:\n\n1. The question asks about the \"first spacecraft that ever approached Uranus\" and specifically which rocket launched it.\n\n2. There is no spacecraft that \"approached\" Uranus in the sense of being launched on a rocket that went directly to Uranus and made a close approach — the first spacecraft to visit Uranus was Voyager 2.\n\n3. Voyager 2 was launched in 1977, and it is the only spacecraft to have visited Uranus. It flew by Uranus in 1986.\n\n4. Voyager 2 was launched on a rocket called the **Titan IIIE** (specifically, the Titan IIIE rocket, which was a variant of the Titan series used by NASA).\n\n5. The Titan IIIE was developed by the United States and used to launch several deep-space probes, including Voyager 1 and Voyager 2.\n\n6. Therefore, the rocket that launched the first spacecraft to approach Uranus (Voyager 2) was the Titan IIIE.\n\nFinal answer: Titan IIIE",
+      "reasoning_content": "",
+      "tokens": 218,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's reason step by step:\n\n1. The question asks about the \"first spacecraft that ever approached Uranus\" and which rocket it was launched on.\n\n2. There is no spacecraft that has \"approached\" Uranus in the sense of being launched on a rocket that went directly to Uranus and made contact or a close pass. However, the only spacecraft that has made a close approach to Uranus is NASA's Voyager 2.\n\n3. Voyager 2 was launched on August 20, 1977, on a rocket called the **Titan IIIC**.\n\n4. Voyager 2 is the only spacecraft to have visited Uranus — it flew by Uranus in January 1986.\n\n5. Therefore, the rocket used to launch the first spacecraft to approach Uranus (Voyager 2) was the Titan IIIC.\n\nFinal answer: Titan IIIC",
+      "reasoning_content": "",
+      "tokens": 183,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's reason step by step:\n\n1. The question asks about the \"first spacecraft that ever approached Uranus\" and specifically which rocket it was launched on.\n\n2. No spacecraft has ever been launched to approach Uranus in the sense of a \"first\" spacecraft that did so — but there is one spacecraft that has actually approached Uranus: Voyager 2.\n\n3. Voyager 2 is the only spacecraft to have visited Uranus. It flew by Uranus in 1986.\n\n4. Voyager 2 was launched on a rocket called the **Titan II GLV** (Giant Liquid Propulsion Vehicle), which is a variant of the Saturn V rocket family? Wait — correction: actually, Voyager 2 was launched on a **Titan II GLV** rocket, which is a Titan II variant.\n\n5. However, the Titan II GLV was not a Saturn rocket. The Saturn V was used for Apollo missions.\n\n6. Voyager 2 was launched on a **Titan II GLV** rocket from Cape Canaveral on August 20, 1977.\n\n7. Therefore, the rocket used to launch the first spacecraft to approach Uranus (Voyager 2) was the **Titan II GLV**.\n\nFinal answer: Titan II GLV",
+      "reasoning_content": "",
+      "tokens": 262,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's reason step by step:\n\n1. The question asks about the \"first spacecraft that ever approached Uranus\" and what rocket it was launched on.\n\n2. There is no spacecraft that has ever \"approached\" Uranus in the sense of being launched from Earth and reaching it — meaning no spacecraft has ever reached Uranus in the way that Voyager 2 did. However, Voyager 2 is the only spacecraft that has ever visited Uranus.\n\n3. Voyager 2 was launched on August 20, 1977, as part of NASA's Voyager program.\n\n4. The rocket used to launch Voyager 2 was the **Titan IIIE** (a variant of the Titan III rocket).\n\n5. Therefore, the first spacecraft to approach Uranus — Voyager 2 — was launched on the Titan IIIE rocket.\n\nFinal answer: Titan IIIE",
+      "reasoning_content": "",
+      "tokens": 176,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's reason step by step:\n\n1. The question asks about the \"first spacecraft that ever approached Uranus\" and specifically which rocket it was launched on.\n\n2. There is no spacecraft that has ever \"approached\" Uranus in the sense of being launched on a rocket that reached or passed Uranus. The first spacecraft to visit Uranus is NASA's Voyager 2.\n\n3. Voyager 2 was launched on August 20, 1977, on a rocket called the **Space Shuttle-era launch vehicle** — actually, it was launched on a **Titan IV** rocket.\n\n4. Specifically, Voyager 2 was launched on a **Titan IV** rocket from Cape Canaveral, Florida, on August 20, 1977.\n\n5. The Titan IV is a heavy-lift launch vehicle developed by the United States, and it was used to launch several deep-space probes, including Voyager 2.\n\n6. Voyager 2 is the only spacecraft to have visited Uranus — it flew by Uranus in 1986.\n\nTherefore, the rocket used to launch the first spacecraft to approach Uranus (Voyager 2) was the Titan IV.\n\nFinal answer: Titan IV",
+      "reasoning_content": "",
+      "tokens": 251,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's reason step by step:\n\n1. The question asks about the \"first spacecraft that ever approached Uranus\" and which rocket it was launched on.\n\n2. No spacecraft has ever \"approached\" Uranus in the sense of being launched from Earth and reaching it — all missions to Uranus have been launched by spacecraft, not rockets in the traditional sense.\n\n3. The first spacecraft to approach Uranus was Voyager 2.\n\n4. Voyager 2 was launched on August 20, 1977, on a rocket called the **Space Shuttle-era rocket**? No — actually, Voyager 2 was launched on a **Titan IIIC rocket**.\n\n5. Confirming: Voyager 2 was launched on a **Titan IIIC** rocket by NASA. This was a large expendable launch vehicle developed by the United States.\n\n6. The Titan IIIC was used to launch several deep space probes, including Voyager 1 and Voyager 2.\n\n7. Voyager 2 flew by Uranus in January 1986 — making it the first spacecraft to approach and study Uranus.\n\nTherefore, the rocket that launched the first spacecraft to approach Uranus (Voyager 2) was the **Titan IIIC**.\n\nFinal answer: Titan IIIC",
+      "reasoning_content": "",
+      "tokens": 259,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's reason step by step:\n\n1. The question asks about the \"first spacecraft that ever approached Uranus\" and which rocket it was launched on.\n\n2. There is no spacecraft that has ever \"approached\" Uranus in the sense of being launched from Earth and reaching Uranus. The first spacecraft to visit Uranus was Voyager 2.\n\n3. Voyager 2 was launched on August 20, 1977, on a rocket known as the Titan IIIE.\n\n4. Voyager 2 is the only spacecraft to have visited Uranus, making it the first to approach the planet.\n\n5. The Titan IIIE was the launch vehicle used for Voyager 2.\n\n6. Therefore, the rocket used to launch the first spacecraft to approach Uranus (Voyager 2) was the Titan IIIE.\n\nFinal answer: Titan IIIE",
+      "reasoning_content": "",
+      "tokens": 176,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's reason step by step:\n\n1. The question asks about the \"first spacecraft that ever approached Uranus\" and which rocket it was launched on.\n\n2. Uranus is one of the outer planets in our solar system, and no spacecraft has ever been launched specifically to approach Uranus in the sense of a dedicated mission to that planet.\n\n3. The first spacecraft to visit Uranus was Voyager 2. It was launched by NASA in 1977.\n\n4. Voyager 2 was launched on a space launch vehicle called the **Titan IV** rocket (specifically, the Titan IV-B variant).\n\n5. The launch date of Voyager 2 was August 20, 1977, from Cape Canaveral, Florida, using a Titan IV rocket.\n\n6. Voyager 2 is the only spacecraft to have visited Uranus, making it the first spacecraft to approach the planet.\n\nTherefore, the rocket used to launch the first spacecraft that ever approached Uranus (Voyager 2) was the Titan IV.\n\nFinal answer: Titan IV",
+      "reasoning_content": "",
+      "tokens": 217,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's reason step by step:\n\n1. The question asks about the \"first spacecraft that ever approached Uranus\" and specifically which rocket launched it.\n\n2. First, we must clarify: no spacecraft has ever *approached* Uranus in the sense of being launched from Earth and making a flyby or orbit. The first spacecraft to visit Uranus was Voyager 2.\n\n3. Voyager 2 was launched by the United States on August 20, 1977, on a rocket known as the **Space Shuttle-era launch vehicle** — but actually, it was launched on a **Titan IIIC** rocket.\n\n4. The Titan IIIC was a heavy-lift launch vehicle developed by the United States' NASA and the aerospace contractor Rocketdyne (later part of Lockheed Martin). It was used to launch several deep-space probes, including Voyager 1 and Voyager 2.\n\n5. Voyager 2 was launched on a Titan IIIC rocket and made a flyby of Uranus in 1986.\n\n6. Therefore, the rocket used to launch the first spacecraft to approach Uranus (Voyager 2) was the **Titan IIIC**.\n\nFinal answer: Titan IIIC",
+      "reasoning_content": "",
+      "tokens": 247,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's reason step by step:\n\n1. The question asks about the \"first spacecraft that ever approached Uranus\" and which rocket it was launched on.\n\n2. There is no spacecraft that has ever \"approached\" Uranus in the sense of being launched on a rocket that reached Uranus and made a close flyby — but actually, there *has* been a spacecraft that flew by Uranus.\n\n3. The only spacecraft to have visited Uranus is NASA's Voyager 2. It flew by Uranus in 1986.\n\n4. Voyager 2 was launched on a rocket called the **Titan II GLV** (Giant Launch Vehicle), which was a variant of the Titan II rocket.\n\n5. However, it's important to note that Voyager 2 was launched on a Titan II GLV, but this was part of a broader launch vehicle system that included the **Titan II GLV** as the launch vehicle.\n\n6. The Titan II GLV was used for the Voyager 1 and Voyager 2 launches.\n\n7. Therefore, the rocket used to launch the first spacecraft to approach Uranus (Voyager 2) was the **Titan II GLV**.\n\nFinal answer: Titan II GLV",
+      "reasoning_content": "",
+      "tokens": 251,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's reason step by step:\n\n1. The question asks about the \"first spacecraft that ever approached Uranus\" and which rocket it was launched on.\n\n2. First, we need to identify if any spacecraft has ever approached Uranus. The only spacecraft to visit Uranus is NASA's Voyager 2.\n\n3. Voyager 2 was launched on August 20, 1977.\n\n4. The rocket used to launch Voyager 2 was the **Titan IIIE** (also referred to as the Titan III-C in some sources, part of the Titan family).\n\n5. The Titan IIIE was a heavy-lift launch vehicle developed by Lockheed Martin (then under the Lockheed Corporation) and used by NASA for launching large interplanetary missions.\n\n6. Therefore, the first spacecraft to approach Uranus — Voyager 2 — was launched on a Titan IIIE rocket.\n\nFinal answer: Titan IIIE",
+      "reasoning_content": "",
+      "tokens": 185,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's reason step by step:\n\n1. The question asks about the \"first spacecraft that ever approached Uranus\" and which rocket it was launched on.\n\n2. No spacecraft has ever been launched to approach Uranus in a direct sense — meaning, no spacecraft has gone to Uranus and orbited or conducted close-up observations. The closest spacecraft to Uranus is Voyager 2, which flew by Uranus in 1986.\n\n3. Voyager 2 was launched on a rocket known as the **Space Shuttle-era rocket**? No — actually, Voyager 2 was launched on a **Titan IIIE** rocket.\n\n4. The Titan IIIE was a rocket developed by the United States, specifically by the U.S. Air Force and later used by NASA for interplanetary missions.\n\n5. Voyager 2 was launched on **November 7, 1977**, using a **Titan IIIE** rocket from Cape Canaveral.\n\n6. This makes Voyager 2 the first spacecraft to approach Uranus.\n\n7. Therefore, the rocket used to launch the first spacecraft to approach Uranus (Voyager 2) was the **Titan IIIE**.\n\nFinal answer: Titan IIIE",
+      "reasoning_content": "",
+      "tokens": 247,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's reason step by step:\n\n1. The question asks about the \"first spacecraft that ever approached Uranus\" and which rocket it was launched on.\n\n2. There is no spacecraft that has ever \"approached\" Uranus in the sense of being launched on a rocket that reached Uranus and made a close flyby — in fact, no spacecraft has ever flown by Uranus.\n\n3. The only spacecraft that has visited Uranus is NASA's Voyager 2.\n\n4. Voyager 2 was launched on August 20, 1977, on a rocket called the **Titan IIIE**.\n\n5. Voyager 2 is the only spacecraft to have visited Uranus, making it the first (and only so far) to approach the planet.\n\n6. Therefore, the rocket used to launch the first spacecraft to approach Uranus (Voyager 2) was the Titan IIIE.\n\nFinal answer: Titan IIIE",
+      "reasoning_content": "",
+      "tokens": 191,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's reason step by step:\n\n1. The question asks about the \"first spacecraft that ever approached Uranus\" and which rocket it was launched on.\n\n2. No spacecraft has ever been launched to approach Uranus in the sense of a single mission that reached Uranus — the first spacecraft to visit Uranus was Voyager 2.\n\n3. Voyager 2 was launched by NASA on August 20, 1977.\n\n4. The rocket used to launch Voyager 2 was the **Titan IIIE**.\n\n5. The Titan IIIE was a modified version of the Titan II rocket, developed by the U.S. aerospace company Rocketdyne and used by NASA for launching deep-space probes.\n\n6. Voyager 2 flew by Uranus in 1986, making it the first spacecraft to approach and study the planet.\n\nTherefore, the rocket that launched the first spacecraft to approach Uranus (Voyager 2) was the Titan IIIE.\n\nFinal answer: Titan IIIE",
+      "reasoning_content": "",
+      "tokens": 204,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's reason step by step:\n\n1. The question asks about the \"first spacecraft that ever approached Uranus\" and which rocket it was launched on.\n\n2. There is no spacecraft that has ever \"approached\" Uranus in the sense of being launched from Earth and reaching Uranus — that would require a mission specifically designed for that planet.\n\n3. In reality, the first spacecraft to approach Uranus was Voyager 2.\n\n4. Voyager 2 was launched on August 20, 1977, on a NASA spacecraft mission.\n\n5. The rocket used to launch Voyager 2 was the **Titan IIIE**.\n\n6. Voyager 2 is the only spacecraft to have visited Uranus (it flew by in 1986), making it the first and only spacecraft to approach Uranus.\n\n7. Therefore, the rocket used to launch the first spacecraft to approach Uranus (Voyager 2) was the Titan IIIE.\n\nFinal answer: Titan IIIE",
+      "reasoning_content": "",
+      "tokens": 203,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's reason step by step:\n\n1. The question asks about the \"first spacecraft that ever approached Uranus\" and which rocket it was launched on.\n\n2. There is no spacecraft that has ever \"approached\" Uranus in the sense of being launched on a rocket that went to Uranus and made a close approach. The only spacecraft that has visited Uranus is NASA's Voyager 2.\n\n3. Voyager 2 was launched on August 20, 1977, on the **Viking rocket** (specifically, a modified Saturn V rocket, but actually, Voyager 2 was launched on a **Titan IIIE** rocket).\n\n4. The Titan IIIE was the launch vehicle used for Voyager 2.\n\n5. It's important to note that Voyager 2 is the only spacecraft to have visited Uranus. It flew by Uranus in January 1986.\n\n6. Therefore, the rocket used to launch the first spacecraft to approach Uranus (Voyager 2) was the **Titan IIIE**.\n\nFinal answer: Titan IIIE",
+      "reasoning_content": "",
+      "tokens": 222,
+      "finish_reason": "stop"
+    }
+  ],
+  "n_completions": 32
+}

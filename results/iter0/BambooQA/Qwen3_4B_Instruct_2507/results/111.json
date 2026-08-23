@@ -1,0 +1,201 @@
+{
+  "index": 111,
+  "question_id": 111,
+  "question": "What's the capital of the state that Washington University in St. Louis is in?",
+  "answer": "Jefferson City",
+  "completions": [
+    {
+      "text": "Step 1: Identify the location of Washington University in St. Louis.\n\nWashington University in St. Louis is located in St. Louis, Missouri.\n\nStep 2: Determine the capital of Missouri.\n\nThe capital of Missouri is Jefferson City.\n\nFinal answer: Jefferson City",
+      "reasoning_content": "",
+      "tokens": 54,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of Washington University in St. Louis.\n\nWashington University in St. Louis is located in the state of Missouri.\n\nStep 2: Determine the capital of Missouri.\n\nThe capital of Missouri is Jefferson City.\n\nFinal answer: Jefferson City",
+      "reasoning_content": "",
+      "tokens": 53,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of Washington University in St. Louis.\n\nWashington University in St. Louis is located in St. Louis, Missouri.\n\nStep 2: Determine the capital of Missouri.\n\nThe capital of Missouri is Jefferson City.\n\nFinal answer: Jefferson City",
+      "reasoning_content": "",
+      "tokens": 54,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the state where Washington University in St. Louis is located.  \nWashington University in St. Louis is located in the state of Missouri.\n\nStep 2: Determine the capital of Missouri.  \nThe capital of Missouri is Jefferson City.\n\nFinal answer: Jefferson City",
+      "reasoning_content": "",
+      "tokens": 57,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of Washington University in St. Louis.\n\nWashington University in St. Louis is located in the state of Missouri.\n\nStep 2: Determine the capital of Missouri.\n\nThe capital of Missouri is Jefferson City.\n\nFinal answer: Jefferson City",
+      "reasoning_content": "",
+      "tokens": 53,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the state where Washington University in St. Louis is located.  \nWashington University in St. Louis is located in the state of Missouri.\n\nStep 2: Determine the capital of Missouri.  \nThe capital of Missouri is Jefferson City.\n\nFinal answer: Jefferson City",
+      "reasoning_content": "",
+      "tokens": 57,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the state where Washington University in St. Louis is located.  \nWashington University in St. Louis is located in the state of Missouri.\n\nStep 2: Determine the capital of Missouri.  \nThe capital of Missouri is Jefferson City.\n\nFinal answer: Jefferson City",
+      "reasoning_content": "",
+      "tokens": 57,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the state where Washington University in St. Louis is located.  \nWashington University in St. Louis is located in the state of Missouri.\n\nStep 2: Determine the capital of Missouri.  \nThe capital of Missouri is Jefferson City.\n\nFinal answer: Jefferson City",
+      "reasoning_content": "",
+      "tokens": 57,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of Washington University in St. Louis.\n\nWashington University in St. Louis is located in the state of Missouri.\n\nStep 2: Determine the capital city of Missouri.\n\nThe capital city of Missouri is Jefferson City.\n\nFinal answer: Jefferson City",
+      "reasoning_content": "",
+      "tokens": 55,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the state where Washington University in St. Louis is located.  \nWashington University in St. Louis is located in the state of Missouri.\n\nStep 2: Determine the capital of Missouri.  \nThe capital of Missouri is Jefferson City.\n\nFinal answer: Jefferson City",
+      "reasoning_content": "",
+      "tokens": 57,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the state where Washington University in St. Louis is located.  \nWashington University in St. Louis is located in the state of Missouri.\n\nStep 2: Determine the capital of Missouri.  \nThe capital of Missouri is Jefferson City.\n\nFinal answer: Jefferson City",
+      "reasoning_content": "",
+      "tokens": 57,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of Washington University in St. Louis.\n\nWashington University in St. Louis is located in St. Louis, Missouri.\n\nStep 2: Determine the capital of Missouri.\n\nThe capital of Missouri is Jefferson City.\n\nFinal answer: Jefferson City",
+      "reasoning_content": "",
+      "tokens": 54,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the state where Washington University in St. Louis is located.  \nWashington University in St. Louis is located in the state of Missouri.\n\nStep 2: Determine the capital of Missouri.  \nThe capital of Missouri is Jefferson City.\n\nFinal answer: Jefferson City",
+      "reasoning_content": "",
+      "tokens": 57,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of Washington University in St. Louis.  \nWashington University in St. Louis is located in the state of Missouri.\n\nStep 2: Determine the capital of Missouri.  \nThe capital city of Missouri is Jefferson City.\n\nFinal answer: Jefferson City",
+      "reasoning_content": "",
+      "tokens": 56,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of Washington University in St. Louis.\n\nWashington University in St. Louis is located in St. Louis, Missouri.\n\nStep 2: Determine the capital of Missouri.\n\nThe capital of Missouri is Jefferson City.\n\nFinal answer: Jefferson City",
+      "reasoning_content": "",
+      "tokens": 54,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the state where Washington University in St. Louis is located.  \nWashington University in St. Louis is located in the state of Missouri.\n\nStep 2: Determine the capital of Missouri.  \nThe capital city of Missouri is Jefferson City.\n\nFinal answer: Jefferson City",
+      "reasoning_content": "",
+      "tokens": 58,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the state where Washington University in St. Louis is located.  \nWashington University in St. Louis is located in the state of Missouri.\n\nStep 2: Determine the capital of Missouri.  \nThe capital of Missouri is Jefferson City.\n\nFinal answer: Jefferson City",
+      "reasoning_content": "",
+      "tokens": 57,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of Washington University in St. Louis.\n\nWashington University in St. Louis is located in the state of Missouri.\n\nStep 2: Determine the capital city of Missouri.\n\nThe capital of Missouri is Jefferson City.\n\nFinal answer: Jefferson City",
+      "reasoning_content": "",
+      "tokens": 54,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the state where Washington University in St. Louis is located.  \nWashington University in St. Louis is located in the state of Missouri.\n\nStep 2: Determine the capital of Missouri.  \nThe capital city of Missouri is Jefferson City.\n\nFinal answer: Jefferson City",
+      "reasoning_content": "",
+      "tokens": 58,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of Washington University in St. Louis.\n\nWashington University in St. Louis is located in St. Louis, Missouri.\n\nStep 2: Determine the capital of Missouri.\n\nThe capital of Missouri is Jefferson City.\n\nFinal answer: Jefferson City",
+      "reasoning_content": "",
+      "tokens": 54,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of Washington University in St. Louis.\n\nWashington University in St. Louis is located in the state of Missouri.\n\nStep 2: Determine the capital of Missouri.\n\nThe capital of Missouri is Jefferson City.\n\nFinal answer: Jefferson City",
+      "reasoning_content": "",
+      "tokens": 53,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the state where Washington University in St. Louis is located.  \nWashington University in St. Louis is located in the state of Missouri.\n\nStep 2: Determine the capital of Missouri.  \nThe capital of Missouri is Jefferson City.\n\nFinal answer: Jefferson City",
+      "reasoning_content": "",
+      "tokens": 57,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the state where Washington University in St. Louis is located.  \nWashington University in St. Louis is located in the state of Missouri.\n\nStep 2: Determine the capital of Missouri.  \nThe capital of Missouri is Jefferson City.\n\nFinal answer: Jefferson City",
+      "reasoning_content": "",
+      "tokens": 57,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of Washington University in St. Louis.\n\nWashington University in St. Louis is located in the state of Missouri.\n\nStep 2: Determine the capital of Missouri.\n\nThe capital of Missouri is Jefferson City.\n\nFinal answer: Jefferson City",
+      "reasoning_content": "",
+      "tokens": 53,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of Washington University in St. Louis.\n\nWashington University in St. Louis is located in St. Louis, Missouri.\n\nStep 2: Determine the capital of Missouri.\n\nThe capital of Missouri is Jefferson City.\n\nFinal answer: Jefferson City",
+      "reasoning_content": "",
+      "tokens": 54,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of Washington University in St. Louis.\n\nWashington University in St. Louis is located in St. Louis, Missouri.\n\nStep 2: Determine the capital of Missouri.\n\nThe capital of Missouri is Jefferson City.\n\nFinal answer: Jefferson City",
+      "reasoning_content": "",
+      "tokens": 54,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the state where Washington University in St. Louis is located.  \nWashington University in St. Louis is located in the state of Missouri.\n\nStep 2: Determine the capital of Missouri.  \nThe capital of Missouri is Jefferson City.\n\nFinal answer: Jefferson City",
+      "reasoning_content": "",
+      "tokens": 57,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the state where Washington University in St. Louis is located.  \nWashington University in St. Louis is located in the state of Missouri.\n\nStep 2: Determine the capital of Missouri.  \nThe capital of Missouri is Jefferson City.\n\nFinal answer: Jefferson City",
+      "reasoning_content": "",
+      "tokens": 57,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of Washington University in St. Louis.\n\nWashington University in St. Louis is located in the state of Missouri.\n\nStep 2: Determine the capital of Missouri.\n\nThe capital of Missouri is Jefferson City.\n\nFinal answer: Jefferson City",
+      "reasoning_content": "",
+      "tokens": 53,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the state where Washington University in St. Louis is located.  \nWashington University in St. Louis is located in the state of Missouri.\n\nStep 2: Determine the capital of Missouri.  \nThe capital of Missouri is Jefferson City.\n\nFinal answer: Jefferson City",
+      "reasoning_content": "",
+      "tokens": 57,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the state where Washington University in St. Louis is located.  \nWashington University in St. Louis is located in the state of Missouri.\n\nStep 2: Determine the capital of Missouri.  \nThe capital of Missouri is Jefferson City.\n\nFinal answer: Jefferson City",
+      "reasoning_content": "",
+      "tokens": 57,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of Washington University in St. Louis.\n\nWashington University in St. Louis is located in the state of Missouri.\n\nStep 2: Determine the capital of Missouri.\n\nThe capital of Missouri is Jefferson City.\n\nFinal answer: Jefferson City",
+      "reasoning_content": "",
+      "tokens": 53,
+      "finish_reason": "stop"
+    }
+  ],
+  "n_completions": 32
+}

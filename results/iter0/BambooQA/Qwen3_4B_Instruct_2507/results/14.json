@@ -1,0 +1,201 @@
+{
+  "index": 14,
+  "question_id": 14,
+  "question": "When was the author of The Population Bomb born?",
+  "answer": "May 29, 1932",
+  "completions": [
+    {
+      "text": "The author of *The Population Bomb* is Paul R. Ehrlich. He was born on April 11, 1932.\n\nFinal answer: 1932",
+      "reasoning_content": "",
+      "tokens": 40,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "The author of *The Population Bomb* is Paul Ehrlich. He was born on April 21, 1932.\n\nFinal answer: 1932",
+      "reasoning_content": "",
+      "tokens": 38,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "The author of *The Population Bomb* is Paul Ehrlich.\n\nPaul Ehrlich was born on June 15, 1919.\n\nFinal answer: 1919",
+      "reasoning_content": "",
+      "tokens": 41,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "The author of *The Population Bomb* is Paul Ehrlich. He was born on March 16, 1932.\n\nFinal answer: 1932",
+      "reasoning_content": "",
+      "tokens": 38,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "The author of *The Population Bomb* is Paul R. Ehrlich. He was born on May 28, 1932.\n\nFinal answer: 1932",
+      "reasoning_content": "",
+      "tokens": 40,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "The author of *The Population Bomb* is Paul Ehrlich.\n\nTo determine when Paul Ehrlich was born, we recall that he was born on June 11, 1932.\n\nFinal answer: 1932",
+      "reasoning_content": "",
+      "tokens": 51,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "The author of *The Population Bomb* is Paul R. Ehrlich. He was born on May 14, 1932.\n\nFinal answer: 1932",
+      "reasoning_content": "",
+      "tokens": 40,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "The author of *The Population Bomb* is Paul Ehrlich.\n\nTo determine when Paul Ehrlich was born, we recall that he was born on April 14, 1932.\n\nStep-by-step reasoning:\n1. Identify the author of *The Population Bomb*: It is Paul R. Ehrlich.\n2. Confirm his birth date: Paul Ehrlich was born on April 14, 1932.\n3. Therefore, the birth year is 1932.\n\nFinal answer: 1932",
+      "reasoning_content": "",
+      "tokens": 115,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "The author of *The Population Bomb* is Paul Ehrlich. He was born on April 10, 1932.\n\nFinal answer: 1932",
+      "reasoning_content": "",
+      "tokens": 38,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "The author of *The Population Bomb* is Paul Ehrlich.\n\nPaul Ehrlich was born on March 11, 1919.\n\nFinal answer: 1919",
+      "reasoning_content": "",
+      "tokens": 41,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "The author of *The Population Bomb* is Paul R. Ehrlich. He was born on June 16, 1932.\n\nFinal answer: 1932",
+      "reasoning_content": "",
+      "tokens": 40,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "The author of *The Population Bomb* is Paul Ehrlich.\n\nPaul Ehrlich was born on June 13, 1919.\n\nFinal answer: 1919",
+      "reasoning_content": "",
+      "tokens": 41,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "The author of *The Population Bomb* is Paul R. Ehrlich. He was born on June 19, 1932.\n\nFinal answer: 1932",
+      "reasoning_content": "",
+      "tokens": 40,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "The author of *The Population Bomb* is Paul Ehrlich.\n\nPaul Ehrlich was born on April 14, 1919.\n\nFinal answer: 1919",
+      "reasoning_content": "",
+      "tokens": 41,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "The author of *The Population Bomb* is Paul R. Ehrlich. He was born on March 10, 1932.\n\nFinal answer: 1932",
+      "reasoning_content": "",
+      "tokens": 40,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "The author of *The Population Bomb* is Paul Ehrlich. He was born on April 15, 1932.\n\nFinal answer: 1932",
+      "reasoning_content": "",
+      "tokens": 38,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "The author of *The Population Bomb* is Paul Ehrlich. He was born on June 14, 1932.\n\nFinal answer: 1932",
+      "reasoning_content": "",
+      "tokens": 38,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "The author of *The Population Bomb* is Paul Ehrlich. He was born on April 18, 1932.\n\nFinal answer: 1932",
+      "reasoning_content": "",
+      "tokens": 38,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "The author of *The Population Bomb* is Paul Ehrlich.\n\nPaul Ehrlich was born on June 18, 1919.\n\nFinal answer: 1919",
+      "reasoning_content": "",
+      "tokens": 41,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "The author of *The Population Bomb* is Paul Ehrlich. He was born on May 15, 1932.\n\nFinal answer: 1932",
+      "reasoning_content": "",
+      "tokens": 38,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "The author of *The Population Bomb* is Paul Ehrlich.\n\nPaul Ehrlich was born on May 12, 1919.\n\nFinal answer: 1919",
+      "reasoning_content": "",
+      "tokens": 41,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "The author of *The Population Bomb* is Paul R. Ehrlich. He was born on April 25, 1932.\n\nFinal answer: 1932",
+      "reasoning_content": "",
+      "tokens": 40,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "The author of *The Population Bomb* is Paul Ehrlich. He was born on April 21, 1932.\n\nFinal answer: 1932",
+      "reasoning_content": "",
+      "tokens": 38,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "The author of *The Population Bomb* is Paul Ehrlich. He was born on April 16, 1932.\n\nFinal answer: 1932",
+      "reasoning_content": "",
+      "tokens": 38,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "The author of *The Population Bomb* is Paul Ehrlich. He was born on June 14, 1932.\n\nFinal answer: 1932",
+      "reasoning_content": "",
+      "tokens": 38,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "The author of *The Population Bomb* is Paul Ehrlich. He was born on April 22, 1932.\n\nFinal answer: 1932",
+      "reasoning_content": "",
+      "tokens": 38,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "The author of *The Population Bomb* is Paul Ehrlich.\n\nPaul Ehrlich was born on March 20, 1919.\n\nFinal answer: 1919",
+      "reasoning_content": "",
+      "tokens": 41,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "The author of *The Population Bomb* is Paul Ehrlich.\n\nPaul Ehrlich was born on April 22, 1919.\n\nFinal answer: 1919",
+      "reasoning_content": "",
+      "tokens": 41,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "The author of *The Population Bomb* is Paul Ehrlich.\n\nTo determine when Paul Ehrlich was born, we refer to known biographical data:\n\nPaul Ehrlich was born on March 11, 1919.\n\nFinal answer: 1919",
+      "reasoning_content": "",
+      "tokens": 59,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "The author of *The Population Bomb* is Paul R. Ehrlich. He was born on April 18, 1932.\n\nFinal answer: 1932",
+      "reasoning_content": "",
+      "tokens": 40,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "The author of *The Population Bomb* is Paul Ehrlich. He was born on June 17, 1932.\n\nFinal answer: 1932",
+      "reasoning_content": "",
+      "tokens": 38,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "The author of *The Population Bomb* is Paul R. Ehrlich. He was born on May 20, 1932.\n\nFinal answer: 1932",
+      "reasoning_content": "",
+      "tokens": 40,
+      "finish_reason": "stop"
+    }
+  ],
+  "n_completions": 32
+}

@@ -1,0 +1,201 @@
+{
+  "index": 28,
+  "question_id": 28,
+  "question": "In what year was the government department where the internet originated at founded?",
+  "answer": "1947",
+  "completions": [
+    {
+      "text": "The internet originated from research and development efforts at the U.S. Department of Defense, specifically through the Advanced Research Projects Agency (ARPA), which was established in 1964.\n\nARPA (now known as DARPA) played a central role in the development of the internet, including the creation of ARPANET, the first network to implement packet switching and the foundational technology for the modern internet.\n\nTherefore, the government department where the internet originated was founded in 1964.\n\nFinal answer: 1964",
+      "reasoning_content": "",
+      "tokens": 109,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "The internet originated within the United States Department of Defense, specifically through the Advanced Research Projects Agency (ARPA), which was established in 1964.\n\nARPA (now known as DARPA) played a key role in the development of the internet, including the creation of ARPANET in the 1960s.\n\nTherefore, the government department where the internet originated was founded in 1964.\n\nFinal answer: 1964",
+      "reasoning_content": "",
+      "tokens": 95,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "The internet originated from government research and development efforts, primarily within the United States. A key institution in this development was the Defense Advanced Research Projects Agency (DARPA), which was established in 1961.\n\nDARPA played a central role in the creation of the ARPANET, the precursor to the modern internet. Therefore, the government department where the internet originated—DARPA—was founded in 1961.\n\nFinal answer: 1961",
+      "reasoning_content": "",
+      "tokens": 99,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "The internet originated from research and development efforts primarily at the U.S. Department of Defense, specifically through the Advanced Research Projects Agency (ARPA), which was established in 1964.\n\nARPA (now known as DARPA) was responsible for funding and developing key technologies that eventually led to the creation of the internet, including the ARPANET in the 1960s.\n\nTherefore, the government department where the internet originated was founded in:\n\nFinal answer: 1964",
+      "reasoning_content": "",
+      "tokens": 102,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "The internet originated from research and development efforts primarily at the U.S. Department of Defense, specifically through its Advanced Research Projects Agency (ARPA), which later became the Defense Advanced Research Projects Agency (DARPA).\n\nARPA was founded in 1961.\n\nTherefore, the government department where the internet originated (ARPA) was founded in 1961.\n\nFinal answer: 1961",
+      "reasoning_content": "",
+      "tokens": 85,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "The internet originated from research and development efforts primarily at the U.S. Department of Defense, specifically through its Advanced Research Projects Agency (ARPA), which was established in 1964.\n\nARPA (now known as DARPA) funded the development of key networking technologies that eventually led to the creation of the internet, including the ARPANET in the late 1960s.\n\nTherefore, the government department where the internet originated — ARPA — was founded in 1964.\n\nFinal answer: 1964",
+      "reasoning_content": "",
+      "tokens": 111,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "The internet originated within the United States Department of Defense, specifically through its Advanced Research Projects Agency (ARPA), which was established in 1964.\n\nARPA (now known as DARPA) played a key role in the development of the internet, including the creation of ARPANET in the late 1960s.\n\nTherefore, the government department where the internet originated was founded in 1964.\n\nFinal answer: 1964",
+      "reasoning_content": "",
+      "tokens": 96,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "The internet originated from government research and development efforts, primarily within the United States. A key institution in this development was the Defense Advanced Research Projects Agency (DARPA), which was established in 1961.\n\nDARPA was responsible for funding and developing early networking technologies, including the ARPANET, which is considered the precursor to the modern internet.\n\nTherefore, the government department where the internet originated (DARPA) was founded in 1961.\n\nFinal answer: 1961",
+      "reasoning_content": "",
+      "tokens": 105,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "The internet originated from research and development efforts at the U.S. Department of Defense, specifically through its Advanced Research Projects Agency (ARPA), which later became the Defense Advanced Research Projects Agency (DARPA).\n\nARPA was founded in 1964.\n\nTherefore, the government department where the internet originated (DARPA, under the Department of Defense) was founded in 1964.\n\nFinal answer: 1964",
+      "reasoning_content": "",
+      "tokens": 91,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "The internet originated from research and development efforts primarily at the U.S. Department of Defense, specifically through its Advanced Research Projects Agency (ARPA), which later became the Defense Advanced Research Projects Agency (DARPA).\n\nDARPA was founded in 1958.\n\nTherefore, the government department where the internet originated (DARPA) was founded in 1958.\n\nFinal answer: 1958",
+      "reasoning_content": "",
+      "tokens": 87,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "The internet originated from research and development efforts primarily at the U.S. Department of Defense, specifically through its Advanced Research Projects Agency (ARPA), which was established in 1964.\n\nARPA (now known as DARPA) played a central role in the development of the internet, including the creation of the ARPANET in the late 1960s.\n\nTherefore, the government department where the internet originated — ARPA — was founded in 1964.\n\nFinal answer: 1964",
+      "reasoning_content": "",
+      "tokens": 108,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "The internet originated from research and development efforts primarily at the U.S. Department of Defense, specifically through its Advanced Research Projects Agency (ARPA), which later became the Defense Advanced Research Projects Agency (DARPA).\n\nARPA was founded in 1964.\n\nTherefore, the government department where the internet originated (ARPA) was founded in 1964.\n\nFinal answer: 1964",
+      "reasoning_content": "",
+      "tokens": 85,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "The internet originated from research and development efforts at the U.S. Department of Defense, specifically through its Advanced Research Projects Agency (ARPA), which later became the Defense Advanced Research Projects Agency (DARPA).\n\nARPA was established in 1961.\n\nTherefore, the government department where the internet originated was founded in 1961.\n\nFinal answer: 1961",
+      "reasoning_content": "",
+      "tokens": 80,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "The internet originated from research and development efforts at the U.S. Department of Defense, specifically through the Advanced Research Projects Agency (ARPA), which was established in 1964.\n\nARPA (now known as DARPA) funded the development of key networking technologies that eventually led to the creation of the internet, including the ARPANET, the first network to implement packet switching and the foundational protocols like TCP/IP.\n\nTherefore, the government department where the internet originated—ARPA—was founded in 1964.\n\nFinal answer: 1964",
+      "reasoning_content": "",
+      "tokens": 116,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "The internet originated from research and development efforts at the U.S. Department of Defense, specifically through its Advanced Research Projects Agency (ARPA), which was established in 1964.\n\nARPA (now known as DARPA) played a key role in the development of the ARPANET, the precursor to the modern internet. Therefore, the government department where the internet originated was founded in:\n\nFinal answer: 1964",
+      "reasoning_content": "",
+      "tokens": 89,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "The internet originated from research and development efforts primarily at the U.S. Department of Defense, specifically through the Advanced Research Projects Agency (ARPA), which was established in 1964.\n\nARPA (now known as DARPA) initiated the development of the ARPANET, the precursor to the modern internet. Therefore, the government department where the internet originated was founded in 1964.\n\nFinal answer: 1964",
+      "reasoning_content": "",
+      "tokens": 91,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "The internet originated from research and development efforts primarily at the U.S. Department of Defense, specifically through its Advanced Research Projects Agency (ARPA), which later became the Defense Advanced Research Projects Agency (DARPA).\n\nARPA was established in 1964.\n\nTherefore, the government department where the internet originated (ARPA) was founded in 1964.\n\nFinal answer: 1964",
+      "reasoning_content": "",
+      "tokens": 85,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "The internet originated from research and development efforts primarily at the U.S. Department of Defense, specifically through its Advanced Research Projects Agency (ARPA), which later became the Defense Advanced Research Projects Agency (DARPA).\n\nARPA was established in 1964.\n\nTherefore, the government department where the internet originated (ARPA) was founded in 1964.\n\nFinal answer: 1964",
+      "reasoning_content": "",
+      "tokens": 85,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "The internet originated from research and development efforts at the U.S. Department of Defense, specifically through the Advanced Research Projects Agency (ARPA), which was established in 1964.\n\nARPA (now known as DARPA) was responsible for funding and developing key networking technologies that eventually led to the creation of the internet, including the ARPANET in the 1960s.\n\nTherefore, the government department where the internet originated—ARPA—was founded in 1964.\n\nFinal answer: 1964",
+      "reasoning_content": "",
+      "tokens": 111,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "The internet originated from research and development efforts primarily at the U.S. Department of Defense, specifically through its Advanced Research Projects Agency (ARPA), which later became the Defense Advanced Research Projects Agency (DARPA).\n\nARPA was founded in 1964.\n\nTherefore, the government department where the internet originated (ARPA) was founded in 1964.\n\nFinal answer: 1964",
+      "reasoning_content": "",
+      "tokens": 85,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "The internet originated from research and development efforts primarily at the U.S. Department of Defense, specifically through its Advanced Research Projects Agency (ARPA), which was established in 1964.\n\nARPA (now known as DARPA) funded the development of key networking technologies, including the ARPANET, which is considered the precursor to the modern internet.\n\nTherefore, the government department where the internet originated was founded in 1964.\n\nFinal answer: 1964",
+      "reasoning_content": "",
+      "tokens": 99,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "The internet originated from research and development efforts at the U.S. Department of Defense, specifically through its Advanced Research Projects Agency (ARPA), which was established in 1964.\n\nARPA (now known as DARPA) was responsible for funding and developing early networking technologies, including the ARPANET, which is considered the precursor to the modern internet.\n\nTherefore, the government department where the internet originated was founded in 1964.\n\nFinal answer: 1964",
+      "reasoning_content": "",
+      "tokens": 100,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "The internet originated from research and development efforts at the U.S. Department of Defense, specifically through the Advanced Research Projects Agency (ARPA), which was established in 1964.\n\nARPA (now known as DARPA) funded the development of the ARPANET, the first network to use packet switching and form the foundation of the modern internet.\n\nTherefore, the government department where the internet originated was founded in 1964.\n\nFinal answer: 1964",
+      "reasoning_content": "",
+      "tokens": 99,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "The internet originated from research and development efforts primarily at the U.S. Department of Defense, specifically through the Advanced Research Projects Agency (ARPA), which was established in 1958.\n\nARPA (now known as DARPA) was responsible for funding and developing early networking technologies, including the ARPANET, which is considered the precursor to the modern internet.\n\nTherefore, the government department where the internet originated was founded in 1958.\n\nFinal answer: 1958",
+      "reasoning_content": "",
+      "tokens": 101,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "The internet originated from research and development efforts primarily at the U.S. Department of Defense, specifically through its Advanced Research Projects Agency (ARPA), which was established in 1964.\n\nARPA (now known as DARPA) was responsible for funding and developing the early networking technologies that eventually led to the creation of the internet, including the ARPANET in the 1960s.\n\nTherefore, the government department where the internet originated—at the U.S. Department of Defense, through ARPA—was founded in 1964.\n\nFinal answer: 1964",
+      "reasoning_content": "",
+      "tokens": 122,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "The internet originated from research and development efforts primarily at the U.S. Department of Defense, specifically through its Advanced Research Projects Agency (ARPA), which later became the Defense Advanced Research Projects Agency (DARPA).\n\nARPA was founded in 1964.\n\nTherefore, the government department where the internet originated (ARPA/DARPA) was founded in 1964.\n\nFinal answer: 1964",
+      "reasoning_content": "",
+      "tokens": 88,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "The internet originated from research and development efforts at the U.S. Department of Defense, specifically through the Advanced Research Projects Agency (ARPA), which was established in 1964.\n\nARPA (now known as DARPA) initiated the development of ARPANET, the precursor to the internet, in the late 1960s. Therefore, the government department where the internet originated—ARPA—was founded in 1964.\n\nFinal answer: 1964",
+      "reasoning_content": "",
+      "tokens": 102,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "The internet originated from research and development efforts at the U.S. Department of Defense, specifically through its Advanced Research Projects Agency (ARPA), which was established in 1964.\n\nARPA (now known as DARPA) played a central role in the development of key internet technologies, including the ARPANET, the precursor to the modern internet.\n\nTherefore, the government department where the internet originated was founded in 1964.\n\nFinal answer: 1964",
+      "reasoning_content": "",
+      "tokens": 99,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "To determine the year the government department where the internet originated was founded, let's reason step by step:\n\n1. The internet originated from research and development in the United States, primarily through government-funded projects.\n2. A key project was the Advanced Research Projects Agency Network (ARPANET), which was developed by the U.S. Department of Defense's Advanced Research Projects Agency (ARPA).\n3. ARPA was established in 1964.\n4. ARPANET was launched in 1969 as a prototype for the internet.\n5. Therefore, the government department responsible for the origin of the internet — ARPA — was founded in 1964.\n\nFinal answer: 1964",
+      "reasoning_content": "",
+      "tokens": 147,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "The internet originated from research and development efforts at the U.S. Department of Defense, specifically through its Advanced Research Projects Agency (ARPA), which later became the Defense Advanced Research Projects Agency (DARPA).\n\nARPA was founded in 1961.\n\nTherefore, the government department where the internet originated (DARPA, under the Department of Defense) was founded in 1961.\n\nFinal answer: 1961",
+      "reasoning_content": "",
+      "tokens": 91,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "The internet originated from government research initiatives, primarily in the United States. The key department involved in its development was the Defense Advanced Research Projects Agency (DARPA), which was founded in 1961.\n\nDARPA played a central role in developing the ARPANET, the precursor to the modern internet. Therefore, the government department where the internet originated (DARPA) was founded in:\n\nFinal answer: 1961",
+      "reasoning_content": "",
+      "tokens": 91,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "The internet originated from research and development efforts in the United States, primarily through the U.S. Department of Defense. The key government department involved in the early development of the internet was the Defense Advanced Research Projects Agency (DARPA), which was established in 1961.\n\nDARPA was responsible for creating the ARPANET, the precursor to the modern internet. Therefore, the government department where the internet originated (DARPA) was founded in 1961.\n\nFinal answer: 1961",
+      "reasoning_content": "",
+      "tokens": 108,
+      "finish_reason": "stop"
+    }
+  ],
+  "n_completions": 32
+}

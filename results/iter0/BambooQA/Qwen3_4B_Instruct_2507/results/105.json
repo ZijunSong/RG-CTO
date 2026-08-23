@@ -1,0 +1,201 @@
+{
+  "index": 105,
+  "question_id": 105,
+  "question": "What's the capital city of the country that was the champion of the 2010 World Cup?",
+  "answer": "Madrid",
+  "completions": [
+    {
+      "text": "Step 1: Determine which country was the champion of the 2010 World Cup.\n\nThe 2010 FIFA World Cup was held in South Africa. The champion of that tournament was Spain.\n\nStep 2: Identify the capital city of Spain.\n\nThe capital city of Spain is Madrid.\n\nFinal answer: Madrid",
+      "reasoning_content": "",
+      "tokens": 67,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the champion of the 2010 FIFA World Cup.\n\nThe 2010 FIFA World Cup was held in South Africa. The champion of that tournament was Spain.\n\nStep 2: Determine the capital city of Spain.\n\nThe capital city of Spain is Madrid.\n\nFinal answer: Madrid",
+      "reasoning_content": "",
+      "tokens": 65,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Determine which country won the 2010 FIFA World Cup.\n\nThe 2010 FIFA World Cup was held in South Africa. The champion of that tournament was Spain.\n\nStep 2: Identify the capital city of Spain.\n\nThe capital city of Spain is Madrid.\n\nFinal answer: Madrid",
+      "reasoning_content": "",
+      "tokens": 65,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the champion of the 2010 World Cup.  \nThe 2010 FIFA World Cup was held in South Africa. The winning team was Spain.\n\nStep 2: Determine the capital city of Spain.  \nThe capital city of Spain is Madrid.\n\nFinal answer: Madrid",
+      "reasoning_content": "",
+      "tokens": 64,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Determine which country won the 2010 FIFA World Cup.\n\nThe 2010 FIFA World Cup was held in South Africa. The champion of that tournament was Spain.\n\nStep 2: Identify the capital city of Spain.\n\nThe capital city of Spain is Madrid.\n\nFinal answer: Madrid",
+      "reasoning_content": "",
+      "tokens": 65,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify which country won the 2010 FIFA World Cup.\n\nThe 2010 FIFA World Cup was held in South Africa. The champion of that tournament was Spain.\n\nStep 2: Determine the capital city of Spain.\n\nThe capital city of Spain is Madrid.\n\nFinal answer: Madrid",
+      "reasoning_content": "",
+      "tokens": 65,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the champion of the 2010 World Cup.\n\nThe 2010 FIFA World Cup was held in South Africa. The champion team was Spain.\n\nStep 2: Determine the capital city of Spain.\n\nThe capital city of Spain is Madrid.\n\nFinal answer: Madrid",
+      "reasoning_content": "",
+      "tokens": 62,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Determine which country won the 2010 FIFA World Cup.\n\nThe 2010 FIFA World Cup was held in South Africa. The champion of that tournament was Spain.\n\nStep 2: Identify the capital city of Spain.\n\nThe capital city of Spain is Madrid.\n\nFinal answer: Madrid",
+      "reasoning_content": "",
+      "tokens": 65,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Determine which country was the champion of the 2010 World Cup.\n\nThe 2010 FIFA World Cup was held in South Africa. The champion of that tournament was Spain.\n\nStep 2: Identify the capital city of Spain.\n\nThe capital city of Spain is Madrid.\n\nFinal answer: Madrid",
+      "reasoning_content": "",
+      "tokens": 67,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the champion of the 2010 FIFA World Cup.  \nThe 2010 FIFA World Cup was held in South Africa. The winning team was Spain.\n\nStep 2: Determine the capital city of Spain.  \nThe capital city of Spain is Madrid.\n\nFinal answer: Madrid",
+      "reasoning_content": "",
+      "tokens": 65,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Determine which country was the champion of the 2010 World Cup.\n\nThe 2010 FIFA World Cup was held in South Africa. The champion of that tournament was Spain.\n\nStep 2: Identify the capital city of Spain.\n\nThe capital city of Spain is Madrid.\n\nFinal answer: Madrid",
+      "reasoning_content": "",
+      "tokens": 67,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Determine which country won the 2010 FIFA World Cup.\n\nThe 2010 FIFA World Cup was held in South Africa. The winning nation was Spain.\n\nStep 2: Identify the capital city of Spain.\n\nThe capital city of Spain is Madrid.\n\nFinal answer: Madrid",
+      "reasoning_content": "",
+      "tokens": 63,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Determine which country was the champion of the 2010 World Cup.\n\nThe 2010 FIFA World Cup was held in South Africa. The champion of that tournament was Spain.\n\nStep 2: Identify the capital city of Spain.\n\nThe capital city of Spain is Madrid.\n\nFinal answer: Madrid",
+      "reasoning_content": "",
+      "tokens": 67,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Determine which country won the 2010 FIFA World Cup.\n\nThe 2010 FIFA World Cup was held in South Africa. The champion of that tournament was Spain.\n\nStep 2: Identify the capital city of Spain.\n\nThe capital city of Spain is Madrid.\n\nFinal answer: Madrid",
+      "reasoning_content": "",
+      "tokens": 65,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the champion of the 2010 FIFA World Cup.  \nThe 2010 FIFA World Cup was held in South Africa. The champion team was Spain.\n\nStep 2: Determine the capital city of Spain.  \nThe capital city of Spain is Madrid.\n\nFinal answer: Madrid",
+      "reasoning_content": "",
+      "tokens": 65,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the champion of the 2010 FIFA World Cup.  \nThe 2010 FIFA World Cup was held in South Africa. The winning team was Spain.\n\nStep 2: Determine the capital city of Spain.  \nThe capital city of Spain is Madrid.\n\nFinal answer: Madrid",
+      "reasoning_content": "",
+      "tokens": 65,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the champion of the 2010 World Cup.\n\nThe 2010 FIFA World Cup was held in South Africa. The champion of that tournament was Spain.\n\nStep 2: Determine the capital city of Spain.\n\nThe capital city of Spain is Madrid.\n\nFinal answer: Madrid",
+      "reasoning_content": "",
+      "tokens": 64,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the champion of the 2010 World Cup.  \nThe 2010 FIFA World Cup was held in South Africa. The winning team was Spain.\n\nStep 2: Determine the capital city of Spain.  \nThe capital city of Spain is Madrid.\n\nFinal answer: Madrid",
+      "reasoning_content": "",
+      "tokens": 64,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify which country won the 2010 World Cup.\n\nThe 2010 FIFA World Cup was held in South Africa. The champion of that tournament was Spain.\n\nStep 2: Determine the capital city of Spain.\n\nThe capital city of Spain is Madrid.\n\nFinal answer: Madrid",
+      "reasoning_content": "",
+      "tokens": 64,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Determine which country won the 2010 FIFA World Cup.\n\nThe 2010 FIFA World Cup was held in South Africa. The champion of that tournament was Spain.\n\nStep 2: Identify the capital city of Spain.\n\nThe capital city of Spain is Madrid.\n\nFinal answer: Madrid",
+      "reasoning_content": "",
+      "tokens": 65,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Determine which country won the 2010 World Cup.\n\nThe 2010 FIFA World Cup was held in South Africa. The champion of that tournament was Spain.\n\nStep 2: Identify the capital city of Spain.\n\nThe capital city of Spain is Madrid.\n\nFinal answer: Madrid",
+      "reasoning_content": "",
+      "tokens": 64,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the champion of the 2010 World Cup.\n\nThe 2010 FIFA World Cup was held in South Africa. The champion team was Spain.\n\nStep 2: Determine the capital city of Spain.\n\nThe capital city of Spain is Madrid.\n\nFinal answer: Madrid",
+      "reasoning_content": "",
+      "tokens": 62,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the champion of the 2010 World Cup.  \nThe 2010 FIFA World Cup was held in South Africa. The champion team was Spain.\n\nStep 2: Determine the capital city of Spain.  \nThe capital city of Spain is Madrid.\n\nFinal answer: Madrid",
+      "reasoning_content": "",
+      "tokens": 64,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Determine which country won the 2010 World Cup.\n\nThe 2010 FIFA World Cup was held in South Africa. The champion of that tournament was Spain.\n\nStep 2: Identify the capital city of Spain.\n\nThe capital city of Spain is Madrid.\n\nFinal answer: Madrid",
+      "reasoning_content": "",
+      "tokens": 64,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the champion of the 2010 World Cup.  \nThe 2010 FIFA World Cup was held in South Africa. The tournament was won by the South African national team, which is known as the \"Bafana Bafana.\" However, this is incorrect — South Africa did not win the 2010 World Cup.\n\nCorrection: The actual champion of the 2010 World Cup was Spain. Spain won the tournament by defeating the Netherlands in the final.\n\nStep 2: Determine the capital city of Spain.  \nThe capital city of Spain is Madrid.\n\nFinal answer: Madrid",
+      "reasoning_content": "",
+      "tokens": 131,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the champion of the 2010 World Cup.  \nThe 2010 FIFA World Cup was held in South Africa. The winning team was Spain.\n\nStep 2: Determine the capital city of Spain.  \nThe capital city of Spain is Madrid.\n\nFinal answer: Madrid",
+      "reasoning_content": "",
+      "tokens": 64,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the champion of the 2010 World Cup.  \nThe 2010 FIFA World Cup was held in South Africa. The champion team was Spain.\n\nStep 2: Determine the capital city of Spain.  \nThe capital city of Spain is Madrid.\n\nFinal answer: Madrid",
+      "reasoning_content": "",
+      "tokens": 64,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Let's solve this step by step:\n\n1) First, determine which country won the 2010 FIFA World Cup.\n   - The 2010 World Cup was held in South Africa.\n   - The champion of the 2010 World Cup was Spain.\n\n2) Now, identify the capital city of Spain.\n   - The capital city of Spain is Madrid.\n\nFinal answer: Madrid",
+      "reasoning_content": "",
+      "tokens": 84,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Determine which country won the 2010 FIFA World Cup.\n\nThe 2010 FIFA World Cup was held in South Africa. The champion of that tournament was Spain.\n\nStep 2: Identify the capital city of Spain.\n\nThe capital city of Spain is Madrid.\n\nFinal answer: Madrid",
+      "reasoning_content": "",
+      "tokens": 65,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the champion of the 2010 World Cup.  \nThe 2010 FIFA World Cup was held in South Africa. The winning team was Spain.\n\nStep 2: Determine the capital city of Spain.  \nThe capital city of Spain is Madrid.\n\nFinal answer: Madrid",
+      "reasoning_content": "",
+      "tokens": 64,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Determine which country won the 2010 FIFA World Cup.\n\nThe 2010 FIFA World Cup was held in South Africa. The champion of that tournament was Spain.\n\nStep 2: Identify the capital city of Spain.\n\nThe capital city of Spain is Madrid.\n\nFinal answer: Madrid",
+      "reasoning_content": "",
+      "tokens": 65,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the champion of the 2010 World Cup.  \nThe 2010 FIFA World Cup was held in South Africa. The champion team was Spain.\n\nStep 2: Determine the capital city of Spain.  \nThe capital city of Spain is Madrid.\n\nFinal answer: Madrid",
+      "reasoning_content": "",
+      "tokens": 64,
+      "finish_reason": "stop"
+    }
+  ],
+  "n_completions": 32
+}

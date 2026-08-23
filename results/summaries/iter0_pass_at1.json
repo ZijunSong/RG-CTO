@@ -1,0 +1,90 @@
+{
+  "BambooQA/Phi_4_Reasoning": {
+    "pass_at_1": 0.392,
+    "pass_at_1_pct": 39.2,
+    "path": "/data/ppnm/RG-CTO/results/iter0/BambooQA/Phi_4_Reasoning/results",
+    "n_completions": 125,
+    "source": "CTO run1"
+  },
+  "BambooQA/Qwen3_30B_A3B_Thinking_2507": {
+    "pass_at_1": 0.64,
+    "pass_at_1_pct": 64.0,
+    "path": "/data/ppnm/RG-CTO/results/iter0/BambooQA/Qwen3_30B_A3B_Thinking_2507/results",
+    "n_completions": 125,
+    "source": "RSE run3"
+  },
+  "BambooQA/Qwen3_4B_Instruct_2507": {
+    "pass_at_1": 0.504,
+    "pass_at_1_pct": 50.4,
+    "path": "/data/ppnm/RG-CTO/results/iter0/BambooQA/Qwen3_4B_Instruct_2507/results",
+    "n_completions": 125,
+    "source": "CTO run1"
+  },
+  "BambooQA/Qwen3_4B_Thinking_2507": {
+    "pass_at_1": 0.448,
+    "pass_at_1_pct": 44.8,
+    "path": "/data/ppnm/RG-CTO/results/iter0/BambooQA/Qwen3_4B_Thinking_2507/results",
+    "n_completions": 125,
+    "source": "CTO run1"
+  },
+  "HLE_math_text/Phi_4_Reasoning": {
+    "pass_at_1": 0.0659375,
+    "pass_at_1_pct": 6.6,
+    "path": "/data/ppnm/RG-CTO/results/iter0/HLE_math_text/Phi_4_Reasoning/results",
+    "n_completions": 100
+  },
+  "HLE_math_text/Qwen3_30B_A3B_Thinking_2507": {
+    "pass_at_1": 0.234375,
+    "pass_at_1_pct": 23.4,
+    "path": "/data/ppnm/RG-CTO/results/iter0/HLE_math_text/Qwen3_30B_A3B_Thinking_2507/results",
+    "n_completions": 100
+  },
+  "HLE_math_text/Qwen3_4B_Instruct_2507": {
+    "pass_at_1": 0.083125,
+    "pass_at_1_pct": 8.3,
+    "path": "/data/ppnm/RG-CTO/results/iter0/HLE_math_text/Qwen3_4B_Instruct_2507/results",
+    "n_completions": 100
+  },
+  "HLE_math_text/Qwen3_4B_Thinking_2507": {
+    "pass_at_1": 0.1346875,
+    "pass_at_1_pct": 13.5,
+    "path": "/data/ppnm/RG-CTO/results/iter0/HLE_math_text/Qwen3_4B_Thinking_2507/results",
+    "n_completions": 100
+  },
+  "HMMT24/Phi_4_Reasoning": {
+    "pass_at_1": 0.28020833333333334,
+    "pass_at_1_pct": 28.0,
+    "path": "/data/ppnm/RG-CTO/results/iter0/HMMT24/Phi_4_Reasoning/results",
+    "n_completions": 30
+  },
+  "HMMT24/Qwen3_30B_A3B_Thinking_2507": {
+    "pass_at_1": 0.5541666666666667,
+    "pass_at_1_pct": 55.4,
+    "path": "/data/ppnm/RG-CTO/results/iter0/HMMT24/Qwen3_30B_A3B_Thinking_2507/results",
+    "n_completions": 30
+  },
+  "HMMT24/Qwen3_4B_Instruct_2507": {
+    "pass_at_1": 0.25625,
+    "pass_at_1_pct": 25.6,
+    "path": "/data/ppnm/RG-CTO/results/iter0/HMMT24/Qwen3_4B_Instruct_2507/results",
+    "n_completions": 30
+  },
+  "HMMT24/Qwen3_4B_Thinking_2507": {
+    "pass_at_1": 0.43333333333333335,
+    "pass_at_1_pct": 43.3,
+    "path": "/data/ppnm/RG-CTO/results/iter0/HMMT24/Qwen3_4B_Thinking_2507/results",
+    "n_completions": 30
+  },
+  "HMMT25/Qwen3_30B_A3B_Thinking_2507": {
+    "pass_at_1": 0.6625,
+    "pass_at_1_pct": 66.2,
+    "path": "/data/ppnm/RG-CTO/results/iter0/HMMT25/Qwen3_30B_A3B_Thinking_2507/results",
+    "n_completions": 30
+  },
+  "HMMT25/Qwen3_4B_Thinking_2507": {
+    "pass_at_1": 0.5427083333333333,
+    "pass_at_1_pct": 54.3,
+    "path": "/data/ppnm/RG-CTO/results/iter0/HMMT25/Qwen3_4B_Thinking_2507/results",
+    "n_completions": 30
+  }
+}

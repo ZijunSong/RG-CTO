@@ -1,0 +1,201 @@
+{
+  "index": 8,
+  "question_id": 8,
+  "question": "Can people who have celiac eat camel meat?",
+  "answer": "Yes",
+  "completions": [
+    {
+      "text": "Celiac disease is an autoimmune disorder triggered by the consumption of gluten, a protein found in wheat, barley, and rye. The condition affects the small intestine and requires a strict gluten-free diet to manage symptoms and prevent long-term complications.\n\nCamel meat, like other animal meats, does not contain gluten. Gluten is a protein found only in certain grains, not in meat products. Therefore, camel meat is naturally gluten-free.\n\nSince celiac disease is not triggered by meat consumption—only by gluten—the consumption of camel meat is safe for people with celiac disease, provided that the meat is not cross-contaminated with gluten-containing products during processing or preparation.\n\nFinal answer: Yes",
+      "reasoning_content": "",
+      "tokens": 138,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Celiac disease is an autoimmune disorder triggered by the consumption of gluten, a protein found in wheat, barley, and rye. The condition affects the small intestine and requires a strict gluten-free diet to prevent damage.\n\nCamel meat, like other animal meats, does not contain gluten. Gluten is a protein found only in certain grains, not in meat products. Therefore, camel meat is naturally gluten-free.\n\nPeople with celiac disease can safely eat camel meat as long as it is prepared without cross-contact with gluten-containing ingredients (such as wheat flour, sauces, or seasonings that may contain gluten).\n\nSo, the key point is: camel meat itself does not contain gluten and is safe for people with celiac disease, provided it is prepared in a gluten-free manner.\n\nFinal answer: Yes.",
+      "reasoning_content": "",
+      "tokens": 160,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Celiac disease is an autoimmune disorder triggered by the consumption of gluten, a protein found in wheat, barley, and rye. The condition affects the small intestine and requires a strict gluten-free diet to manage symptoms and prevent long-term complications.\n\nCamel meat, like other meats, does not contain gluten. Gluten is a protein found in grains, not in animal flesh. Therefore, camel meat is naturally gluten-free and safe for people with celiac disease to consume.\n\nThere are no known interactions between celiac disease and camel meat, and it does not pose a risk of triggering the immune response associated with celiac disease.\n\nFinal answer: Yes",
+      "reasoning_content": "",
+      "tokens": 129,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Celiac disease is an autoimmune disorder triggered by the consumption of gluten, a protein found in wheat, barley, and rye. The condition affects the small intestine and requires a strict gluten-free diet to manage symptoms and prevent long-term complications.\n\nCamel meat, like other animal meats (such as beef, chicken, or pork), does not contain gluten. Therefore, it is inherently safe for people with celiac disease to consume.\n\nThere is no evidence that camel meat contains gluten or poses a risk to individuals with celiac disease, provided it is not cross-contaminated with gluten-containing products during processing or preparation.\n\nFinal answer: Yes.",
+      "reasoning_content": "",
+      "tokens": 129,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Celiac disease is an autoimmune disorder triggered by the consumption of gluten, a protein found in wheat, barley, and rye. The condition affects the small intestine and requires a strict gluten-free diet to manage symptoms and prevent long-term complications.\n\nCamel meat, like other animal meats (such as beef, pork, or chicken), does not contain gluten. Therefore, it is naturally gluten-free.\n\nPeople with celiac disease can safely eat camel meat as long as it is prepared without cross-contact with gluten-containing ingredients (e.g., using gluten-free utensils, cooking surfaces, or seasonings).\n\nThere is no evidence that camel meat contains gluten or triggers celiac disease.\n\nFinal answer: Yes",
+      "reasoning_content": "",
+      "tokens": 139,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Celiac disease is an autoimmune disorder triggered by the consumption of gluten, a protein found in wheat, barley, and rye. The condition affects the small intestine and requires a strict gluten-free diet to manage symptoms and prevent long-term complications.\n\nCamel meat, like other animal meats, does not contain gluten. Gluten is only present in certain grains and is not naturally found in meat products. Therefore, camel meat is inherently gluten-free.\n\nPeople with celiac disease can safely eat camel meat as long as it is prepared without cross-contact with gluten-containing ingredients (such as gluten-containing seasonings, sauces, or marinades). As long as the meat is not processed or cooked in a way that introduces gluten, it is safe for individuals with celiac disease.\n\nFinal answer: Yes",
+      "reasoning_content": "",
+      "tokens": 156,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Celiac disease is an autoimmune disorder triggered by the consumption of gluten, a protein found in wheat, barley, and rye. The condition affects the small intestine and requires a strict gluten-free diet to manage symptoms and prevent long-term complications.\n\nCamel meat, like other meats, does not contain gluten. Gluten is a protein found only in specific grains, not in animal products such as meat, dairy, or eggs.\n\nTherefore, people with celiac disease can safely eat camel meat, as long as it is prepared without gluten-containing ingredients (such as wheat-based seasonings or sauces). The key concern in celiac disease is not the type of meat, but the presence of gluten in the food.\n\nFinal answer: Yes.",
+      "reasoning_content": "",
+      "tokens": 146,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Celiac disease is an autoimmune disorder triggered by the consumption of gluten, a protein found in wheat, barley, and rye. The condition affects the small intestine and requires a strict gluten-free diet to manage symptoms and prevent long-term complications.\n\nCamel meat, like other animal meats (such as beef, pork, or chicken), does not contain gluten. Therefore, it is naturally gluten-free.\n\nPeople with celiac disease can safely eat camel meat as long as it is prepared without cross-contact with gluten-containing ingredients (such as gluten-containing seasonings, sauces, or marinades). Since camel meat itself is not a source of gluten, it is safe for individuals with celiac disease to consume.\n\nFinal answer: Yes",
+      "reasoning_content": "",
+      "tokens": 144,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Celiac disease is an autoimmune disorder triggered by the consumption of gluten, a protein found in wheat, barley, and rye. The condition affects the small intestine and requires a strict gluten-free diet to manage symptoms and prevent long-term damage.\n\nCamel meat, like other meats, does not contain gluten. Gluten is only present in specific grains and is not found in animal proteins such as meat, including camel meat.\n\nTherefore, people with celiac disease can safely eat camel meat, as long as it is prepared without gluten-containing ingredients (e.g., no cross-contamination with gluten-containing foods or sauces).\n\nFinal answer: Yes",
+      "reasoning_content": "",
+      "tokens": 126,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Celiac disease is an autoimmune disorder triggered by the consumption of gluten, a protein found in wheat, barley, and rye. The condition affects the small intestine and requires a strict gluten-free diet to manage symptoms and prevent long-term complications.\n\nCamel meat, like other meats, does not contain gluten. Therefore, it is inherently safe for people with celiac disease to consume.\n\nThe key point is that camel meat does not contain gluten, so it does not pose a risk of triggering an immune response in individuals with celiac disease.\n\nFinal answer: Yes",
+      "reasoning_content": "",
+      "tokens": 112,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Celiac disease is an autoimmune disorder triggered by the consumption of gluten, a protein found in wheat, barley, and rye. The condition affects the small intestine and requires a strict gluten-free diet to manage symptoms and prevent long-term complications.\n\nCamel meat, like other meats, does not contain gluten. Gluten is a protein found in grains, not in animal flesh. Therefore, camel meat is naturally gluten-free.\n\nPeople with celiac disease can safely eat camel meat as long as it is prepared without cross-contamination with gluten-containing ingredients (such as gluten-containing sauces, seasonings, or marinades). As long as the meat is not processed in a facility that also handles gluten-containing products and is not mixed with gluten-containing substances, it is safe for those with celiac disease.\n\nFinal answer: Yes.",
+      "reasoning_content": "",
+      "tokens": 163,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Celiac disease is an autoimmune disorder triggered by the consumption of gluten, a protein found in wheat, barley, and rye. The condition affects the small intestine and requires a strict gluten-free diet to manage symptoms and prevent long-term complications.\n\nCamel meat, like other animal meats (such as beef, chicken, or pork), does not contain gluten. Therefore, it is naturally gluten-free.\n\nPeople with celiac disease can safely eat camel meat as long as it is prepared without cross-contact with gluten-containing ingredients (such as gluten-containing sauces or seasonings). Since camel meat itself does not contain gluten, it is safe for those with celiac disease to consume.\n\nFinal answer: Yes",
+      "reasoning_content": "",
+      "tokens": 138,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Celiac disease is an autoimmune disorder triggered by the consumption of gluten, a protein found in wheat, barley, and rye. The condition affects the small intestine and requires a strict gluten-free diet to manage symptoms and prevent long-term complications.\n\nCamel meat, like other meats, does not contain gluten. Therefore, it is naturally gluten-free and safe for people with celiac disease to consume.\n\nThere is no evidence that camel meat contains gluten or triggers celiac disease. As long as the meat is prepared without gluten-containing ingredients (such as flour or gluten-based seasonings), it is safe for individuals with celiac disease.\n\nFinal answer: Yes.",
+      "reasoning_content": "",
+      "tokens": 131,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Celiac disease is an autoimmune disorder triggered by the consumption of gluten, a protein found in wheat, barley, and rye. The condition affects the small intestine and requires a strict gluten-free diet to manage symptoms and prevent long-term complications.\n\nCamel meat, like other animal meats, does not contain gluten. Gluten is a protein found only in certain grains, not in meat products. Therefore, camel meat is naturally gluten-free.\n\nPeople with celiac disease can safely eat camel meat as long as it is prepared without gluten-containing ingredients (such as flour, wheat-based sauces, or cross-contact with gluten-containing foods during cooking or processing).\n\nFinal answer: Yes.",
+      "reasoning_content": "",
+      "tokens": 133,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Celiac disease is an autoimmune disorder triggered by the ingestion of gluten, a protein found in wheat, barley, and rye. The condition affects the small intestine and requires a strict gluten-free diet to manage symptoms and prevent long-term complications.\n\nCamel meat, like other animal meats, does not contain gluten. Gluten is a protein found only in certain grains, not in meat products.\n\nTherefore, people with celiac disease can safely eat camel meat, as long as it is not cross-contaminated with gluten-containing ingredients during processing or preparation.\n\nFinal answer: Yes",
+      "reasoning_content": "",
+      "tokens": 114,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Celiac disease is an autoimmune disorder triggered by the consumption of gluten, a protein found in wheat, barley, and rye. The condition affects the small intestine and requires a strict gluten-free diet to manage symptoms and prevent long-term complications.\n\nCamel meat, like other meats, does not contain gluten. Gluten is only present in specific grains and is not naturally found in animal products such as meat, including camel meat.\n\nTherefore, people with celiac disease can safely eat camel meat, as long as it is prepared without cross-contamination from gluten-containing ingredients (e.g., gluten-containing seasonings or sauces).\n\nFinal answer: Yes",
+      "reasoning_content": "",
+      "tokens": 127,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Celiac disease is an autoimmune disorder triggered by the consumption of gluten, a protein found in wheat, barley, and rye. The condition affects the small intestine and requires a strict gluten-free diet to manage symptoms and prevent long-term complications.\n\nCamel meat, like other animal meats (such as beef, chicken, or lamb), does not contain gluten. Gluten is a protein found only in certain grains and is not present in meat products.\n\nTherefore, people with celiac disease can safely eat camel meat, as long as it is not cross-contaminated with gluten-containing ingredients during preparation or processing.\n\nFinal answer: Yes",
+      "reasoning_content": "",
+      "tokens": 125,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Celiac disease is an autoimmune disorder triggered by the consumption of gluten, a protein found in wheat, rye, and barley. The condition affects the small intestine and requires a strict gluten-free diet to manage symptoms and prevent long-term complications.\n\nCamel meat, like other meats (such as beef, pork, or chicken), does not contain gluten. Gluten is only present in certain grains and is not found in animal proteins.\n\nTherefore, people with celiac disease can safely eat camel meat, as long as it is prepared without gluten-containing ingredients (such as flour, breadcrumbs, or sauces that may contain gluten).\n\nFinal answer: Yes",
+      "reasoning_content": "",
+      "tokens": 127,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Celiac disease is an autoimmune disorder triggered by the consumption of gluten, a protein found in wheat, barley, and rye. The condition affects the small intestine and requires a strict gluten-free diet to manage symptoms and prevent long-term damage.\n\nCamel meat, like other meats, does not contain gluten. Gluten is a protein found in grains, not in animal flesh. Therefore, camel meat is naturally gluten-free.\n\nPeople with celiac disease can safely eat camel meat as long as it is prepared without cross-contact with gluten-containing ingredients (such as in sauces or seasonings that contain gluten). As long as the meat is not processed with gluten-containing additives, it is safe for individuals with celiac disease.\n\nFinal answer: Yes.",
+      "reasoning_content": "",
+      "tokens": 147,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Celiac disease is an autoimmune disorder where the ingestion of gluten—found in wheat, barley, and rye—leads to damage in the small intestine. The condition is managed by strict avoidance of gluten-containing grains.\n\nCamel meat, like beef, pork, or chicken, does not contain gluten. Gluten is a protein found only in certain grains, not in meat products. Therefore, camel meat is naturally gluten-free.\n\nSince celiac disease is triggered by gluten and not by meat itself, people with celiac disease can safely eat camel meat as long as it is prepared without gluten-containing ingredients (such as sauces, seasonings, or cross-contact during cooking).\n\nFinal answer: Yes.",
+      "reasoning_content": "",
+      "tokens": 138,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Celiac disease is an autoimmune disorder triggered by the consumption of gluten, a protein found in wheat, barley, and rye. The condition affects the small intestine and requires a strict gluten-free diet to manage symptoms and prevent long-term complications.\n\nCamel meat, like other animal meats (such as beef, pork, or chicken), does not contain gluten. Therefore, it is inherently safe for people with celiac disease to consume.\n\nThere is no evidence that camel meat contains gluten or any components that trigger the immune response in celiac patients. As long as the meat is prepared without cross-contact with gluten-containing ingredients (e.g., using gluten-free cooking utensils, avoiding gluten-contaminated seasonings), it is safe.\n\nFinal answer: Yes.",
+      "reasoning_content": "",
+      "tokens": 151,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Celiac disease is an autoimmune disorder triggered by the consumption of gluten, a protein found in wheat, barley, and rye. The condition affects the small intestine and requires a strict gluten-free diet to manage symptoms and prevent long-term complications.\n\nCamel meat, like other meats, does not contain gluten. Gluten is a protein found only in certain grains and is not present in animal products such as meat, including camel meat.\n\nTherefore, people with celiac disease can safely eat camel meat, as long as it is not cross-contaminated with gluten-containing ingredients during processing or preparation.\n\nFinal answer: Yes",
+      "reasoning_content": "",
+      "tokens": 122,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Celiac disease is an autoimmune disorder triggered by the consumption of gluten, a protein found in wheat, barley, and rye. The condition affects the small intestine and requires a strict gluten-free diet to manage symptoms and prevent long-term complications.\n\nCamel meat, like other meats, does not contain gluten. Gluten is only present in specific grains and is not found in animal products such as meat, including camel meat.\n\nTherefore, people with celiac disease can safely eat camel meat, as long as the meat is not cross-contaminated with gluten-containing ingredients during processing or preparation.\n\nFinal answer: Yes.",
+      "reasoning_content": "",
+      "tokens": 122,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Celiac disease is an autoimmune disorder triggered by the consumption of gluten, a protein found in wheat, barley, and rye. The condition affects the small intestine and requires a strict gluten-free diet to manage symptoms and prevent long-term complications.\n\nCamel meat, like other animal meats (such as beef, pork, or chicken), does not contain gluten. Therefore, it is naturally gluten-free and safe for people with celiac disease to consume.\n\nHowever, the safety of camel meat depends on how it is prepared and sourced. If the meat is processed in facilities that also handle gluten-containing products (like wheat flour or gluten-containing grains), there is a potential for cross-contact. But as long as the meat is handled and prepared in a gluten-free environment, it is safe for individuals with celiac disease.\n\nIn summary, people with celiac disease can eat camel meat as long as it is prepared without gluten contamination.\n\nFinal answer: Yes.",
+      "reasoning_content": "",
+      "tokens": 189,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Celiac disease is an autoimmune disorder triggered by the consumption of gluten, a protein found in wheat, barley, and rye. The condition affects the small intestine and requires a strict gluten-free diet to manage symptoms and prevent long-term complications.\n\nCamel meat, like other meats, does not contain gluten. Gluten is a protein found only in certain grains and is not present in animal products such as meat, including camel meat.\n\nTherefore, people with celiac disease can safely eat camel meat, as long as it is prepared without cross-contact with gluten-containing ingredients (such as in sauces or seasonings that contain gluten).\n\nFinal answer: Yes",
+      "reasoning_content": "",
+      "tokens": 128,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Celiac disease is an autoimmune disorder triggered by the consumption of gluten, a protein found in wheat, barley, and rye. The condition affects the small intestine and requires a strict gluten-free diet to manage symptoms and prevent long-term complications.\n\nCamel meat, like other animal meats (such as beef, pork, or lamb), does not contain gluten. Gluten is a protein found only in specific grains and not in meat products.\n\nTherefore, people with celiac disease can safely eat camel meat, as long as the meat is not cross-contaminated with gluten-containing ingredients during processing or preparation.\n\nFinal answer: Yes.",
+      "reasoning_content": "",
+      "tokens": 125,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Celiac disease is an autoimmune disorder triggered by the consumption of gluten, a protein found in wheat, barley, and rye. The condition affects the small intestine and requires a strict gluten-free diet to manage symptoms and prevent long-term damage.\n\nCamel meat, like other meats, does not contain gluten. Gluten is only present in certain grains and is not found in animal products such as meat, including camel meat.\n\nTherefore, people with celiac disease can safely eat camel meat, as long as it is prepared without gluten-containing ingredients (such as flour, sauces, or seasonings that might contain gluten).\n\nFinal answer: Yes",
+      "reasoning_content": "",
+      "tokens": 126,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Celiac disease is an autoimmune disorder triggered by the consumption of gluten, a protein found in wheat, barley, and rye. The condition affects the small intestine and requires a strict gluten-free diet to manage symptoms and prevent long-term complications.\n\nCamel meat, like other meats, does not contain gluten. Therefore, it is inherently safe for people with celiac disease to consume.\n\nThe concern with celiac disease is not about dietary proteins like meat, but about gluten-containing grains. As long as camel meat is not cross-contaminated with gluten-containing products (e.g., during processing or preparation), it is safe for individuals with celiac disease.\n\nFinal answer: Yes.",
+      "reasoning_content": "",
+      "tokens": 136,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Celiac disease is an autoimmune disorder triggered by the consumption of gluten, a protein found in wheat, barley, and rye. The condition affects the small intestine and requires a strict gluten-free diet to manage symptoms and prevent long-term damage.\n\nCamel meat, like other meats, does not contain gluten. Gluten is a protein found in certain grains, not in animal products. Therefore, camel meat is naturally gluten-free.\n\nPeople with celiac disease can safely eat camel meat as long as it is prepared without cross-contamination with gluten-containing ingredients (such as gluten-containing sauces, seasonings, or cooking utensils). As long as the meat is not processed with gluten-containing additives, it is safe for individuals with celiac disease.\n\nFinal answer: Yes.",
+      "reasoning_content": "",
+      "tokens": 152,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Celiac disease is an autoimmune disorder triggered by the consumption of gluten, a protein found in wheat, barley, and rye. The condition affects the small intestine and requires a strict gluten-free diet to manage symptoms and prevent long-term complications.\n\nCamel meat, like other meats, does not contain gluten. Gluten is a protein found only in specific grains and is not present in animal products such as meat, including camel meat.\n\nTherefore, people with celiac disease can safely eat camel meat, as long as it is prepared without gluten-containing ingredients (such as gluten-based seasonings, sauces, or cross-contact during processing).\n\nFinal answer: Yes",
+      "reasoning_content": "",
+      "tokens": 129,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Celiac disease is an autoimmune disorder triggered by the consumption of gluten, a protein found in wheat, barley, and rye. The condition affects the small intestine and requires a strict gluten-free diet to manage symptoms and prevent long-term complications.\n\nCamel meat, like other meats, does not contain gluten. Gluten is a protein found only in certain grains and is not present in animal products such as meat, including camel meat.\n\nTherefore, people with celiac disease can safely eat camel meat, as long as it is prepared without cross-contamination from gluten-containing ingredients (e.g., using gluten-free utensils, cookware, or in a gluten-free environment).\n\nFinal answer: Yes",
+      "reasoning_content": "",
+      "tokens": 137,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Celiac disease is an autoimmune disorder triggered by the consumption of gluten, a protein found in wheat, barley, and rye. The condition affects the small intestine and requires a strict gluten-free diet to manage symptoms and prevent long-term damage.\n\nCamel meat, like other animal meats (such as beef, chicken, or pork), does not contain gluten. Therefore, it is naturally gluten-free.\n\nPeople with celiac disease can safely consume camel meat as long as it is prepared without cross-contamination from gluten-containing ingredients (e.g., using gluten-free cooking utensils, avoiding gluten-containing seasonings, or sauces).\n\nThere is no evidence that camel meat contains gluten or triggers the immune response in celiac patients.\n\nFinal answer: Yes, people who have celiac disease can eat camel meat.",
+      "reasoning_content": "",
+      "tokens": 159,
+      "finish_reason": "stop"
+    }
+  ],
+  "n_completions": 32
+}

@@ -1,0 +1,201 @@
+{
+  "index": 110,
+  "question_id": 110,
+  "question": "What's the capital of the state that the College of William & Mary is in?",
+  "answer": "Richmond",
+  "completions": [
+    {
+      "text": "Step 1: Identify the location of the College of William & Mary.\n\nThe College of William & Mary is located in Williamsburg, Virginia.\n\nStep 2: Determine the capital city of the state Virginia.\n\nThe capital of Virginia is Richmond.\n\nFinal answer: Richmond",
+      "reasoning_content": "",
+      "tokens": 54,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of the College of William & Mary.\n\nThe College of William & Mary is located in Williamsburg, Virginia.\n\nStep 2: Determine the capital city of the state where it is located.\n\nVirginia's capital city is Richmond.\n\nFinal answer: Richmond",
+      "reasoning_content": "",
+      "tokens": 57,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of the College of William & Mary.  \nThe College of William & Mary is located in the state of Virginia.\n\nStep 2: Determine the capital of Virginia.  \nThe capital city of Virginia is Richmond.\n\nFinal answer: Richmond",
+      "reasoning_content": "",
+      "tokens": 54,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of the College of William & Mary.  \nThe College of William & Mary is located in the state of Virginia.\n\nStep 2: Determine the capital city of Virginia.  \nThe capital city of Virginia is Richmond.\n\nFinal answer: Richmond",
+      "reasoning_content": "",
+      "tokens": 55,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of the College of William & Mary.\n\nThe College of William & Mary is located in Virginia, United States.\n\nStep 2: Determine the capital city of Virginia.\n\nThe capital city of Virginia is Richmond.\n\nFinal answer: Richmond",
+      "reasoning_content": "",
+      "tokens": 53,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of the College of William & Mary.  \nThe College of William & Mary is located in Williamsburg, Virginia.\n\nStep 2: Determine the capital city of Virginia.  \nThe capital city of the state of Virginia is Richmond.\n\nFinal answer: Richmond",
+      "reasoning_content": "",
+      "tokens": 58,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of the College of William & Mary.\n\nThe College of William & Mary is located in Williamsburg, Virginia.\n\nStep 2: Determine the capital city of Virginia.\n\nThe capital city of the state of Virginia is Richmond.\n\nFinal answer: Richmond",
+      "reasoning_content": "",
+      "tokens": 56,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of the College of William & Mary.\n\nThe College of William & Mary is located in Williamsburg, Virginia.\n\nStep 2: Determine the capital city of the state where it is located.\n\nVirginia's capital city is Richmond.\n\nFinal answer: Richmond",
+      "reasoning_content": "",
+      "tokens": 57,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of the College of William & Mary.\n\nThe College of William & Mary is located in Williamsburg, Virginia.\n\nStep 2: Determine the capital city of Virginia.\n\nThe capital city of the state of Virginia is Richmond.\n\nFinal answer: Richmond",
+      "reasoning_content": "",
+      "tokens": 56,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of the College of William & Mary.\n\nThe College of William & Mary is located in Williamsburg, Virginia.\n\nStep 2: Determine the capital city of the state where it is located.\n\nVirginia's capital city is Richmond.\n\nFinal answer: Richmond",
+      "reasoning_content": "",
+      "tokens": 57,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of the College of William & Mary.\n\nThe College of William & Mary is located in Virginia, USA.\n\nStep 2: Determine the capital city of Virginia.\n\nThe capital city of Virginia is Richmond.\n\nFinal answer: Richmond",
+      "reasoning_content": "",
+      "tokens": 52,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of the College of William & Mary.  \nThe College of William & Mary is located in Williamsburg, Virginia.\n\nStep 2: Determine the capital city of the state where it is located.  \nVirginia's capital city is Richmond.\n\nFinal answer: Richmond",
+      "reasoning_content": "",
+      "tokens": 59,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the state where the College of William & Mary is located.\n\nThe College of William & Mary is located in Williamsburg, Virginia.\n\nStep 2: Determine the capital city of Virginia.\n\nThe capital of Virginia is Richmond.\n\nFinal answer: Richmond",
+      "reasoning_content": "",
+      "tokens": 54,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of the College of William & Mary.\n\nThe College of William & Mary is located in Virginia, USA.\n\nStep 2: Determine the capital city of Virginia.\n\nThe capital city of Virginia is Richmond.\n\nFinal answer: Richmond",
+      "reasoning_content": "",
+      "tokens": 52,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of the College of William & Mary.\n\nThe College of William & Mary is located in Williamsburg, Virginia.\n\nStep 2: Determine the capital city of Virginia.\n\nThe capital city of the state of Virginia is Richmond.\n\nFinal answer: Richmond",
+      "reasoning_content": "",
+      "tokens": 56,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of the College of William & Mary.  \nThe College of William & Mary is located in Virginia, United States.\n\nStep 2: Determine the capital city of Virginia.  \nThe capital city of Virginia is Richmond.\n\nFinal answer: Richmond",
+      "reasoning_content": "",
+      "tokens": 55,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of the College of William & Mary.\n\nThe College of William & Mary is located in Williamsburg, Virginia.\n\nStep 2: Determine the capital city of Virginia.\n\nThe capital city of the state of Virginia is Richmond.\n\nFinal answer: Richmond",
+      "reasoning_content": "",
+      "tokens": 56,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of the College of William & Mary.\n\nThe College of William & Mary is located in Williamsburg, Virginia.\n\nStep 2: Determine the capital city of Virginia.\n\nThe capital city of the state of Virginia is Richmond.\n\nFinal answer: Richmond",
+      "reasoning_content": "",
+      "tokens": 56,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of the College of William & Mary.\n\nThe College of William & Mary is located in the state of Virginia.\n\nStep 2: Determine the capital city of Virginia.\n\nThe capital city of Virginia is Richmond.\n\nFinal answer: Richmond",
+      "reasoning_content": "",
+      "tokens": 53,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of the College of William & Mary.\n\nThe College of William & Mary is located in Williamsburg, Virginia.\n\nStep 2: Determine the capital city of the state where it is located.\n\nVirginia's capital city is Richmond.\n\nFinal answer: Richmond",
+      "reasoning_content": "",
+      "tokens": 57,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of the College of William & Mary.\n\nThe College of William & Mary is located in Virginia, USA.\n\nStep 2: Determine the capital city of Virginia.\n\nThe capital city of Virginia is Richmond.\n\nFinal answer: Richmond",
+      "reasoning_content": "",
+      "tokens": 52,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of the College of William & Mary.\n\nThe College of William & Mary is located in the state of Virginia.\n\nStep 2: Determine the capital city of Virginia.\n\nThe capital city of Virginia is Richmond.\n\nFinal answer: Richmond",
+      "reasoning_content": "",
+      "tokens": 53,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of the College of William & Mary.\n\nThe College of William & Mary is located in Williamsburg, Virginia.\n\nStep 2: Determine the capital city of the state where it is located.\n\nVirginia's capital city is Richmond.\n\nFinal answer: Richmond",
+      "reasoning_content": "",
+      "tokens": 57,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of the College of William & Mary.\n\nThe College of William & Mary is located in Virginia, USA.\n\nStep 2: Determine the capital city of Virginia.\n\nThe capital city of Virginia is Richmond.\n\nFinal answer: Richmond",
+      "reasoning_content": "",
+      "tokens": 52,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of the College of William & Mary.\n\nThe College of William & Mary is located in Virginia, USA.\n\nStep 2: Determine the capital city of Virginia.\n\nThe capital city of Virginia is Richmond.\n\nFinal answer: Richmond",
+      "reasoning_content": "",
+      "tokens": 52,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of the College of William & Mary.\n\nThe College of William & Mary is located in Williamsburg, Virginia.\n\nStep 2: Determine the capital city of the state where it is located.\n\nVirginia's capital city is Richmond.\n\nFinal answer: Richmond",
+      "reasoning_content": "",
+      "tokens": 57,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of the College of William & Mary.\n\nThe College of William & Mary is located in Williamsburg, Virginia.\n\nStep 2: Determine the capital city of the state Virginia.\n\nThe capital city of Virginia is Richmond.\n\nFinal answer: Richmond",
+      "reasoning_content": "",
+      "tokens": 55,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of the College of William & Mary.\n\nThe College of William & Mary is located in Williamsburg, Virginia.\n\nStep 2: Determine the capital city of the state Virginia.\n\nThe capital of Virginia is Richmond.\n\nFinal answer: Richmond",
+      "reasoning_content": "",
+      "tokens": 54,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of the College of William & Mary.\n\nThe College of William & Mary is located in Virginia, United States.\n\nStep 2: Determine the capital city of Virginia.\n\nThe capital city of Virginia is Richmond.\n\nFinal answer: Richmond",
+      "reasoning_content": "",
+      "tokens": 53,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of the College of William & Mary.\n\nThe College of William & Mary is located in Virginia, USA.\n\nStep 2: Determine the capital city of Virginia.\n\nThe capital city of Virginia is Richmond.\n\nFinal answer: Richmond",
+      "reasoning_content": "",
+      "tokens": 52,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of the College of William & Mary.\n\nThe College of William & Mary is located in Williamsburg, Virginia.\n\nStep 2: Determine the capital city of Virginia.\n\nThe capital city of the state of Virginia is Richmond.\n\nFinal answer: Richmond",
+      "reasoning_content": "",
+      "tokens": 56,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step 1: Identify the location of the College of William & Mary.\n\nThe College of William & Mary is located in Williamsburg, Virginia.\n\nStep 2: Determine the capital city of Virginia.\n\nThe capital city of the state of Virginia is Richmond.\n\nFinal answer: Richmond",
+      "reasoning_content": "",
+      "tokens": 56,
+      "finish_reason": "stop"
+    }
+  ],
+  "n_completions": 32
+}

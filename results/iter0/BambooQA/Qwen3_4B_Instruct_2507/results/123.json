@@ -1,0 +1,201 @@
+{
+  "index": 123,
+  "question_id": 123,
+  "question": "Which element has an atomic number that is double that of hydrogen?",
+  "answer": "Helium",
+  "completions": [
+    {
+      "text": "Step-by-step reasoning:\n\n1. The atomic number of hydrogen is 1.\n2. We are looking for an element whose atomic number is double that of hydrogen.\n3. Double of 1 is 2.\n4. The element with atomic number 2 is helium.\n\nFinal answer: helium",
+      "reasoning_content": "",
+      "tokens": 60,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step-by-step reasoning:\n\n1. Hydrogen has an atomic number of 1.\n2. We are looking for an element whose atomic number is double that of hydrogen.\n3. Double of 1 is 2.\n4. The element with atomic number 2 is helium.\n\nFinal answer: helium",
+      "reasoning_content": "",
+      "tokens": 61,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step-by-step reasoning:\n\n1. The atomic number of hydrogen is 1.\n2. We are looking for an element whose atomic number is double that of hydrogen.\n3. Double of 1 is 2.\n4. The element with atomic number 2 is helium.\n\nFinal answer: helium",
+      "reasoning_content": "",
+      "tokens": 60,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step-by-step reasoning:\n\n1. The atomic number of hydrogen is 1.\n2. We are looking for an element whose atomic number is double that of hydrogen.\n3. Double of 1 is 2.\n4. The element with atomic number 2 is helium.\n\nFinal answer: helium",
+      "reasoning_content": "",
+      "tokens": 60,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step-by-step reasoning:\n\n1. The atomic number of hydrogen is 1.\n2. We are looking for an element whose atomic number is double that of hydrogen.\n3. Double of 1 is 2.\n4. The element with atomic number 2 is helium.\n\nFinal answer: helium",
+      "reasoning_content": "",
+      "tokens": 60,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step-by-step reasoning:\n\n1. The atomic number of hydrogen is 1.\n2. We are looking for an element whose atomic number is double that of hydrogen.\n3. Double of 1 is 2.\n4. The element with atomic number 2 is helium.\n\nFinal answer: helium",
+      "reasoning_content": "",
+      "tokens": 60,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step-by-step reasoning:\n\n1. Hydrogen has an atomic number of 1.\n2. We are looking for an element whose atomic number is double that of hydrogen.\n3. Double of 1 is 2.\n4. The element with atomic number 2 is helium.\n\nFinal answer: helium",
+      "reasoning_content": "",
+      "tokens": 61,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step-by-step reasoning:\n\n1. The atomic number of hydrogen is 1.\n2. We are looking for an element whose atomic number is double that of hydrogen.\n3. Double of 1 is 2.\n4. The element with atomic number 2 is helium.\n\nFinal answer: helium",
+      "reasoning_content": "",
+      "tokens": 60,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step-by-step reasoning:\n\n1. Hydrogen has an atomic number of 1.\n2. We are looking for an element whose atomic number is double that of hydrogen.\n3. Double of 1 is 2.\n4. The element with atomic number 2 is helium.\n\nFinal answer: helium",
+      "reasoning_content": "",
+      "tokens": 61,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step-by-step reasoning:\n\n1. Hydrogen has an atomic number of 1.\n2. Double of 1 is 2.\n3. The element with atomic number 2 is helium.\n\nTherefore, the element whose atomic number is double that of hydrogen is helium.\n\nFinal answer: helium",
+      "reasoning_content": "",
+      "tokens": 59,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step-by-step reasoning:\n\n1. The atomic number of hydrogen is 1.\n2. We are looking for an element whose atomic number is double that of hydrogen.\n3. Double of 1 is 2.\n4. The element with atomic number 2 is helium.\n\nFinal answer: helium",
+      "reasoning_content": "",
+      "tokens": 60,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step-by-step reasoning:\n\n1. Hydrogen has an atomic number of 1.\n2. We are looking for an element whose atomic number is double that of hydrogen.\n3. Double of 1 is 2.\n4. The element with atomic number 2 is helium.\n\nFinal answer: helium",
+      "reasoning_content": "",
+      "tokens": 61,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step-by-step reasoning:\n\n1. The atomic number of hydrogen is 1.\n2. We are looking for an element whose atomic number is double that of hydrogen.\n3. Double of 1 is 2.\n4. The element with atomic number 2 is helium.\n\nFinal answer: helium",
+      "reasoning_content": "",
+      "tokens": 60,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step-by-step reasoning:\n\n1. The atomic number of hydrogen is 1.\n2. We are looking for an element whose atomic number is double that of hydrogen.\n3. Double of 1 is 2.\n4. The element with atomic number 2 is helium.\n\nFinal answer: helium",
+      "reasoning_content": "",
+      "tokens": 60,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step-by-step reasoning:\n\n1. The atomic number of hydrogen is 1.\n2. We are looking for an element whose atomic number is double that of hydrogen.\n3. Double of 1 is 2.\n4. The element with atomic number 2 is helium.\n\nFinal answer: helium",
+      "reasoning_content": "",
+      "tokens": 60,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step-by-step reasoning:\n\n1. Hydrogen has an atomic number of 1.\n2. Double of 1 is 2.\n3. The element with atomic number 2 is helium.\n\nFinal answer: helium",
+      "reasoning_content": "",
+      "tokens": 44,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step-by-step reasoning:\n\n1. The atomic number of hydrogen is 1.\n2. We are looking for an element whose atomic number is double that of hydrogen.\n3. Double of 1 is 2.\n4. The element with atomic number 2 is helium.\n\nFinal answer: helium",
+      "reasoning_content": "",
+      "tokens": 60,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step-by-step reasoning:\n\n1. Hydrogen has an atomic number of 1.\n2. We are looking for an element whose atomic number is double that of hydrogen.\n3. Double of 1 is 2.\n4. The element with atomic number 2 is helium.\n\nFinal answer: helium",
+      "reasoning_content": "",
+      "tokens": 61,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step-by-step reasoning:\n\n1. Hydrogen has an atomic number of 1.\n2. We are looking for an element whose atomic number is double that of hydrogen.\n3. Double of 1 is 2.\n4. The element with atomic number 2 is helium.\n\nFinal answer: helium",
+      "reasoning_content": "",
+      "tokens": 61,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step-by-step reasoning:\n\n1. Hydrogen has an atomic number of 1.\n2. We are looking for an element whose atomic number is double that of hydrogen.\n3. Double of 1 is 2.\n4. The element with atomic number 2 is helium.\n\nFinal answer: helium",
+      "reasoning_content": "",
+      "tokens": 61,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step-by-step reasoning:\n\n1. Hydrogen has an atomic number of 1.\n2. We are looking for an element whose atomic number is double that of hydrogen.\n3. Double of 1 is 2.\n4. The element with atomic number 2 is helium.\n\nFinal answer: helium",
+      "reasoning_content": "",
+      "tokens": 61,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step-by-step reasoning:\n\n1. The atomic number of hydrogen is 1.\n2. We are looking for an element whose atomic number is double that of hydrogen.\n3. Double of 1 is 2.\n4. The element with atomic number 2 is helium.\n\nFinal answer: helium",
+      "reasoning_content": "",
+      "tokens": 60,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step-by-step reasoning:\n\n1. Hydrogen has an atomic number of 1.\n2. Double of 1 is 2.\n3. The element with atomic number 2 is helium.\n\nFinal answer: helium",
+      "reasoning_content": "",
+      "tokens": 44,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step-by-step reasoning:\n\n1. Hydrogen has an atomic number of 1.\n2. We are looking for an element whose atomic number is double that of hydrogen.\n3. Double of 1 is 2.\n4. The element with atomic number 2 is helium.\n\nFinal answer: helium",
+      "reasoning_content": "",
+      "tokens": 61,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step-by-step reasoning:\n\n1. Hydrogen has an atomic number of 1.\n2. We are looking for an element whose atomic number is double that of hydrogen.\n3. Double of 1 is 2.\n4. The element with atomic number 2 is helium.\n\nFinal answer: helium",
+      "reasoning_content": "",
+      "tokens": 61,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step-by-step reasoning:\n\n1. Hydrogen has an atomic number of 1.\n2. We are looking for an element whose atomic number is double that of hydrogen.\n3. Double of 1 is 2.\n4. The element with atomic number 2 is helium.\n\nFinal answer: helium",
+      "reasoning_content": "",
+      "tokens": 61,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step-by-step reasoning:\n\n1. Hydrogen has an atomic number of 1.\n2. We are looking for an element whose atomic number is double that of hydrogen.\n3. Double of 1 is 2.\n4. The element with atomic number 2 is helium.\n\nFinal answer: helium",
+      "reasoning_content": "",
+      "tokens": 61,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step-by-step reasoning:\n\n1. The atomic number of hydrogen is 1.\n2. We are looking for an element whose atomic number is double that of hydrogen.\n3. Double of 1 is 2.\n4. The element with atomic number 2 is helium.\n\nFinal answer: helium",
+      "reasoning_content": "",
+      "tokens": 60,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step-by-step reasoning:\n\n1. Hydrogen has an atomic number of 1.\n2. We are looking for an element whose atomic number is double that of hydrogen.\n3. Double of 1 is 2.\n4. The element with atomic number 2 is helium.\n\nFinal answer: helium",
+      "reasoning_content": "",
+      "tokens": 61,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step-by-step reasoning:\n\n1. Hydrogen has an atomic number of 1.\n2. We are looking for an element whose atomic number is double that of hydrogen.\n3. Double of 1 is 2.\n4. The element with atomic number 2 is helium.\n\nFinal answer: helium",
+      "reasoning_content": "",
+      "tokens": 61,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step-by-step reasoning:\n\n1. The atomic number of hydrogen is 1.\n2. We are looking for an element whose atomic number is double that of hydrogen.\n3. Double of 1 is 2.\n4. The element with atomic number 2 is helium.\n\nFinal answer: helium",
+      "reasoning_content": "",
+      "tokens": 60,
+      "finish_reason": "stop"
+    },
+    {
+      "text": "Step-by-step reasoning:\n\n1. The atomic number of hydrogen is 1.\n2. We are looking for an element whose atomic number is double that of hydrogen.\n3. Double of 1 is 2.\n4. The element with atomic number 2 is helium.\n\nFinal answer: helium",
+      "reasoning_content": "",
+      "tokens": 60,
+      "finish_reason": "stop"
+    }
+  ],
+  "n_completions": 32
+}
