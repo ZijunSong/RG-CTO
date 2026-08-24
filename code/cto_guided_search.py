@@ -693,6 +693,7 @@ def save_result(
     new_completions: List[Dict[str, Any]],
     *,
     cto_branch_mode: str = "full",
+    extra_fields: Optional[Dict[str, Any]] = None,
 ):
     output_file = output_dir / f"{original_idx}.json"
     existing = load_existing_output(output_file)
@@ -709,6 +710,8 @@ def save_result(
     for k, v in question_data.items():
         if k not in result:
             result[k] = v
+    if extra_fields:
+        result.update(extra_fields)
     with open(output_file, "w", encoding="utf-8") as f:
         json.dump(result, f, ensure_ascii=False, indent=2)
 

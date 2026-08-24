@@ -18,6 +18,9 @@ if str(_eval_root) not in sys.path:
 
 from evaluation.grader import math_equal
 from sal.utils.math import extract_answer
+from task_prompts import add_task_args, get_distillation_prompt, resolve_task_type
+
+_TASK_TYPE = "math"
 
 # 兼容 vLLM 0.8.x 与新版 transformers：新版 transformers 移除了 all_special_tokens_extended，
 # 但 vLLM 的 get_cached_tokenizer 仍会访问该属性（如 Qwen2Tokenizer）。在导入 vLLM 前为基类补上该属性。
@@ -307,7 +310,8 @@ def save_to_jsonl(file_path, data):
             f.write('\n')
 
 def format_prompt(question: str, attempt: str) -> str:
-    return EXPERIENCE_DISTILLATION_SYSTEM_PROMPT.replace("{{question}}", question).replace("{{attempt}}", attempt)
+    template = get_distillation_prompt(_TASK_TYPE, "llm_judge")
+    return template.replace("{{question}}", question).replace("{{attempt}}", attempt)
 
 def shared_prefix_word_len(a: List[str], b: List[str]) -> int:
     """Compute longest common prefix length over word tokens."""
@@ -335,8 +339,9 @@ def format_cf_prompt(question: str, success_attempt: str, failure_attempt: str) 
     success_div = " ".join(success_words[s_start:s_end])
     failure_div = " ".join(failure_words[f_start:f_end])
 
+    template = get_distillation_prompt(_TASK_TYPE, "cf_exp")
     return (
-        EXPERIENCE_CF_SYSTEM_PROMPT
+        template
         .replace("{{question}}", question)
         .replace("{{shared_prefix}}", shared_prefix)
         .replace("{{success_divergence_fragment}}", success_div)
@@ -371,8 +376,9 @@ def format_cf_min_edit_prompt(
     shared_prefix, success_minimal_head, failure_minimal_head = _minimal_heads_after_lcp(
         success_attempt, failure_attempt, min_head_words
     )
+    template = get_distillation_prompt(_TASK_TYPE, "cf_min_edit")
     return (
-        EXPERIENCE_CF_MIN_EDIT_SYSTEM_PROMPT.replace("{{question}}", question)
+        template.replace("{{question}}", question)
         .replace("{{shared_prefix}}", shared_prefix)
         .replace("{{success_minimal_head}}", success_minimal_head)
         .replace("{{failure_minimal_head}}", failure_minimal_head)
@@ -388,8 +394,9 @@ def format_pairwise_margin_prompt(
     shared_prefix, success_minimal_head, failure_minimal_head = _minimal_heads_after_lcp(
         success_attempt, failure_attempt, min_head_words
     )
+    template = get_distillation_prompt(_TASK_TYPE, "pairwise_margin")
     return (
-        EXPERIENCE_PAIRWISE_MARGIN_SYSTEM_PROMPT.replace("{{question}}", question)
+        template.replace("{{question}}", question)
         .replace("{{shared_prefix}}", shared_prefix)
         .replace("{{success_minimal_head}}", success_minimal_head)
         .replace("{{failure_minimal_head}}", failure_minimal_head)
@@ -616,7 +623,16 @@ def main():
     parser.add_argument('--device-map', type=str, default='auto', help='HF: device_map')
     parser.add_argument('--dtype', type=str, default='auto', choices=['auto', 'float16', 'bfloat16'], help='HF: dtype')
 
+    add_task_args(parser)
     args = parser.parse_args()
+
+    global _TASK_TYPE
+    _TASK_TYPE = resolve_task_type(
+        dataset=args.dataset,
+        task_type=args.task_type,
+        input_path=args.question_file,
+    )
+    logger.info("Task type: %s (dataset=%s)", _TASK_TYPE, args.dataset)
 
     Path(args.output_dir).mkdir(parents=True, exist_ok=True)
     

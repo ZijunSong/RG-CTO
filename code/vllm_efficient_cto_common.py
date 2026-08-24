@@ -12,12 +12,13 @@ from typing import Any, Dict, List, Optional, Sequence, Tuple
 import numpy as np
 
 import cto_guided_search as cto
+import task_prompts as tp
 
 logger = logging.getLogger(__name__)
 
 
 def add_experience_args(parser: argparse.ArgumentParser) -> None:
-    cto.add_task_args(parser)
+    tp.add_task_args(parser)
     parser.add_argument("--n-experience-completions", type=int, default=5)
     parser.add_argument(
         "--experience-retrieval",
@@ -293,13 +294,13 @@ def load_experience_for_question(
 
 
 def setup_task_prefixes(args: argparse.Namespace) -> str:
-    task_type = cto.resolve_task_type(
+    task_type = tp.resolve_task_type(
         dataset=args.dataset,
         task_type=args.task_type,
         input_path=args.input,
     )
     cto.P_POS_SYSTEM_PREFIX, cto.P_NEG_SYSTEM_PREFIX, cto._CTO_FALLBACK_SYSTEM_PROMPT = (
-        cto.get_cto_prefixes(task_type)
+        tp.get_cto_prefixes(task_type)
     )
     return task_type
 
