@@ -26,7 +26,10 @@ N_EXPERIENCE_COMPLETIONS="${N_EXPERIENCE_COMPLETIONS:-32}"
 THRESHOLD="${THRESHOLD:-0.8}"
 
 ALPHA="${ALPHA:-0.7}"
-GATE_DELTA="${GATE_DELTA:-0.15}"
+GATE_DELTA="${GATE_DELTA:-0.4}"
+TAU_MATCH="${TAU_MATCH:-0.8}"
+LAMBDA_U="${LAMBDA_U:-0.5}"
+LAMBDA_L="${LAMBDA_L:-0.5}"
 PILOT_N="${PILOT_N:-4}"
 
 : "${MODEL_NAME:?Set MODEL_NAME}"
@@ -90,15 +93,20 @@ done
 
 for guided_step in 3 5 7; do
     exp_step=$((guided_step - 1))
+    prev_answer="${OUT_PREFIX}_step$((guided_step - 2))/results"
     python code/rg_cto_guided_search.py \
         --model "$MODEL_NAME" \
         --input "$QUESTION_FILE" \
         --experience-dir "${OUT_PREFIX}_step${exp_step}/results_dedup" \
+        --answer-dir "$prev_answer" \
         --output "${OUT_PREFIX}_step${guided_step}/results" \
         --n-experience-completions "$N_EXPERIENCE_COMPLETIONS" \
         --n-completions "$N_COMPLETIONS" \
         --alpha "$ALPHA" \
         --gate-delta "$GATE_DELTA" \
+        --tau-match "$TAU_MATCH" \
+        --lambda-u "$LAMBDA_U" \
+        --lambda-l "$LAMBDA_L" \
         --pilot-n "$PILOT_N" \
         --temperature "$TEMPERATURE" \
         --top-p "$TOP_P" \

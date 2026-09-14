@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
 """
-Risk-Gated CTO (RG-CTO): confidence-gated contrastive decoding.
+Reliability-Gated CTO (RG-CTO).
 
-  s_i = l_pos,i - alpha_r * l_neg,i
-  alpha_r = alpha_0 * g^(r)
-
-where g^(r) aggregates per-pitfall weights w(e) = clip(u(e)*l(e,q)*(1-c(e)), 0, 1)
-after filtering w(e) < delta.
+  u(e) = (1/N) sum_i I(Match(e, y_i) > tau_match)
+  l(e,q) = rho(e,q) * rho(e, E_+)
+  c(e) = p_theta(conflict | T_conf)
+  w(e) = clip(u^lambda_u * l^lambda_l * (1-c), 0, 1)
+  keep e iff w(e) >= delta
+  g^(r) = mean of kept w(e);  alpha_r = alpha_0 * g^(r)
+  s_i = l_pos,i - alpha_r * l_neg,i   for i in S^(j)
 """
 
 from __future__ import annotations
@@ -26,7 +28,6 @@ if str(_eval_root) not in sys.path:
     sys.path.insert(0, str(_eval_root))
 
 import cto_guided_search as cto
-import cto_rescore_plus_guided_search as rescore_plus
 import rg_cto_common as rgc
 import vllm_efficient_cto_common as vec
 
@@ -93,64 +94,6 @@ def _load_experience_records(
     return data, records
 
 
-def _run_pilot_phase(
-    llm: Any,
-    tokenizer: Any,
-    *,
-    prompt_pos: str,
-    prompt_neg: str,
-    pilot_n: int,
-    max_pilot_tokens: int,
-    temperature: float,
-    top_p: float,
-    top_k: int,
-    alpha_0: float,
-    max_model_len: Optional[int],
-    vllm_score_batch_size: int,
-    vllm_max_score_prompt_tokens: int,
-) -> Dict[str, Any]:
-    n = max(2, int(pilot_n))
-    gen_params = SamplingParams(
-        n=n,
-        temperature=temperature,
-        top_p=top_p,
-        top_k=top_k,
-        max_tokens=max_pilot_tokens,
-        logprobs=1,
-    )
-    gen_out = llm.generate([prompt_pos], gen_params)[0].outputs
-    candidates = [o.text or "" for o in gen_out]
-    pos_scores = [vec.sum_output_logprobs(getattr(o, "logprobs", None)) for o in gen_out]
-
-    clusters = rescore_plus._cluster_by_answer(candidates)
-    sorted_clusters = sorted(clusters, key=lambda c: (-c["size"], c["cluster_id"]))
-    top_cluster = sorted_clusters[0] if sorted_clusters else {"indices": [], "size": 0}
-    top_cluster_texts = [candidates[i] for i in top_cluster.get("indices", [])[:3]]
-    cluster_majority = float(top_cluster.get("size", 0) / max(len(candidates), 1))
-
-    all_neg: List[float] = []
-    if candidates:
-        all_neg = vec.score_suffixes_batch(
-            llm,
-            tokenizer,
-            prompt_neg,
-            candidates,
-            max_model_len=max_model_len,
-            vllm_score_batch_size=vllm_score_batch_size,
-            vllm_max_score_prompt_tokens=vllm_max_score_prompt_tokens,
-        )
-
-    return {
-        "pos_scores": pos_scores,
-        "neg_scores": all_neg,
-        "top_cluster_texts": top_cluster_texts,
-        "cluster_majority": cluster_majority,
-        "alpha_0": float(alpha_0),
-        "pilot_candidates": len(candidates),
-        "n_clusters": len(clusters),
-    }
-
-
 def _apply_gated_negatives(
     experience_data: Dict[str, Any],
     gate_factors: Dict[str, Any],
@@ -183,15 +126,27 @@ def run_rg_cto_for_question(
     max_model_len: Optional[int],
     vllm_score_batch_size: int,
     vllm_max_score_prompt_tokens: int,
-    pilot_meta: Optional[Dict[str, Any]] = None,
+    lambda_u: float = 0.5,
+    lambda_l: float = 0.5,
+    tau_match: float = 0.8,
+    trajectories: Optional[List[str]] = None,
+    conflict_probs: Optional[List[float]] = None,
 ) -> Tuple[List[Dict[str, Any]], Dict[str, Any]]:
+    pitfall_list = rgc.unique_texts(experience_data.get("critical_pitfalls") or [])
+    positive_evidence = rgc.unique_texts(experience_data.get("verified_propositions") or [])
     gate_factors = rgc.compute_item_weights(
         experience_records,
         question_text,
         embed_model_path=embed_model_path,
+        trajectories=trajectories or [],
+        positive_evidence=positive_evidence,
+        pitfalls=pitfall_list,
+        conflict_probs=conflict_probs,
+        tau_match=tau_match,
         min_support=min_pitfall_support,
         delta=gate_delta,
-        pilot_meta=pilot_meta,
+        lambda_u=lambda_u,
+        lambda_l=lambda_l,
     )
 
     coverage_meta = experience_data.get("coverage_meta") or {}
@@ -286,6 +241,10 @@ def run_rg_cto_for_question(
         "alpha_r": float(alpha_r),
         "gate": float(gate_factors.get("gate", 0.0)),
         "gate_delta": float(gate_delta),
+        "tau_match": float(tau_match),
+        "lambda_u": float(lambda_u),
+        "lambda_l": float(lambda_l),
+        "n_trajectories": int(gate_factors.get("n_trajectories", 0)),
         "n_pitfalls_kept": int(gate_factors.get("n_pitfalls_kept", 0)),
         "n_pitfalls_total": int(gate_factors.get("n_pitfalls_total", 0)),
         "pilot_risk": float(gate_factors.get("pilot_risk", 0.0)),
@@ -298,7 +257,7 @@ def run_rg_cto_for_question(
             processed_tokens_total / max(n_completions, 1)
         ),
         "generated_tokens_mean": float(gen_tokens_total / max(len(candidates), 1)),
-        "pilot_meta": pilot_meta or {},
+        "pilot_meta": {},
         "rg_cto_factors": gate_factors,
         "coverage_meta": coverage_meta,
         "no_reliable_negative_evidence": bool(no_reliable_neg),
@@ -342,15 +301,39 @@ def main() -> None:
     parser.add_argument(
         "--gate-delta",
         type=float,
-        default=0.15,
+        default=0.4,
         help="Filter negative items with w(e) < delta",
+    )
+    parser.add_argument(
+        "--tau-match",
+        type=float,
+        default=0.8,
+        help="Matching threshold tau_match for u(e)=mean I(Match(e,y)>tau_match)",
+    )
+    parser.add_argument(
+        "--answer-dir",
+        type=str,
+        default=None,
+        help="Previous-round rollout dir (y_1..y_N) used to compute u(e)",
+    )
+    parser.add_argument(
+        "--lambda-u",
+        type=float,
+        default=0.5,
+        help="Exponent on support u(e) in w(e)=u^λu * l^λl * (1-c)",
+    )
+    parser.add_argument(
+        "--lambda-l",
+        type=float,
+        default=0.5,
+        help="Exponent on locality l(e,q) in w(e)=u^λu * l^λl * (1-c)",
     )
     parser.add_argument("--min-pitfall-support", type=int, default=2)
     parser.add_argument(
         "--pilot-n",
         type=int,
         default=4,
-        help="Pilot rollouts for conflict-risk proxy",
+        help="Deprecated; retained for CLI compatibility and ignored.",
     )
     parser.add_argument("--max-pilot-tokens", type=int, default=2048)
     parser.add_argument("--temperature", type=float, default=0.7)
@@ -375,11 +358,12 @@ def main() -> None:
     cand_k = args.candidate_k if args.candidate_k is not None else args.n_completions
 
     logger.info(
-        "RG-CTO alpha_0=%.2f delta=%.2f pilot_n=%d min_support=%d | %s | %d questions",
+        "RG-CTO alpha_0=%.2f delta=%.2f tau_match=%.2f lambda_u=%.2f lambda_l=%.2f | %s | %d questions",
         args.alpha,
         args.gate_delta,
-        args.pilot_n,
-        args.min_pitfall_support,
+        args.tau_match,
+        args.lambda_u,
+        args.lambda_l,
         task_type,
         len(questions),
     )
@@ -407,24 +391,30 @@ def main() -> None:
         if not records:
             logger.warning("No experience file for question %s, skipping.", orig_idx)
             continue
+        if experience_data is None:
+            experience_data = {"verified_propositions": [], "critical_pitfalls": []}
 
-        prompt_pos, prompt_neg, _ = vec.build_pos_neg_prompts(
-            tokenizer, question_text, experience_data
+        trajectories = rgc.load_previous_trajectories(args.answer_dir, orig_idx)
+        if not trajectories:
+            logger.warning(
+                "No previous trajectories for question %s (answer-dir=%s); u(e)=0.",
+                orig_idx,
+                args.answer_dir,
+            )
+
+        pitfalls = rgc.unique_texts(experience_data.get("critical_pitfalls") or [])
+        positive_evidence = rgc.unique_texts(
+            experience_data.get("verified_propositions") or []
         )
-        pilot_meta = _run_pilot_phase(
+        experience_data["critical_pitfalls"] = pitfalls
+        experience_data["verified_propositions"] = positive_evidence
+        conflict_probs = rgc.score_conflict_probs_with_llm(
             llm,
             tokenizer,
-            prompt_pos=prompt_pos,
-            prompt_neg=prompt_neg,
-            pilot_n=args.pilot_n,
-            max_pilot_tokens=args.max_pilot_tokens,
-            temperature=args.temperature,
-            top_p=args.top_p,
-            top_k=args.top_k,
-            alpha_0=args.alpha,
+            pitfalls,
+            positive_evidence,
             max_model_len=max_model_len,
             vllm_score_batch_size=args.vllm_score_batch_size,
-            vllm_max_score_prompt_tokens=args.vllm_max_score_prompt_tokens,
         )
 
         completions, compute = run_rg_cto_for_question(
@@ -447,7 +437,11 @@ def main() -> None:
             max_model_len=max_model_len,
             vllm_score_batch_size=args.vllm_score_batch_size,
             vllm_max_score_prompt_tokens=args.vllm_max_score_prompt_tokens,
-            pilot_meta=pilot_meta,
+            lambda_u=args.lambda_u,
+            lambda_l=args.lambda_l,
+            tau_match=args.tau_match,
+            trajectories=trajectories,
+            conflict_probs=conflict_probs,
         )
         cto.save_result(
             output_path,

@@ -15,6 +15,8 @@ from tqdm import tqdm
 import logging
 from collections import defaultdict
 
+from task_prompts import add_task_args, get_baseline_system_prompt, resolve_task_type
+
 # 兼容 vLLM 0.8.x 与新版 transformers：新版 transformers 移除了 all_special_tokens_extended，
 # 但 vLLM 的 get_cached_tokenizer 仍会访问该属性（如 Qwen2Tokenizer）。在导入 vLLM 前为基类补上该属性。
 def _patch_transformers_for_vllm():
@@ -420,6 +422,7 @@ def main():
     parser.add_argument('--top-k', '-k', type=int, default=20)
     parser.add_argument('--max-tokens', type=int, default=2048)
     parser.add_argument('--system-prompt', type=str, default=None)
+    add_task_args(parser)
     parser.add_argument('--start-idx', type=int, default=0)
     parser.add_argument('--end-idx', type=int, default=None)
     parser.add_argument(
@@ -439,6 +442,12 @@ def main():
     parser.add_argument('--dtype', type=str, default='auto', choices=['auto', 'float16', 'bfloat16'], help='HF: dtype')
     
     args = parser.parse_args()
+    task_type = resolve_task_type(
+        dataset=args.dataset,
+        task_type=args.task_type,
+        input_path=args.input,
+    )
+    system_prompt = get_baseline_system_prompt(task_type, args.system_prompt)
 
     if args.backend == "hf":
         batch_inference_hf(
@@ -451,7 +460,7 @@ def main():
             top_p=args.top_p,
             top_k=args.top_k,
             max_tokens=args.max_tokens,
-            system_prompt=args.system_prompt,
+            system_prompt=system_prompt,
             start_idx=args.start_idx,
             end_idx=args.end_idx,
             device_map=args.device_map,
@@ -469,7 +478,7 @@ def main():
             top_p=args.top_p,
             top_k=args.top_k,
             max_tokens=args.max_tokens,
-            system_prompt=args.system_prompt,
+            system_prompt=system_prompt,
             start_idx=args.start_idx,
             end_idx=args.end_idx,
             max_model_len=args.max_model_len,

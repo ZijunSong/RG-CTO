@@ -22,6 +22,8 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+from task_prompts import add_task_args, get_experience_guided_system_prompt, resolve_task_type
+
 # ==========================================
 # Prompt Templates
 # ==========================================
@@ -249,8 +251,16 @@ def main():
 
     parser.add_argument('--start-idx', type=int, default=0)
     parser.add_argument('--end-idx', type=int, default=None)
+    add_task_args(parser)
 
     args = parser.parse_args()
+    task_type = resolve_task_type(
+        dataset=args.dataset,
+        task_type=args.task_type,
+        input_path=args.input,
+    )
+    guided_prompt = get_experience_guided_system_prompt(task_type)
+    logger.info("Task type: %s (dataset=%s)", task_type, args.dataset)
 
     # Setup directories
     output_path = Path(args.output)
@@ -350,7 +360,7 @@ def main():
                 experience_data = {}
 
             experience_context_str = construct_experience_context(experience_data)
-            system_content = EXPERIENCE_GUIDED_SYSTEM_PROMPT.format(
+            system_content = guided_prompt.format(
                 experience_context=experience_context_str
             )
             

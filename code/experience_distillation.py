@@ -61,9 +61,14 @@ logger = logging.getLogger(__name__)
 _DISTILL_JSON_MAX_GEN = 4096
 
 
-def _distill_gen_and_prompt_cap(max_model_len: int, max_tokens_arg: int) -> tuple[int, int]:
+def _distill_gen_and_prompt_cap(
+    max_model_len: int,
+    max_tokens_arg: int,
+    json_max_gen: int = _DISTILL_JSON_MAX_GEN,
+) -> tuple[int, int]:
     """Split max_model_len: small gen budget for JSON; remainder for full prompt (rollouts)."""
-    gen_cap = min(max_tokens_arg, _DISTILL_JSON_MAX_GEN)
+    cap = json_max_gen if json_max_gen is not None else _DISTILL_JSON_MAX_GEN
+    gen_cap = min(max_tokens_arg, int(cap))
     gen_cap = max(1, gen_cap)
     max_prompt_len = max(1, max_model_len - gen_cap)
     return gen_cap, max_prompt_len
@@ -581,6 +586,12 @@ def main():
     parser.add_argument('--top-p', type=float, default=0.95)
     parser.add_argument('--top-k', type=int, default=20)
     parser.add_argument('--max-tokens', type=int, default=1024)
+    parser.add_argument(
+        '--json-max-gen',
+        type=int,
+        default=int(os.environ.get('DISTILL_JSON_MAX_GEN', str(_DISTILL_JSON_MAX_GEN))),
+        help='Cap on distillation JSON generation tokens; gen_cap = min(max-tokens, this).',
+    )
     parser.add_argument('--n-samples', type=int, default=3, help='Number of samples per inference (for robustness)')
     parser.add_argument(
         '--experience_judge_mode',
@@ -900,7 +911,9 @@ def main():
         )
         llm.eval()
 
-    gen_cap, max_prompt_len = _distill_gen_and_prompt_cap(args.max_model_len, args.max_tokens)
+    gen_cap, max_prompt_len = _distill_gen_and_prompt_cap(
+        args.max_model_len, args.max_tokens, json_max_gen=args.json_max_gen
+    )
     logger.info(
         "Distillation context: max_model_len=%d gen_cap=%d max_prompt_len=%d (max-tokens arg=%d)",
         args.max_model_len,

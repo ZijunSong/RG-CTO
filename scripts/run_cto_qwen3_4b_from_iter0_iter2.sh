@@ -1,7 +1,7 @@
 #!/bin/bash
-# RG-CTO (Qwen3-30B-Thinking): reuse frozen iter0, run iter1-2 (step2→step5).
+# CTO (Qwen3-4B-Thinking): reuse frozen iter0, run iter1-2 (step2→step5).
 # Required env: OUT_PREFIX, STEP1_RESULTS_SRC, QUESTION_FILE
-# Optional: CUDA_VISIBLE_DEVICES, END_INDEX (default 30), RG-CTO hyperparams
+# Optional: CUDA_VISIBLE_DEVICES, DATASET, END_INDEX
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -21,7 +21,8 @@ END_INDEX="${2:-${END_INDEX:-30}}"
 : "${STEP1_RESULTS_SRC:?STEP1_RESULTS_SRC is required}"
 : "${QUESTION_FILE:?QUESTION_FILE is required}"
 
-export MODEL_NAME="${MODEL_NAME:-/data/ppnm/models/Qwen3-30B-A3B-Thinking-2507}"
+export DATASET="${DATASET:-HMMT25}"
+export MODEL_NAME="${MODEL_NAME:-/data/ppnm/models/Qwen3-4B-Thinking-2507}"
 
 export BATCH_SIZE="${BATCH_SIZE:-2048}"
 export DISTILL_MAX_TOKENS="${DISTILL_MAX_TOKENS:-8192}"
@@ -36,25 +37,21 @@ export EMB_MODEL="${EMB_MODEL:-/data/ppnm/models/all-MiniLM-L6-v2}"
 export RETRIEVAL_RERANK_MODEL="${RETRIEVAL_RERANK_MODEL:-/data/ppnm/models/cross-encoder-ms-marco-MiniLM-L-6-v2}"
 export EXPERIENCE_JUDGE_MODE="${EXPERIENCE_JUDGE_MODE:-llm_judge}"
 
-export ALPHA="${ALPHA:-0.7}"
-export GATE_DELTA="${GATE_DELTA:-0.4}"
-export TAU_MATCH="${TAU_MATCH:-0.8}"
-export LAMBDA_U="${LAMBDA_U:-0.5}"
-export LAMBDA_L="${LAMBDA_L:-0.5}"
-export PILOT_N="${PILOT_N:-4}"
-export MIN_PITFALL_SUPPORT="${MIN_PITFALL_SUPPORT:-2}"
+export ALPHA="${ALPHA:-0.55}"
+export PLAUSIBILITY_TOP_K="${PLAUSIBILITY_TOP_K:-8}"
 export CTO_AGG_MAX_PROP="${CTO_AGG_MAX_PROP:-96}"
 export CTO_AGG_MAX_PIT="${CTO_AGG_MAX_PIT:-96}"
 
-export DISTILL_MAX_MODEL_LEN="${DISTILL_MAX_MODEL_LEN:-65536}"
-export DISTILL_GPU_MEMORY_UTILIZATION="${DISTILL_GPU_MEMORY_UTILIZATION:-0.82}"
+export DISTILL_MAX_MODEL_LEN="${DISTILL_MAX_MODEL_LEN:-100000}"
+export DISTILL_GPU_MEMORY_UTILIZATION="${DISTILL_GPU_MEMORY_UTILIZATION:-0.90}"
 export DISTILL_MAX_NUM_SEQS="${DISTILL_MAX_NUM_SEQS:-128}"
-export RGCTO_MAX_MODEL_LEN="${RGCTO_MAX_MODEL_LEN:-65536}"
-export RGCTO_GPU_MEMORY_UTILIZATION="${RGCTO_GPU_MEMORY_UTILIZATION:-0.82}"
+export CTO_MAX_MODEL_LEN="${CTO_MAX_MODEL_LEN:-100000}"
+export CTO_GPU_MEMORY_UTILIZATION="${CTO_GPU_MEMORY_UTILIZATION:-0.60}"
 
 export NCCL_P2P_DISABLE=1
 export NCCL_NVLS_ENABLE=0
-export TMPDIR="${TMPDIR:-/data/ppnm/tmp/rg_cto_30b_gpu${CUDA_VISIBLE_DEVICES}_$$}"
+export PYTORCH_CUDA_ALLOC_CONF="${PYTORCH_CUDA_ALLOC_CONF:-expandable_segments:True}"
+export TMPDIR="${TMPDIR:-/data/ppnm/tmp/cto_qwen3_4b_gpu${CUDA_VISIBLE_DEVICES}_$$}"
 mkdir -p /data/ppnm/tmp "$TMPDIR"
 export XDG_CACHE_HOME="${XDG_CACHE_HOME:-/data/ppnm/.cache}"
 mkdir -p "$XDG_CACHE_HOME"
@@ -70,7 +67,7 @@ _step_results_count() {
     echo 0
     return
   fi
-  find "$dir" -maxdepth 1 \( -name '[0-9]*.json' -o -name '[0-9]*.jsonl' \) 2>/dev/null | wc -l
+  find "$dir" -maxdepth 1 -name '[0-9]*.json' 2>/dev/null | wc -l
 }
 
 _step_complete() {
@@ -81,20 +78,21 @@ _step_complete() {
 
 _EXPECTED_RESULTS=$((END_INDEX - START_INDEX))
 
-RGCTO_RETRIEVAL_ARGS=(
+CTO_RETRIEVAL_ARGS=(
   --experience-retrieval embedding_rerank
   --retrieval-embedding-model "$EMB_MODEL"
   --retrieval-rerank-model "$RETRIEVAL_RERANK_MODEL"
   --retrieval-rerank-pool-mult "${CTO_RETRIEVAL_RERANK_POOL_MULT:-8}"
   --max-aggregated-propositions "${CTO_AGG_MAX_PROP}"
   --max-aggregated-pitfalls "${CTO_AGG_MAX_PIT}"
+  --dataset "$DATASET"
 )
 
-rgcto_pass1_iter() {
+cto_pass1_iter() {
   local iter="$1"
   local ver_dir="$2"
   if [ ! -d "$ver_dir" ]; then
-    echo "  iter${iter}  N/A  (missing dir: $ver_dir)"
+    echo "N/A (missing: $ver_dir)"
     return 0
   fi
   python eval/calculate_pass_at_k_from_completions.py \
@@ -113,12 +111,12 @@ print("N/A" if v is None else f"{v*100:.2f}%")
 PY
 }
 
-echo "========== RG-CTO iter0→iter2 | GPU=${CUDA_VISIBLE_DEVICES} TP=${TENSOR_PARALLEL_SIZE} =========="
+echo "========== CTO Qwen3-4B iter0→iter2 | GPU=${CUDA_VISIBLE_DEVICES} | ${DATASET} =========="
 echo "OUT_PREFIX=${OUT_PREFIX}"
 echo "STEP1_RESULTS_SRC=${STEP1_RESULTS_SRC}"
 echo "QUESTION_FILE=${QUESTION_FILE}"
+echo "MODEL_NAME=${MODEL_NAME}"
 echo "range=${START_INDEX}:${END_INDEX}"
-echo "RG-CTO alpha=${ALPHA} gate_delta=${GATE_DELTA} tau_match=${TAU_MATCH} lambda_u=${LAMBDA_U} lambda_l=${LAMBDA_L}"
 
 echo "---------- Step 1: Reuse frozen iter0 (symlink) ----------"
 if [ ! -d "$STEP1_RESULTS_SRC" ]; then
@@ -129,7 +127,7 @@ mkdir -p "${OUT_PREFIX}_step1"
 ABS_SRC="$(cd "$STEP1_RESULTS_SRC" && pwd)"
 ln -sfn "$ABS_SRC" "${OUT_PREFIX}_step1/results"
 echo "Linked ${OUT_PREFIX}_step1/results -> $ABS_SRC"
-rgcto_pass1_iter 0 "${OUT_PREFIX}_step1/results" | sed 's/^/  /'
+echo -n "  iter0  "; cto_pass1_iter 0 "${OUT_PREFIX}_step1/results"
 
 echo "---------- Step 2: Experience Distillation (${EXPERIENCE_JUDGE_MODE}) ----------"
 if _has_step_results "${OUT_PREFIX}_step2/results"; then
@@ -152,6 +150,7 @@ python code/experience_distillation.py \
   --max-tokens "$DISTILL_MAX_TOKENS" \
   --n-samples 1 \
   --experience_judge_mode "$EXPERIENCE_JUDGE_MODE" \
+  --dataset "$DATASET" \
   --start-idx "$START_INDEX" \
   --end-idx "$END_INDEX"
 fi
@@ -170,43 +169,36 @@ python code/experience_dedup.py \
   --keep-order
 fi
 
-echo "---------- Step 3: RG-CTO guided search (iter1) ----------"
+echo "---------- Step 3: CTO guided search (iter1) ----------"
 if _step_complete "${OUT_PREFIX}_step3/results" "$_EXPECTED_RESULTS"; then
   echo "[skip] step3 already done (${OUT_PREFIX}_step3/results)"
 else
 mkdir -p "${OUT_PREFIX}_step3/results"
-python code/rg_cto_guided_search.py \
+python code/cto_guided_search.py \
   --model "$MODEL_NAME" \
   --input "$QUESTION_FILE" \
   --experience-dir "${OUT_PREFIX}_step2/results_dedup" \
-  --answer-dir "${OUT_PREFIX}_step1/results" \
   --output "${OUT_PREFIX}_step3/results" \
   --n-experience-completions "$N_EXP_COMPLETIONS" \
   --n-completions "$N_COMPLETIONS" \
   --alpha "$ALPHA" \
-  --gate-delta "$GATE_DELTA" \
-  --tau-match "$TAU_MATCH" \
-  --lambda-u "$LAMBDA_U" \
-  --lambda-l "$LAMBDA_L" \
-  --pilot-n "$PILOT_N" \
-  --min-pitfall-support "$MIN_PITFALL_SUPPORT" \
+  --plausibility-top-k "$PLAUSIBILITY_TOP_K" \
   --tensor-parallel-size "$TENSOR_PARALLEL_SIZE" \
-  --max-model-len "$RGCTO_MAX_MODEL_LEN" \
-  --gpu-memory-utilization "$RGCTO_GPU_MEMORY_UTILIZATION" \
+  --max-model-len "$CTO_MAX_MODEL_LEN" \
+  --gpu-memory-utilization "$CTO_GPU_MEMORY_UTILIZATION" \
   --temperature "$TEMPERATURE" \
   --top-p "$TOP_P" \
   --top-k "$TOP_K" \
   --max-tokens "$MAX_TOKENS" \
-  "${RGCTO_RETRIEVAL_ARGS[@]}" \
+  "${CTO_RETRIEVAL_ARGS[@]}" \
   --start-idx "$START_INDEX" \
   --end-idx "$END_INDEX"
 fi
-
-rgcto_pass1_iter 1 "${OUT_PREFIX}_step3/results" | sed 's/^/  iter1  /'
+echo -n "  iter1  "; cto_pass1_iter 1 "${OUT_PREFIX}_step3/results"
 
 echo "---------- Step 4: Experience Distillation (${EXPERIENCE_JUDGE_MODE}) ----------"
-if _step_complete "${OUT_PREFIX}_step4/results" "$_EXPECTED_RESULTS"; then
-  echo "[skip] step4 distill already done (${OUT_PREFIX}_step4/results)"
+if _has_step_results "${OUT_PREFIX}_step4/results" && _step_complete "${OUT_PREFIX}_step4/results_dedup" "$_EXPECTED_RESULTS"; then
+  echo "[skip] step4 already done (${OUT_PREFIX}_step4/results_dedup)"
 else
 mkdir -p "${OUT_PREFIX}_step4/results"
 python code/experience_distillation.py \
@@ -225,14 +217,10 @@ python code/experience_distillation.py \
   --max-tokens "$DISTILL_MAX_TOKENS" \
   --n-samples 1 \
   --experience_judge_mode "$EXPERIENCE_JUDGE_MODE" \
+  --dataset "$DATASET" \
   --start-idx "$START_INDEX" \
   --end-idx "$END_INDEX"
-fi
 
-echo "---------- Step 4.5: Experience Deduplication ----------"
-if _step_complete "${OUT_PREFIX}_step4/results_dedup" "$_EXPECTED_RESULTS"; then
-  echo "[skip] step4.5 already done (${OUT_PREFIX}_step4/results_dedup)"
-else
 mkdir -p "${OUT_PREFIX}_step4/results_dedup" "${OUT_PREFIX}_step4/results_dedup_debug"
 python code/experience_dedup.py \
   --experience-dir "${OUT_PREFIX}_step4/results" \
@@ -244,37 +232,32 @@ python code/experience_dedup.py \
   --keep-order
 fi
 
-echo "---------- Step 5: RG-CTO guided search (iter2) ----------"
+echo "---------- Step 5: CTO guided search (iter2) ----------"
 if _step_complete "${OUT_PREFIX}_step5/results" "$_EXPECTED_RESULTS"; then
   echo "[skip] step5 already done (${OUT_PREFIX}_step5/results)"
 else
 mkdir -p "${OUT_PREFIX}_step5/results"
-python code/rg_cto_guided_search.py \
+python code/cto_guided_search.py \
   --model "$MODEL_NAME" \
   --input "$QUESTION_FILE" \
   --experience-dir "${OUT_PREFIX}_step4/results_dedup" \
-  --answer-dir "${OUT_PREFIX}_step3/results" \
   --output "${OUT_PREFIX}_step5/results" \
   --n-experience-completions "$N_EXP_COMPLETIONS" \
   --n-completions "$N_COMPLETIONS" \
   --alpha "$ALPHA" \
-  --gate-delta "$GATE_DELTA" \
-  --tau-match "$TAU_MATCH" \
-  --lambda-u "$LAMBDA_U" \
-  --lambda-l "$LAMBDA_L" \
-  --pilot-n "$PILOT_N" \
-  --min-pitfall-support "$MIN_PITFALL_SUPPORT" \
+  --plausibility-top-k "$PLAUSIBILITY_TOP_K" \
   --tensor-parallel-size "$TENSOR_PARALLEL_SIZE" \
-  --max-model-len "$RGCTO_MAX_MODEL_LEN" \
-  --gpu-memory-utilization "$RGCTO_GPU_MEMORY_UTILIZATION" \
+  --max-model-len "$CTO_MAX_MODEL_LEN" \
+  --gpu-memory-utilization "$CTO_GPU_MEMORY_UTILIZATION" \
   --temperature "$TEMPERATURE" \
   --top-p "$TOP_P" \
   --top-k "$TOP_K" \
   --max-tokens "$MAX_TOKENS" \
-  "${RGCTO_RETRIEVAL_ARGS[@]}" \
+  "${CTO_RETRIEVAL_ARGS[@]}" \
   --start-idx "$START_INDEX" \
   --end-idx "$END_INDEX"
 fi
+echo -n "  iter2  "; cto_pass1_iter 2 "${OUT_PREFIX}_step5/results"
 
 echo "---------- Pass@1 summary (iter0-2) ----------"
 for iter in 0 1 2; do
@@ -284,7 +267,7 @@ for iter in 0 1 2; do
     2) dir="${OUT_PREFIX}_step5/results" ;;
   esac
   echo -n "  iter${iter}  "
-  rgcto_pass1_iter "$iter" "$dir"
+  cto_pass1_iter "$iter" "$dir"
 done
 
 python - "$OUT_PREFIX" <<'PY'

@@ -35,6 +35,8 @@ logging.basicConfig(
     format="%(asctime)s - %(levelname)s - %(message)s",
     handlers=[logging.StreamHandler()],
 )
+from task_prompts import add_task_args, get_cto_prefixes, resolve_task_type
+
 logger = logging.getLogger(__name__)
 
 # Local CrossEncoder snapshot (avoids Hugging Face Hub download each run; see download_models.py).
@@ -42,20 +44,13 @@ _DEFAULT_RETRIEVAL_RERANK_MODEL = "/data/ppnm/models/cross-encoder-ms-marco-Mini
 
 # ---------------------------------------------------------------------------
 # Prompt building (P_pos: propositions only; P_neg: inducing template + pitfalls)
+# Set in main() from dataset / task-type.
 # ---------------------------------------------------------------------------
 
-P_POS_SYSTEM_PREFIX = """You are an advanced mathematical solver augmented with verified intermediate results.
-Use the following propositions as anchors when they accelerate your reasoning. Verify any premise before use.
-
-### Propositions (Verify before use):
-"""
-
-P_NEG_SYSTEM_PREFIX = """Please try to solve the following using these incorrect approaches or dead ends. You must follow at least one of them:
-
-"""
-
-
-P_BOTH_SYSTEM_FALLBACK = "Please reason step by step, and put your final answer within \\boxed{}."
+P_POS_SYSTEM_PREFIX = ""
+P_NEG_SYSTEM_PREFIX = ""
+P_BOTH_SYSTEM_FALLBACK = ""
+_CTO_FALLBACK_SYSTEM_PROMPT = ""
 
 
 def _build_prompt_both_system(props_str: str, pitfalls_str: str) -> str:
@@ -1685,7 +1680,19 @@ def main():
         default="1:1",
         help="Split experience-token-budget between pos/neg bullet blocks, e.g. 1:1, 1:2, 2:1 (pos:neg).",
     )
+    add_task_args(parser)
     args = parser.parse_args()
+
+    global P_POS_SYSTEM_PREFIX, P_NEG_SYSTEM_PREFIX, P_BOTH_SYSTEM_FALLBACK, _CTO_FALLBACK_SYSTEM_PROMPT
+    task_type = resolve_task_type(
+        dataset=args.dataset,
+        task_type=args.task_type,
+        input_path=args.input,
+    )
+    P_POS_SYSTEM_PREFIX, P_NEG_SYSTEM_PREFIX, P_BOTH_SYSTEM_FALLBACK = get_cto_prefixes(task_type)
+    _CTO_FALLBACK_SYSTEM_PROMPT = P_BOTH_SYSTEM_FALLBACK
+    logger.info("Task type: %s (dataset=%s)", task_type, args.dataset)
+
     if int(getattr(args, "experience_token_budget", 0) or 0) > 0:
         try:
             _pw, _nw = _parse_pos_neg_weights(args.experience_pos_neg_weights)

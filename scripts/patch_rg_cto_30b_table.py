@@ -18,9 +18,9 @@ def fmt_mean_std(values: list[float]) -> str:
     return f"{m:.1f}±{s:.1f}"
 
 
-def load_run_summaries(runs_root: Path) -> dict[str, list[float]]:
+def load_run_summaries(runs_root: Path, num_runs: int = 3) -> dict[str, list[float]]:
     out: dict[str, list[float]] = {"iter0": [], "iter1": [], "iter2": []}
-    for run_id in range(3):
+    for run_id in range(num_runs):
         p = runs_root / f"run{run_id}_eval_summary.json"
         if not p.exists():
             raise FileNotFoundError(f"Missing {p}")
@@ -29,6 +29,20 @@ def load_run_summaries(runs_root: Path) -> dict[str, list[float]]:
             if data.get(key) is not None:
                 out[key].append(float(data[key]))
     return out
+
+
+def _count_valid_runs(runs_root: Path, max_runs: int = 3) -> int:
+    n = 0
+    for run_id in range(max_runs):
+        p = runs_root / f"run{run_id}_eval_summary.json"
+        if not p.exists():
+            break
+        data = json.loads(p.read_text(encoding="utf-8"))
+        if all(data.get(k) is not None for k in ("iter0", "iter1", "iter2")):
+            n += 1
+        else:
+            break
+    return n
 
 
 def main() -> None:
@@ -41,8 +55,18 @@ def main() -> None:
 
     agg: dict[str, dict[str, str]] = {}
     for name, root in datasets.items():
-        vals = load_run_summaries(root)
+        if not root.exists():
+            continue
+        n = _count_valid_runs(root)
+        if n == 0:
+            print(f"Skip {name}: no valid runs in {root}", file=sys.stderr)
+            continue
+        vals = load_run_summaries(root, num_runs=n)
         agg[name] = {k: fmt_mean_std(v) for k, v in vals.items()}
+
+    if not agg:
+        print("No RG-CTO 30B results to patch yet", file=sys.stderr)
+        sys.exit(0)
 
     md_file = project_root / "RG-CTO Method Core.md"
     text = md_file.read_text(encoding="utf-8")
@@ -50,11 +74,14 @@ def main() -> None:
         "| Qwen3-30B-A3B-Thinking-2507 | RG-CTO | 55.8 | — | — | 66.2 | — | — | "
         "23.4 | — | — |"
     )
+    hmmt24 = agg.get("HMMT24", {})
+    hmmt25 = agg.get("HMMT25", {})
+    hle = agg.get("HLE", {})
     new = (
         f"| Qwen3-30B-A3B-Thinking-2507 | RG-CTO | "
-        f"{agg['HMMT24']['iter0']} | {agg['HMMT24']['iter1']} | {agg['HMMT24']['iter2']} | "
-        f"{agg['HMMT25']['iter0']} | {agg['HMMT25']['iter1']} | {agg['HMMT25']['iter2']} | "
-        f"{agg['HLE']['iter0']} | {agg['HLE']['iter1']} | {agg['HLE']['iter2']} |"
+        f"{hmmt24.get('iter0', '—')} | {hmmt24.get('iter1', '—')} | {hmmt24.get('iter2', '—')} | "
+        f"{hmmt25.get('iter0', '—')} | {hmmt25.get('iter1', '—')} | {hmmt25.get('iter2', '—')} | "
+        f"{hle.get('iter0', '—')} | {hle.get('iter1', '—')} | {hle.get('iter2', '—')} |"
     )
     if old not in text:
         print("ERROR: Could not find RG-CTO 30B table row to patch", file=sys.stderr)
@@ -65,7 +92,7 @@ def main() -> None:
     if note_marker in text:
         text = text.replace(
             note_marker,
-            "RG-CTO 30B 三数据集 3-run 已完成（`results/runs/*_RG_CTO/`）",
+            "RG-CTO 30B 三数据集 1-run 已完成（`results/runs/*_RG_CTO/`）",
             1,
         )
 

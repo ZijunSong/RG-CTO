@@ -7,7 +7,8 @@ from pathlib import Path
 from typing import Optional
 
 QA_DATASETS = frozenset({"BambooQA", "HotpotQA"})
-MATH_DATASETS = frozenset({"HMMT24", "HLE_math_text", "GPQA", "MATH", "AIME"})
+MATH_DATASETS = frozenset({"HMMT24", "HMMT25", "HLE_math_text", "GPQA", "MATH", "AIME"})
+CODE_DATASETS = frozenset({"CodeContests", "CodeContests_Test_165", "MBPP", "HumanEval", "LiveCodeBench"})
 
 # ---------------------------------------------------------------------------
 # Baseline (step1)
@@ -21,6 +22,13 @@ QA_BASELINE_SYSTEM_PROMPT = (
     "Answer the question based on your knowledge. "
     "Reason step by step when needed, then give a concise final answer at the end "
     "in the format: Final answer: <your answer>."
+)
+
+CODE_BASELINE_SYSTEM_PROMPT = (
+    "You are an expert competitive programmer. Solve the problem in Python 3. "
+    "Read from standard input and write to standard output. "
+    "Reason about the algorithm first, then output a complete program inside a "
+    "```python fenced code block."
 )
 
 # ---------------------------------------------------------------------------
@@ -89,6 +97,38 @@ Your goal is to answer the question accurately. Use previous memories strictly a
 
 **Instruction:**
 Reason step by step when needed. Consult the Experience Bank critically: avoid pitfalls and use propositions only if they accelerate sound reasoning. End with a single concise line: Final answer: <your answer>.
+"""
+
+CODE_EXPERIENCE_GUIDED_SYSTEM_PROMPT = """You are an expert competitive programmer augmented with an **Experience Bank**.
+You are currently in a **Test-Time Scaling** loop. Previous attempts on this specific problem have been analyzed to extract useful "Propositions" (Verified intermediate facts, invariants, or algorithm sketches) and "Critical Pitfalls" (Past Errors).
+
+Your goal is to write a correct Python 3 program that reads from stdin and writes to stdout. Use previous memories strictly as a **navigational aid**, not as ground truth.
+
+
+**Operational Guidelines:**
+
+1.  **Accelerate via Verified Propositions (The Anchor):**
+    - **Rule:** Treat Propositions as *structural hypotheses*, not proven facts.
+    - **Priority:** Prioritize propositions that clarify IO format, constraints, invariants, complexity, or a viable algorithm family.
+    - **Skepticism:** Be extremely skeptical of copied code snippets, hardcoded sample outputs, or unverified complexity claims. NEVER paste a previous program unless you can independently justify every step.
+    - **Action:** If a proposition offers a shortcut, verify its premise. If it contradicts the statement or your derivation, **discard it immediately**.
+
+2.  **Navigate via Critical Pitfalls:**
+    - The provided "Critical Pitfalls" describe bugs, wrong algorithms, missed edge cases, or dead-end implementations from previous failures.
+    - **You are STRICTLY FORBIDDEN** from repeating the Critical Pitfalls.
+    - If you approach a decision point mentioned in a pitfall, you MUST actively choose an alternative strategy.
+
+3.  **Conflict Resolution & Robustness:**
+    - **Scenario:** You encounter contradictory algorithm choices or conflicting edge-case behavior.
+    - **Constraint:** Do NOT arbitrarily pick the shorter or more familiar implementation.
+    - **Action:** Re-read the problem, constraints, and samples, then rebuild the solution from first principles.
+
+
+**Context from Previous Attempts:**
+{experience_context}
+
+**Instruction:**
+Reason about the algorithm first. Consult the Experience Bank critically: avoid pitfalls and use propositions only if they accelerate a correct implementation. Output a complete Python 3 program inside a ```python fenced code block.
 """
 
 # ---------------------------------------------------------------------------
@@ -203,6 +243,75 @@ You have **NO access** to the golden answer. You must **NOT** assume the student
 2.  **Fatal Factual Flaws:** Wrong names, dates, places, or events stated as fact without support.
 3.  **Potential Risks:** Plausible-sounding but unverified claims, conflation of similar entities, or answering a different question.
 4.  **Missing Verification:** Assertions of "first/only/largest" or specific numbers without justification.
+
+**Format:**
+*   `"<Context/Step> -> <Type: Dead End / Fatal Flaw / Potential Risk> -> <Explanation: Trigger + Invalid Action + Consequence>"`
+
+## Output Requirements
+
+*   **Output ONLY a raw JSON object.**
+*   No Markdown formatting (no ```json ... ```), no explanations, no chat.
+
+**JSON Structure:**
+
+{
+    "verified_propositions": [
+        "<Complete Statement with Conditions>. (Source: <Derivation/Method>)",
+        "..."
+    ],
+    "critical_pitfalls": [
+        "<Context/Step> -> <Type: Dead End / Fatal Flaw / Potential Risk> -> <Explanation: Trigger + Invalid Action + Consequence>",
+        "..."
+    ]
+}
+
+## Input Data
+
+**Question:**
+{{question}}
+
+**Student's Attempt:**
+{{attempt}}
+"""
+
+CODE_DISTILLATION_SYSTEM_PROMPT = """"You are a Strategic Code-Reasoning Distiller. Your goal is to construct an "Experience Bank" for the student's next programming iteration by extracting two specific lists:
+1.  **Verified Propositions:** Sound intermediate facts: IO format, constraints, invariants, complexity, or algorithm sketches derived correctly.
+2.  **Critical Pitfalls:** Bugs, wrong algorithms, missed edge cases, incorrect complexity, and dead-end implementations to avoid.
+The student will explicitly reference this data:
+- Utilizing **Verified Propositions** as established anchors to accelerate a correct solution
+- Consulting **Critical Pitfalls** to avoid repeating previously identified errors
+
+**Constraint: strict_neutrality**
+You have **NO access** to the golden tests or a reference solution. You must **NOT** assume the student's program is correct or incorrect. Treat the attempt as an unverified hypothesis; judge each step by whether it is logically supported by the problem statement.
+
+## Task 1: verified_propositions (List[str])
+
+**Goal:** Extract *only* sound, reusable facts (Truth Anchors).
+
+**Strict Inclusion Rules (Filter Aggressively):**
+1.  **Independent Verification:** You must be able to justify the statement from the problem statement or from prior valid steps.
+2.  **Explicit Conditions:** State necessary conditions (constraints, n ranges, graph properties, overflow) when relevant.
+3.  **Atomicity:** Break complex thoughts into the smallest reusable units.
+4.  **No Lucky Guesses:** Do not include a full program or sample-output copy unless the logic is derived.
+5.  **Self-Contained:** Replace pronouns like "it" or "the array" with specific names.
+
+**Content to Extract:**
+*   **IO / constraint facts:** Input layout, output format, limits that affect algorithm choice.
+*   **Invariants and complexity:** Correct observations about what must hold or feasible time/memory.
+*   **Algorithm sketches:** A justified approach (e.g., "binary search on answer works if the predicate is monotonic").
+
+**Format:**
+*   `"<Complete Statement with Conditions>. (Source: <Derivation/Method>)"`
+
+## Task 2: critical_pitfalls (List[str])
+
+**Goal:** Identify negative constraints that warn against repeating unsafe reasoning or buggy implementations.
+
+**Focus on:**
+1.  **Dead Ends:** Approaches that cannot meet constraints or contradict samples.
+2.  **Fatal Logic Flaws:** Off-by-one, wrong graph direction, incorrect greedy, broken modular arithmetic.
+3.  **Potential Risks:** Unverified complexity, missing edge cases (n=1, empty, overflow), fragile IO parsing.
+4.  **Missing Proof Obligations:** Claiming an algorithm works without checking monotonicity, uniqueness, or bounds.
 
 **Format:**
 *   `"<Context/Step> -> <Type: Dead End / Fatal Flaw / Potential Risk> -> <Explanation: Trigger + Invalid Action + Consequence>"`
@@ -604,6 +713,16 @@ QA_CTO_NEG_SYSTEM_PREFIX = """Please try to answer the following while repeating
 
 """
 
+CODE_CTO_POS_SYSTEM_PREFIX = """You are an expert competitive programmer augmented with verified intermediate results from prior attempts.
+Use the following propositions as anchors when they accelerate your implementation. Verify any premise before use.
+
+### Propositions (Verify before use):
+"""
+
+CODE_CTO_NEG_SYSTEM_PREFIX = """Please try to solve the following programming problem using these incorrect approaches or dead ends. You must follow at least one of them:
+
+"""
+
 # ---------------------------------------------------------------------------
 # Answer-Cluster CTO (AC-CTO)
 # ---------------------------------------------------------------------------
@@ -662,14 +781,16 @@ def resolve_task_type(
 ) -> str:
     if task_type:
         tt = task_type.strip().lower()
-        if tt not in {"math", "qa"}:
-            raise ValueError(f"Unsupported task_type={task_type!r}; expected 'math' or 'qa'.")
+        if tt not in {"math", "qa", "code"}:
+            raise ValueError(f"Unsupported task_type={task_type!r}; expected 'math', 'qa', or 'code'.")
         return tt
 
     if dataset:
         ds = dataset.strip()
         if ds in QA_DATASETS:
             return "qa"
+        if ds in CODE_DATASETS:
+            return "code"
         if ds in MATH_DATASETS:
             return "math"
 
@@ -677,6 +798,8 @@ def resolve_task_type(
         name = Path(input_path).name.lower()
         if "bambooqa" in name or "hotpotqa" in name:
             return "qa"
+        if any(tag in name for tag in ("codecontest", "code_contest", "mbpp", "humaneval", "livecodebench")):
+            return "code"
         if any(tag in name for tag in ("hmmt", "hle", "math", "gpqa", "aime")):
             return "math"
 
@@ -686,17 +809,21 @@ def resolve_task_type(
 def get_baseline_system_prompt(task_type: str, override: Optional[str] = None) -> str:
     if override:
         return override
-    return QA_BASELINE_SYSTEM_PROMPT if task_type == "qa" else MATH_BASELINE_SYSTEM_PROMPT
+    if task_type == "qa":
+        return QA_BASELINE_SYSTEM_PROMPT
+    if task_type == "code":
+        return CODE_BASELINE_SYSTEM_PROMPT
+    return MATH_BASELINE_SYSTEM_PROMPT
 
 
 def get_experience_guided_system_prompt(task_type: str, mode: str = "default") -> str:
     if mode == "ed_cto" and task_type == "math":
         return MATH_ED_CTO_EXPERIENCE_GUIDED_SYSTEM_PROMPT
-    return (
-        QA_EXPERIENCE_GUIDED_SYSTEM_PROMPT
-        if task_type == "qa"
-        else MATH_EXPERIENCE_GUIDED_SYSTEM_PROMPT
-    )
+    if task_type == "qa":
+        return QA_EXPERIENCE_GUIDED_SYSTEM_PROMPT
+    if task_type == "code":
+        return CODE_EXPERIENCE_GUIDED_SYSTEM_PROMPT
+    return MATH_EXPERIENCE_GUIDED_SYSTEM_PROMPT
 
 
 def get_ed_cto_decompose_prompt(task_type: str = "math") -> str:
@@ -732,7 +859,15 @@ def get_distillation_prompt(task_type: str, mode: str = "llm_judge") -> str:
         "cf_min_edit": QA_CF_MIN_EDIT_DISTILLATION_SYSTEM_PROMPT,
         "pairwise_margin": QA_PAIRWISE_MARGIN_DISTILLATION_SYSTEM_PROMPT,
     }
-    prompts = qa_map if task_type == "qa" else math_map
+    code_map = {
+        "llm_judge": CODE_DISTILLATION_SYSTEM_PROMPT,
+    }
+    if task_type == "qa":
+        prompts = qa_map
+    elif task_type == "code":
+        prompts = code_map
+    else:
+        prompts = math_map
     if mode not in prompts:
         mode = "llm_judge"
     return prompts[mode]
@@ -763,6 +898,12 @@ def get_cto_prefixes(task_type: str) -> tuple[str, str, str]:
             QA_CTO_NEG_SYSTEM_PREFIX,
             QA_BASELINE_SYSTEM_PROMPT,
         )
+    if task_type == "code":
+        return (
+            CODE_CTO_POS_SYSTEM_PREFIX,
+            CODE_CTO_NEG_SYSTEM_PREFIX,
+            CODE_BASELINE_SYSTEM_PROMPT,
+        )
     return (
         MATH_CTO_POS_SYSTEM_PREFIX,
         MATH_CTO_NEG_SYSTEM_PREFIX,
@@ -781,6 +922,6 @@ def add_task_args(parser: argparse.ArgumentParser) -> None:
         "--task-type",
         type=str,
         default=None,
-        choices=["math", "qa"],
+        choices=["math", "qa", "code"],
         help="Explicit task type; overrides --dataset inference when set.",
     )

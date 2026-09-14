@@ -1,5 +1,5 @@
 #!/bin/bash
-# BambooQA × Phi-4-Reasoning × RG-CTO: 3 runs on GPU0, shared iter0, iter1-2 only.
+# BambooQA × Phi-4-Reasoning × RG-CTO: 3 runs on GPU2, shared iter0, iter1-2 only.
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -10,23 +10,25 @@ source "${SCRIPT_DIR}/common/nohup_helpers.sh"
 source /data/ppnm/miniconda3/etc/profile.d/conda.sh
 conda activate cto
 
-export CUDA_VISIBLE_DEVICES=0
+export CUDA_VISIBLE_DEVICES=2
 export TENSOR_PARALLEL_SIZE=1
 export DATASET=BambooQA
 export PYTORCH_CUDA_ALLOC_CONF="${PYTORCH_CUDA_ALLOC_CONF:-expandable_segments:True}"
 export RGCTO_GPU_MEMORY_UTILIZATION="${RGCTO_GPU_MEMORY_UTILIZATION:-0.75}"
 export DISTILL_GPU_MEMORY_UTILIZATION="${DISTILL_GPU_MEMORY_UTILIZATION:-0.78}"
 mkdir -p /data/ppnm/tmp
-export TMPDIR="/data/ppnm/tmp/rg_cto_phi4_gpu0_$$"
+export TMPDIR="/data/ppnm/tmp/rg_cto_phi4_gpu2_$$"
 
-RUNS_ROOT="${PROJECT_ROOT}/results/runs/BambooQA_Phi_4_Reasoning_RG_CTO"
+RUNS_ROOT="${PROJECT_ROOT}/results/runs/BambooQA_Phi_4_Reasoning_RG_CTO_gpu2"
 STEP1_RESULTS_SRC="${STEP1_RESULTS_SRC:-${PROJECT_ROOT}/results/iter0/BambooQA/Phi_4_Reasoning/results}"
 export QUESTION_FILE="${PROJECT_ROOT}/data/BambooQA.jsonl"
 END_INDEX=125
 LOG_DIR="${PROJECT_ROOT}/logs"
 mkdir -p "$RUNS_ROOT" "$LOG_DIR"
 
-echo "========== BambooQA Phi-4 RG-CTO 3× | GPU0 | shared iter0 =========="
+export DISTILL_GPU_MEMORY_UTILIZATION="${DISTILL_GPU_MEMORY_UTILIZATION:-0.78}"
+
+echo "========== BambooQA Phi-4 RG-CTO 3× | GPU2 | shared iter0 =========="
 echo "RUNS_ROOT=${RUNS_ROOT}"
 echo "STEP1_RESULTS_SRC=${STEP1_RESULTS_SRC}"
 echo "Started at $(date '+%F %T')"
@@ -46,4 +48,4 @@ done
 python "${SCRIPT_DIR}/patch_rg_cto_phi4_table.py" || true
 
 echo ""
-echo "========== BambooQA Phi-4 RG-CTO done at $(date '+%F %T') =========="
+echo "========== BambooQA Phi-4 RG-CTO (GPU2) done at $(date '+%F %T') =========="

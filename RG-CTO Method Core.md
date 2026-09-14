@@ -297,9 +297,9 @@ Protocol 统一：
 
 | Model | Method | HMMT24 iter0 | HMMT24 iter1 | HMMT24 iter2 | HMMT25 iter0 | HMMT25 iter1 | HMMT25 iter2 | HLE iter0 | HLE iter1 | HLE iter2 |
 |-------|--------|-------------|-------------|-------------|-------------|-------------|-------------|----------|----------|----------|
-| Qwen3-30B-A3B-Thinking-2507 | RSE | 55.8 | 68.8±2.7 | 70.6±3.4 | 66.2 | 66.7 | **80.0** | 23.4 | 38.8±1.4 | 40.8±2.0 |
+| Qwen3-30B-A3B-Thinking-2507 | RSE | 55.8 | 68.8±2.7 | 70.6±3.4 | 64.9±0.0 | 78.5±2.3 | 80.3±3.0 | 23.4 | 38.8±1.4 | 40.8±2.0 |
 | Qwen3-30B-A3B-Thinking-2507 | CTO | 55.8 | **73.6±1.7** | **72.8±1.9** | 66.2 | **79.1** | **80.0** | 23.4 | 36.9±1.0 | 37.1±0.5 |
-| Qwen3-30B-A3B-Thinking-2507 | RG-CTO | 55.8 | — | — | 66.2 | — | — | 23.4 | — | — |
+| Qwen3-30B-A3B-Thinking-2507 | RG-CTO | 55.4 | 71.0 | 71.2 | 66.2 | 80.8 | 79.7 | — | — | — |
 | Qwen3-4B-Thinking-2507 | RSE | 43.2 | 58.4±4.6 | 59.1±3.6 | 54.3 | **68.6** | **72.2** | 13.6 | **18.5±2.5** | **20.0±4.2** |
 | Qwen3-4B-Thinking-2507 | CTO | 43.2 | 60.0±3.1 | **62.2±3.2** | 54.3 | 66.5 | 68.4 | 13.6 | 17.7±2.5 | 17.8±2.2 |
 | Qwen3-4B-Thinking-2507 | RG-CTO | 43.2 | — | — | 54.3 | — | — | 13.6 | — | — |
@@ -310,7 +310,7 @@ Protocol 统一：
 | Phi-4-Reasoning | CTO | 28.0 | 12.3±1.2 | 12.8±0.5 | — | — | — | 5.9 | 6.9±1.7 | 6.9±1.2 |
 | Phi-4-Reasoning | RG-CTO | 28.0 | — | — | — | — | — | 5.9 | — | — |
 
-> 注：iter0 为所有方法共享的 baseline rollout。HMMT24 / HLE 的 iter1/iter2 为 3-seed 均值 ± 标准差（RSE 来自 `RSE/runs/reproduce/`，CTO 来自 3-run vllm）。HMMT25 Thinking 的 CTO 为 CTO-base（`nocross_llm_judge`）单 run；RSE 为同协议对照实验（30B/4B 来自 CTO 论文主表，Instruct 来自附录）。Phi-4 HMMT25 仅有 RSE iter0（21.7%）。RG-CTO 待跑。
+> 注：iter0 为所有方法共享的 baseline rollout。HMMT24 / HLE 的 iter1/iter2 为 3-seed 均值 ± 标准差（RSE 来自 `RSE/runs/reproduce/`，CTO 来自 3-run vllm）。HMMT25 Thinking 的 CTO 为 CTO-base（`nocross_llm_judge`）单 run；RSE 为同协议对照实验（30B/4B 来自 CTO 论文主表，Instruct 来自附录）。Phi-4 HMMT25 仅有 RSE iter0（21.7%）。RG-CTO 30B 三数据集 1-run 已完成（`results/runs/*_RG_CTO/`）。
 
 ## Iter0 基线结果（已复制到 `results/iter0/`）
 
