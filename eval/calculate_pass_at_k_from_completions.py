@@ -15,8 +15,8 @@ os.environ["TOKENIZERS_PARALLELISM"] = "false"
 import json
 import argparse
 import multiprocessing
-import re
 import signal  # New: Used for handling timeout signals
+import sys
 import time
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
@@ -26,6 +26,11 @@ from scipy.special import comb
 
 from sal.utils.math import extract_answer
 from evaluation.grader import math_equal
+
+_CODE_ROOT = Path(__file__).resolve().parent.parent / "code"
+if str(_CODE_ROOT) not in sys.path:
+    sys.path.insert(0, str(_CODE_ROOT))
+from travelplanner_eval import evaluate_text as evaluate_travelplanner_text
 
 try:
     from transformers import AutoTokenizer
@@ -87,6 +92,10 @@ def calculate_pass_at_k(n: int, c: int, k: int) -> float:
         except:
             return 0.0
 
+def _is_agent_record(data: Dict) -> bool:
+    return data.get("question_type") == "agent" or data.get("checker") == "travelplanner"
+
+
 def check_answer(text: str, ground_truth: str, data_name: str = "math") -> bool:
     # Add internal timeout protection to prevent extract_answer regex from hanging
     try:
@@ -99,6 +108,21 @@ def check_answer(text: str, ground_truth: str, data_name: str = "math") -> bool:
         
     is_correct = math_equal(str(pred_ans), str(ground_truth), timeout=True)
     return is_correct
+
+
+def check_agent_answer(text: str, record: Dict) -> Dict:
+    try:
+        scored = evaluate_travelplanner_text(record, text)
+    except Exception:
+        scored = {
+            "delivered": False,
+            "final_pass": False,
+            "commonsense_passed": 0,
+            "commonsense_total": 8,
+            "hard_passed": 0,
+            "hard_applicable": 0,
+        }
+    return scored
 
 def process_file(file_path: Path) -> Optional[Tuple[int, Dict]]:
     """
@@ -129,7 +153,8 @@ def process_file(file_path: Path) -> Optional[Tuple[int, Dict]]:
                 return None
 
         ground_truth = data.get('answer')
-        if not ground_truth:
+        is_agent = _is_agent_record(data)
+        if not is_agent and not ground_truth:
             return None
 
         raw_completions = data.get('completions', [])
@@ -164,12 +189,29 @@ def process_file(file_path: Path) -> Optional[Tuple[int, Dict]]:
             is_text_null = raw_text is None or str(raw_text).strip() == ""
             text = str(raw_text) if raw_text is not None else ""
             
-            is_correct = check_answer(text, ground_truth) if text != "wa" else False
-            
-            verification_details.append({
+            if text == "wa":
+                is_correct = False
+                agent_score = None
+            elif is_agent:
+                agent_score = check_agent_answer(text, data)
+                is_correct = bool(agent_score.get("final_pass"))
+            else:
+                is_correct = check_answer(text, ground_truth)
+                agent_score = None
+
+            detail = {
                 'is_correct': is_correct,
                 'is_text_null': is_text_null
-            })
+            }
+            if agent_score is not None:
+                detail.update({
+                    'delivered': bool(agent_score.get('delivered')),
+                    'commonsense_passed': int(agent_score.get('commonsense_passed') or 0),
+                    'commonsense_total': int(agent_score.get('commonsense_total') or 0),
+                    'hard_passed': int(agent_score.get('hard_passed') or 0),
+                    'hard_applicable': int(agent_score.get('hard_applicable') or 0),
+                })
+            verification_details.append(detail)
             
         return (int(index), {'verification_details': verification_details})
     
@@ -240,6 +282,8 @@ def calculate_metrics(results: Dict[int, Dict], k_values: List[int]) -> Dict:
     pass_at_k_sums = {k: 0.0 for k in k_values}
     
     total_null_text = 0
+    constraint_pass = {'commonsense': 0, 'hard': 0, 'delivered': 0}
+    constraint_total = {'commonsense': 0, 'hard': 0, 'rollouts': 0}
     
     for index, data in results.items():
         details = data.get('verification_details', [])
@@ -248,6 +292,15 @@ def calculate_metrics(results: Dict[int, Dict], k_values: List[int]) -> Dict:
         null_text_count = sum(1 for d in details if d.get('is_text_null'))
         
         total_null_text += null_text_count
+        for detail in details:
+            if 'commonsense_total' not in detail:
+                continue
+            constraint_total['rollouts'] += 1
+            constraint_total['commonsense'] += int(detail.get('commonsense_total') or 0)
+            constraint_total['hard'] += int(detail.get('hard_applicable') or 0)
+            constraint_pass['commonsense'] += int(detail.get('commonsense_passed') or 0)
+            constraint_pass['hard'] += int(detail.get('hard_passed') or 0)
+            constraint_pass['delivered'] += int(bool(detail.get('delivered')))
         
         accuracy = correct / total if total > 0 else 0.0
         
@@ -276,6 +329,21 @@ def calculate_metrics(results: Dict[int, Dict], k_values: List[int]) -> Dict:
         'pass_at_k': {f'pass@{k}': (pass_at_k_sums[k] / num_problems if num_problems > 0 else 0.0) for k in k_values},
         'problem_stats': sorted(problem_stats, key=lambda x: x['index'])
     }
+    if constraint_total['rollouts']:
+        metrics['travelplanner'] = {
+            'delivery_rate': constraint_pass['delivered'] / constraint_total['rollouts'],
+            'commonsense_micro': (
+                constraint_pass['commonsense'] / constraint_total['commonsense']
+                if constraint_total['commonsense'] else 0.0
+            ),
+            'hard_micro': (
+                constraint_pass['hard'] / constraint_total['hard']
+                if constraint_total['hard'] else 0.0
+            ),
+            'final_pass_rate': (
+                sum(stat['correct'] for stat in problem_stats) / constraint_total['rollouts']
+            ),
+        }
     return metrics
 
 def print_results(metrics: Dict):
@@ -288,6 +356,15 @@ def print_results(metrics: Dict):
     print("="*60)
     print(f"Total Problems: {metrics['total_problems']}")
     print(f"Total Null Text: {metrics['total_null_text']}")
+    travel = metrics.get('travelplanner')
+    if travel:
+        print(
+            "TravelPlanner: "
+            f"delivery={travel['delivery_rate']:.2%}  "
+            f"commonsense micro={travel['commonsense_micro']:.2%}  "
+            f"hard micro={travel['hard_micro']:.2%}  "
+            f"final pass={travel['final_pass_rate']:.2%}"
+        )
     
     print("-" * 60)
     print("Overall Pass@k:")

@@ -459,7 +459,15 @@ def append_cfexp_pair_supplements(
         })
 
 
-def is_success_attempt(attempt_text: str, ground_truth: str) -> bool:
+def is_success_attempt(attempt_text: str, ground_truth: str, question_item: Optional[Dict[str, Any]] = None) -> bool:
+    if _TASK_TYPE == "agent":
+        if not question_item:
+            return False
+        try:
+            from travelplanner_eval import plan_is_correct
+            return plan_is_correct(attempt_text, question_item)
+        except Exception:
+            return False
     try:
         pred = extract_answer(attempt_text, "math")
     except Exception:
@@ -731,7 +739,7 @@ def main():
             succ_idxs: List[int] = []
             fail_idxs: List[int] = []
             for c_idx, attempt_text in attempt_texts:
-                if ground_truth != "" and is_success_attempt(attempt_text, ground_truth):
+                if ground_truth != "" and is_success_attempt(attempt_text, ground_truth, q_item):
                     succ_idxs.append(c_idx)
                 else:
                     fail_idxs.append(c_idx)
@@ -791,7 +799,7 @@ def main():
 
                 attempt_texts.append((c_idx, attempt_text))
 
-                if ground_truth != "" and is_success_attempt(attempt_text, ground_truth):
+                if ground_truth != "" and is_success_attempt(attempt_text, ground_truth, q_item):
                     succ_idxs.append(c_idx)
                 else:
                     fail_idxs.append(c_idx)

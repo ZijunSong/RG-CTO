@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Task-specific prompts for RSE/CTO pipelines (math vs QA)."""
+"""Task-specific prompts for RSE/CTO pipelines (math, QA, code, and agent planning)."""
 from __future__ import annotations
 
 import argparse
@@ -9,6 +9,7 @@ from typing import Optional
 QA_DATASETS = frozenset({"BambooQA", "HotpotQA"})
 MATH_DATASETS = frozenset({"HMMT24", "HMMT25", "HLE_math_text", "GPQA", "MATH", "AIME"})
 CODE_DATASETS = frozenset({"CodeContests", "CodeContests_Test_165", "MBPP", "HumanEval", "LiveCodeBench"})
+AGENT_DATASETS = frozenset({"TravelPlanner", "TravelPlanner_Val60"})
 
 # ---------------------------------------------------------------------------
 # Baseline (step1)
@@ -30,6 +31,21 @@ CODE_BASELINE_SYSTEM_PROMPT = (
     "Reason about the algorithm first, then output a complete program inside a "
     "```python fenced code block."
 )
+
+AGENT_BASELINE_SYSTEM_PROMPT = """You are a proficient travel planner. Using only the given information, write a day-by-day plan that satisfies the query, the budget, and ordinary travel constraints.
+
+Rules:
+- Every flight number, restaurant, attraction, accommodation, and driving route must come from the given information. Do not invent names.
+- Use "-" when a field is unnecessary. The last day has no accommodation. A day that stays in one city uses "-" for transportation. A day that changes city may use "-" for meals and attractions.
+- When a day moves between cities, set current_city to "from Origin to Destination".
+- Transportation for a flight must look like "Flight Number: F0123456, from Origin to Destination, Departure Time: 00:00, Arrival Time: 00:00".
+- Self-driving and taxi must name both cities, for example "Self-driving, from Origin to Destination".
+- Meals and accommodation use "Name, City". List attractions as "Name, City;Name, City;" and end that field with a semicolon.
+- Do not repeat a restaurant or an attraction. Keep the same transportation mode for the whole trip. Stay at least the accommodation's minimum nights. Respect house rules, room type, cuisine, and transportation restrictions in the query.
+
+Output ONLY a JSON array, one object per day, in order:
+[{"current_city":"...","transportation":"...","breakfast":"...","lunch":"...","dinner":"...","attraction":"...","accommodation":"..."}]
+"""
 
 # ---------------------------------------------------------------------------
 # Experience-guided search (step3/5/7)
@@ -129,6 +145,38 @@ Your goal is to write a correct Python 3 program that reads from stdin and write
 
 **Instruction:**
 Reason about the algorithm first. Consult the Experience Bank critically: avoid pitfalls and use propositions only if they accelerate a correct implementation. Output a complete Python 3 program inside a ```python fenced code block.
+"""
+
+AGENT_EXPERIENCE_GUIDED_SYSTEM_PROMPT = """You are a proficient travel planner augmented with an **Experience Bank**.
+You are currently in a **Test-Time Scaling** loop. Previous attempts on this specific trip have been analyzed to extract useful "Propositions" (checked facts about routes, prices, and constraints) and "Critical Pitfalls" (Past Errors).
+
+Your goal is to write a plan that uses only the given information and satisfies the query. Use previous memories strictly as a **navigational aid**, not as ground truth.
+
+
+**Operational Guidelines:**
+
+1.  **Accelerate via Verified Propositions (The Anchor):**
+    - **Rule:** Treat Propositions as *structural hypotheses*, not proven facts.
+    - **Priority:** Prioritize propositions about which cities connect, which flights or driving routes exist, budget arithmetic, minimum nights, cuisine, room type, and house rules.
+    - **Skepticism:** Be extremely skeptical of copied day plans, prices, or names that you cannot find in the given information. NEVER reuse a name unless it appears in the provided tables.
+    - **Action:** If a proposition offers a shortcut, verify it against the given information. If it contradicts the tables or the query, **discard it immediately**.
+
+2.  **Navigate via Critical Pitfalls:**
+    - The provided "Critical Pitfalls" describe invalid routes, repeated restaurants, budget overruns, missing fields, or constraint violations from previous failures.
+    - **You are STRICTLY FORBIDDEN** from repeating the Critical Pitfalls.
+    - If you approach a decision point mentioned in a pitfall, you MUST actively choose an alternative.
+
+3.  **Conflict Resolution & Robustness:**
+    - **Scenario:** Two propositions recommend different cities, hotels, or transportation modes.
+    - **Constraint:** Do NOT pick the cheaper or more familiar option without checking the query.
+    - **Action:** Re-read the query and the given tables, then rebuild the route from the origin city.
+
+
+**Context from Previous Attempts:**
+{experience_context}
+
+**Instruction:**
+Plan from the given information. Consult the Experience Bank critically: avoid pitfalls and use propositions only when they match the tables. Output ONLY a JSON array of days with keys current_city, transportation, breakfast, lunch, dinner, attraction, and accommodation.
 """
 
 # ---------------------------------------------------------------------------
@@ -341,6 +389,163 @@ You have **NO access** to the golden tests or a reference solution. You must **N
 
 **Student's Attempt:**
 {{attempt}}
+"""
+
+AGENT_DISTILLATION_SYSTEM_PROMPT = """"You are a Strategic Planning Distiller. Your goal is to construct an "Experience Bank" for the student's next travel-planning iteration by extracting two specific lists:
+1.  **Verified Propositions:** Sound intermediate facts about cities, routes, prices, openings, and constraints that follow from the given information.
+2.  **Critical Pitfalls:** Invalid routes, invented names, budget mistakes, repeated venues, and dead-end schedules to avoid.
+The student will explicitly reference this data:
+- Utilizing **Verified Propositions** as established anchors to accelerate a valid plan
+- Consulting **Critical Pitfalls** to avoid repeating previously identified errors
+
+**Constraint: strict_neutrality**
+You have **NO access** to a golden plan. You must **NOT** assume the student's plan is correct or incorrect. Judge each step only by whether it is supported by the given information and the query.
+
+## Task 1: verified_propositions (List[str])
+
+**Goal:** Extract *only* sound, reusable facts.
+
+**Strict Inclusion Rules:**
+1.  **Independent Verification:** The statement must follow from the given tables or from earlier valid steps.
+2.  **Explicit Conditions:** Keep dates, cities, party size, and budget attached to the fact.
+3.  **Atomicity:** One route, price, or constraint per item.
+4.  **No Lucky Guesses:** Do not copy an entire day plan unless every name is justified.
+5.  **Self-Contained:** Name the cities and venues; do not use "it" or "the hotel".
+
+**Content to Extract:**
+*   Which flights, drives, or taxis exist between two cities, and their prices.
+*   Restaurant cost, cuisine, accommodation price, room type, house rules, and minimum nights.
+*   Constraint consequences, such as a mode being forbidden or a hotel needing multiple rooms.
+
+**Format:**
+*   `"<Complete Statement with Conditions>. (Source: <Given information or derivation>)"`
+
+## Task 2: critical_pitfalls (List[str])
+
+**Goal:** Identify negative constraints that warn against repeating an unsafe plan.
+
+**Focus on:**
+1.  **Dead Ends:** Routes or hotels that cannot meet the dates, city count, or transportation rule.
+2.  **Fatal Flaws:** Names absent from the tables, repeated restaurants, budget overruns, broken city loops.
+3.  **Potential Risks:** Ignoring minimum nights, occupancy, or a required cuisine.
+4.  **Missing Obligations:** Claiming a plan fits the budget without adding flights, meals, and rooms.
+
+**Format:**
+*   `"<Context/Step> -> <Type: Dead End / Fatal Flaw / Potential Risk> -> <Explanation: Trigger + Invalid Action + Consequence>"`
+
+## Output Requirements
+
+*   **Output ONLY a raw JSON object.**
+*   No Markdown formatting, no explanations, no chat.
+
+**JSON Structure:**
+
+{
+    "verified_propositions": [
+        "<Complete Statement with Conditions>. (Source: <Given information or derivation>)",
+        "..."
+    ],
+    "critical_pitfalls": [
+        "<Context/Step> -> <Type: Dead End / Fatal Flaw / Potential Risk> -> <Explanation: Trigger + Invalid Action + Consequence>",
+        "..."
+    ]
+}
+
+## Input Data
+
+**Question:**
+{{question}}
+
+**Student's Attempt:**
+{{attempt}}
+"""
+
+AGENT_CF_DISTILLATION_SYSTEM_PROMPT = """"You are a Counterfactual Experience Distiller for travel planning.
+
+Your goal is to construct an Experience Bank using success-failure trajectory pairs.
+
+Core idea (do NOT summarize the entire trajectory):
+1) You are given a SUCCESS attempt and a FAILURE attempt for the same query.
+2) Both attempts share a long prefix, but diverge at a specific decision region.
+3) Use the provided shared prefix and divergence fragments to locate the divergence region.
+4) Attribute key decisions near the divergence:
+   - Extract verified_propositions ONLY from the SUCCESS side.
+   - Extract critical_pitfalls ONLY from the FAILURE side.
+
+Strict Output Rules:
+Return ONLY a raw JSON object. No Markdown.
+{
+  "verified_propositions": [ ... ],
+  "critical_pitfalls": [ ... ]
+}
+
+verified_propositions must be supported by the given information and state their conditions.
+critical_pitfalls use the form "<Context/Decision> -> <Type: Dead End / Fatal Flaw / Potential Risk> -> <Explanation>".
+
+## Input Data
+**Question:**
+{{question}}
+
+**Shared Prefix:**
+{{shared_prefix}}
+
+**Success Divergence Fragment:**
+{{success_divergence_fragment}}
+
+**Failure Divergence Fragment:**
+{{failure_divergence_fragment}}
+"""
+
+AGENT_CF_MIN_EDIT_DISTILLATION_SYSTEM_PROMPT = """"You are a Minimal-Counterfactual Experience Distiller for travel planning.
+
+You are given two continuations after the **same** shared prefix: one leads to a plan that satisfies the constraints (SUCCESS), the other does not (FAILURE). Look only at the first differing decision.
+
+Return ONLY a raw JSON object. No Markdown.
+{
+  "verified_propositions": [ ... ],
+  "critical_pitfalls": [ ... ]
+}
+
+Extract verified_propositions from the SUCCESS head and critical_pitfalls from the FAILURE head. Keep each item self-contained.
+
+## Input Data
+**Question:**
+{{question}}
+
+**Shared Prefix:**
+{{shared_prefix}}
+
+**Success minimal head:**
+{{success_minimal_head}}
+
+**Failure minimal head:**
+{{failure_minimal_head}}
+"""
+
+AGENT_PAIRWISE_MARGIN_DISTILLATION_SYSTEM_PROMPT = """"You are a Pairwise-Ranking Experience Distiller for travel planning.
+
+You are given two continuations after the **same** shared prefix. The SUCCESS continuation is the one that satisfies the trip constraints. Rank the fork and extract experience from that contrast only.
+
+Return ONLY a raw JSON object. No Markdown.
+{
+  "verified_propositions": [ ... ],
+  "critical_pitfalls": [ ... ]
+}
+
+verified_propositions come from the SUCCESS head. critical_pitfalls come from the FAILURE head.
+
+## Input Data
+**Question:**
+{{question}}
+
+**Shared Prefix:**
+{{shared_prefix}}
+
+**Success minimal head:**
+{{success_minimal_head}}
+
+**Failure minimal head:**
+{{failure_minimal_head}}
 """
 
 MATH_CF_DISTILLATION_SYSTEM_PROMPT = """"You are a Counterfactual Experience Distiller.
@@ -723,6 +928,16 @@ CODE_CTO_NEG_SYSTEM_PREFIX = """Please try to solve the following programming pr
 
 """
 
+AGENT_CTO_POS_SYSTEM_PREFIX = """You are a proficient travel planner augmented with verified intermediate results from prior attempts.
+Use the following propositions as anchors when they match the given information. Verify any premise before use.
+
+### Propositions (Verify before use):
+"""
+
+AGENT_CTO_NEG_SYSTEM_PREFIX = """Please try to plan the following trip using these incorrect routes or dead ends. You must follow at least one of them:
+
+"""
+
 # ---------------------------------------------------------------------------
 # Answer-Cluster CTO (AC-CTO)
 # ---------------------------------------------------------------------------
@@ -781,8 +996,8 @@ def resolve_task_type(
 ) -> str:
     if task_type:
         tt = task_type.strip().lower()
-        if tt not in {"math", "qa", "code"}:
-            raise ValueError(f"Unsupported task_type={task_type!r}; expected 'math', 'qa', or 'code'.")
+        if tt not in {"math", "qa", "code", "agent"}:
+            raise ValueError(f"Unsupported task_type={task_type!r}; expected 'math', 'qa', 'code', or 'agent'.")
         return tt
 
     if dataset:
@@ -791,6 +1006,8 @@ def resolve_task_type(
             return "qa"
         if ds in CODE_DATASETS:
             return "code"
+        if ds in AGENT_DATASETS:
+            return "agent"
         if ds in MATH_DATASETS:
             return "math"
 
@@ -800,6 +1017,8 @@ def resolve_task_type(
             return "qa"
         if any(tag in name for tag in ("codecontest", "code_contest", "mbpp", "humaneval", "livecodebench")):
             return "code"
+        if "travelplanner" in name:
+            return "agent"
         if any(tag in name for tag in ("hmmt", "hle", "math", "gpqa", "aime")):
             return "math"
 
@@ -813,6 +1032,8 @@ def get_baseline_system_prompt(task_type: str, override: Optional[str] = None) -
         return QA_BASELINE_SYSTEM_PROMPT
     if task_type == "code":
         return CODE_BASELINE_SYSTEM_PROMPT
+    if task_type == "agent":
+        return AGENT_BASELINE_SYSTEM_PROMPT
     return MATH_BASELINE_SYSTEM_PROMPT
 
 
@@ -823,6 +1044,8 @@ def get_experience_guided_system_prompt(task_type: str, mode: str = "default") -
         return QA_EXPERIENCE_GUIDED_SYSTEM_PROMPT
     if task_type == "code":
         return CODE_EXPERIENCE_GUIDED_SYSTEM_PROMPT
+    if task_type == "agent":
+        return AGENT_EXPERIENCE_GUIDED_SYSTEM_PROMPT
     return MATH_EXPERIENCE_GUIDED_SYSTEM_PROMPT
 
 
@@ -862,10 +1085,18 @@ def get_distillation_prompt(task_type: str, mode: str = "llm_judge") -> str:
     code_map = {
         "llm_judge": CODE_DISTILLATION_SYSTEM_PROMPT,
     }
+    agent_map = {
+        "llm_judge": AGENT_DISTILLATION_SYSTEM_PROMPT,
+        "cf_exp": AGENT_CF_DISTILLATION_SYSTEM_PROMPT,
+        "cf_min_edit": AGENT_CF_MIN_EDIT_DISTILLATION_SYSTEM_PROMPT,
+        "pairwise_margin": AGENT_PAIRWISE_MARGIN_DISTILLATION_SYSTEM_PROMPT,
+    }
     if task_type == "qa":
         prompts = qa_map
     elif task_type == "code":
         prompts = code_map
+    elif task_type == "agent":
+        prompts = agent_map
     else:
         prompts = math_map
     if mode not in prompts:
@@ -904,6 +1135,12 @@ def get_cto_prefixes(task_type: str) -> tuple[str, str, str]:
             CODE_CTO_NEG_SYSTEM_PREFIX,
             CODE_BASELINE_SYSTEM_PROMPT,
         )
+    if task_type == "agent":
+        return (
+            AGENT_CTO_POS_SYSTEM_PREFIX,
+            AGENT_CTO_NEG_SYSTEM_PREFIX,
+            AGENT_BASELINE_SYSTEM_PROMPT,
+        )
     return (
         MATH_CTO_POS_SYSTEM_PREFIX,
         MATH_CTO_NEG_SYSTEM_PREFIX,
@@ -922,6 +1159,6 @@ def add_task_args(parser: argparse.ArgumentParser) -> None:
         "--task-type",
         type=str,
         default=None,
-        choices=["math", "qa", "code"],
+        choices=["math", "qa", "code", "agent"],
         help="Explicit task type; overrides --dataset inference when set.",
     )

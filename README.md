@@ -18,7 +18,7 @@ RG-CTO/
 │   ├── run_rse.sh                    # RSE pipeline
 │   ├── run_cto.sh                    # CTO pipeline
 │   └── run_rg_cto.sh                 # RG-CTO pipeline
-├── data/                             # HMMT24/25, HLE-Math-text, BambooQA
+├── data/                             # HMMT24/25, HLE-Math-text, BambooQA, CodeContests, TravelPlanner_Val60
 ├── eval/                             # pass@k evaluation
 └── results/iter0/                  # copied best iter0 rollouts per setting
 ```
@@ -78,6 +78,17 @@ cp -a results/iter0/HMMT24/Qwen3_4B_Thinking_2507/results "${OUT_PREFIX}_step1/r
 ```
 
 Summary metrics: `results/summaries/iter0_pass_at1.json`.
+
+## TravelPlanner (sole-planning)
+
+`data/TravelPlanner_Val60.jsonl` is a 60-query stratified slice of the official validation split (7 easy and medium queries per day length, 6 hard). The filename selects the `agent` task, so the existing RSE / CTO / RG-CTO scripts pick up the planner prompts. Each record keeps the reference tables, and pass@1 is the official final-pass rule: every commonsense constraint and every applicable hard constraint holds. The same script also reports delivery rate plus commonsense and hard micro rates.
+
+```bash
+python scripts/prepare_travelplanner_val60.py   # rebuild the jsonl from validation.csv
+export QUESTION_FILE=data/TravelPlanner_Val60.jsonl
+export OUT_PREFIX=runs/TravelPlanner_Val60_RG_CTO
+bash scripts/run_rg_cto.sh 0 60
+```
 
 ## Method
 
