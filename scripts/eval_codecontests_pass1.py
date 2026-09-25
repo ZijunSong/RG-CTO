@@ -7,8 +7,13 @@ import re
 import sys
 from pathlib import Path
 
-sys.path.insert(0, '/data/ppnm/EasyOPD-baseline')
-from verl.utils.reward_score.prime_code import compute_score
+_score_root = os.environ.get('CODE_SCORE_ROOT', '/data/ppnm/EasyOPD-baseline')
+if _score_root not in sys.path:
+    sys.path.insert(0, _score_root)
+try:
+    from verl.utils.reward_score.prime_code import compute_score
+except ImportError as exc:
+    raise SystemExit(f'code scorer unavailable ({exc}). Set CODE_SCORE_ROOT if needed.')
 
 
 def extract_code(text: str) -> str:
@@ -64,7 +69,11 @@ def eval_dir(results_dir: str, label: str) -> dict:
         per_sample.append(ok_count / n_comp if n_comp else 0.0)
 
     n = len(files)
-    missing = sorted(set(range(165)) - {int(Path(f).stem) for f in files})
+    expected = os.environ.get('CODE_EVAL_EXPECTED_N')
+    if expected:
+        missing = sorted(set(range(int(expected))) - {int(Path(f).stem) for f in files})
+    else:
+        missing = []
     summary = {
         'label': label,
         'dir': results_dir,

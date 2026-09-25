@@ -15,6 +15,7 @@ os.environ["TOKENIZERS_PARALLELISM"] = "false"
 import json
 import argparse
 import multiprocessing
+import re
 import signal  # New: Used for handling timeout signals
 import sys
 import time
@@ -94,6 +95,33 @@ def calculate_pass_at_k(n: int, c: int, k: int) -> float:
 
 def _is_agent_record(data: Dict) -> bool:
     return data.get("question_type") == "agent" or data.get("checker") == "travelplanner"
+
+
+def _eval_task() -> str:
+    return os.environ.get("RGCTO_EVAL_TASK", "").strip().lower()
+
+
+def _normalize_qa(text: str) -> str:
+    value = str(text or "").strip()
+    value = re.sub(r"^<\s*", "", value)
+    value = re.sub(r"\s*>$", "", value)
+    value = value.strip().strip(".").strip()
+    value = re.sub(r"\s+", " ", value)
+    return value.casefold()
+
+
+def check_qa_answer(text: str, ground_truth: str) -> bool:
+    body = text.split("</think>")[-1] if "</think>" in text else text
+    match = re.search(r"Final answer:\s*(.+)", body, flags=re.IGNORECASE)
+    if match is None:
+        match = re.search(r"Final answer:\s*(.+)", text, flags=re.IGNORECASE)
+    pred = match.group(1).split("\n", 1)[0].strip() if match else ""
+    if not pred:
+        try:
+            pred = extract_answer(text, "math") or ""
+        except Exception:
+            pred = ""
+    return _normalize_qa(pred) == _normalize_qa(ground_truth)
 
 
 def check_answer(text: str, ground_truth: str, data_name: str = "math") -> bool:
@@ -192,9 +220,12 @@ def process_file(file_path: Path) -> Optional[Tuple[int, Dict]]:
             if text == "wa":
                 is_correct = False
                 agent_score = None
-            elif is_agent:
+            elif is_agent or _eval_task() == "agent":
                 agent_score = check_agent_answer(text, data)
                 is_correct = bool(agent_score.get("final_pass"))
+            elif _eval_task() == "qa" or data.get("question_type") == "qa":
+                is_correct = check_qa_answer(text, str(ground_truth))
+                agent_score = None
             else:
                 is_correct = check_answer(text, ground_truth)
                 agent_score = None

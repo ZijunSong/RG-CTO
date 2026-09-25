@@ -33,6 +33,14 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 cd "$PROJECT_ROOT"
 
+if [ -z "${PYTHON:-}" ]; then
+  if command -v python >/dev/null 2>&1; then
+    PYTHON=python
+  else
+    PYTHON=python3
+  fi
+fi
+
 METHOD="${METHOD:-rg_cto}"
 NGPU="${NGPU:-8}"
 
@@ -92,6 +100,23 @@ case "$METHOD" in
 esac
 export MAX_PILOT_TOKENS="${MAX_PILOT_TOKENS:-$MAX_TOKENS}"
 
+TASK_TYPE="$(
+  "$PYTHON" - "${DATASET:-}" "$QUESTION_FILE" <<'PY'
+import sys
+sys.path.insert(0, "code")
+from task_prompts import resolve_task_type
+dataset = sys.argv[1] or None
+print(resolve_task_type(dataset=dataset, input_path=sys.argv[2]))
+PY
+)"
+case "$TASK_TYPE" in
+  math|qa|code|agent) ;;
+  *)
+    echo "Unsupported task type: ${TASK_TYPE}"
+    exit 1
+    ;;
+esac
+
 if [ -n "${CUDA_VISIBLE_DEVICES:-}" ]; then
   IFS=',' read -r -a ALL_GPUS <<< "${CUDA_VISIBLE_DEVICES// /}"
 else
@@ -142,6 +167,7 @@ echo "========== 8-GPU ${METHOD} =========="
 echo "MODEL_NAME=${MODEL_NAME}"
 echo "QUESTION_FILE=${QUESTION_FILE}"
 echo "OUT_PREFIX=${OUT_PREFIX}"
+echo "task_type=${TASK_TYPE}  dataset=${DATASET:-inferred}"
 echo "range=${START_INDEX}:${END_INDEX}  (${TOTAL} questions, ${NGPU} shards)"
 echo "GPUs=${WORKER_GPUS[*]}"
 for ((i = 0; i < NGPU; i++)); do
@@ -185,7 +211,7 @@ run_vllm_step() {
       TENSOR_PARALLEL_SIZE=1 \
       NCCL_P2P_DISABLE="$NCCL_P2P_DISABLE" \
       NCCL_NVLS_ENABLE="$NCCL_NVLS_ENABLE" \
-      python "$@" --tensor-parallel-size 1 --start-idx "$s" --end-idx "$e" \
+      "$PYTHON" "$@" --tensor-parallel-size 1 --start-idx "$s" --end-idx "$e" \
       >"$log" 2>&1 &
     pids+=("$!")
   done
@@ -228,7 +254,7 @@ run_dedup() {
     args+=(--previous-experience-dir "$prev_dedup")
   fi
   local log="${LOG_DIR}/dedup_step${round}.log"
-  CUDA_VISIBLE_DEVICES="${WORKER_GPUS[0]}" python "${args[@]}" >"$log" 2>&1
+  CUDA_VISIBLE_DEVICES="${WORKER_GPUS[0]}" "$PYTHON" "${args[@]}" >"$log" 2>&1
   local n
   n="$(count_indexed "${exp_dir}/results_dedup")"
   echo "  gathered ${n} / ${TOTAL} dedup files in ${exp_dir}/results_dedup"
@@ -241,13 +267,22 @@ run_dedup() {
 maybe_pass1() {
   local iter="$1"
   local dir="$2"
-  case "${DATASET:-}${QUESTION_FILE}" in
-    *CodeContest*|*MBPP*|*HumanEval*|*LiveCodeBench*)
-      echo "  iter${iter} code rollouts gathered; pass@1 is computed by the code evaluator"
+  if [ "$TASK_TYPE" = "code" ]; then
+    if ! "$PYTHON" scripts/eval_codecontests_pass1.py "$dir" "iter${iter}" \
+      >"${LOG_DIR}/pass1_iter${iter}.log" 2>&1; then
+      echo "  iter${iter} code pass@1 skipped (see ${LOG_DIR}/pass1_iter${iter}.log)"
       return 0
-      ;;
-  esac
-  if ! python eval/calculate_pass_at_k_from_completions.py \
+    fi
+    "$PYTHON" - "$dir" <<'PY'
+import json, sys
+path = sys.argv[1] + "/code_pass_at_1.json"
+with open(path, encoding="utf-8") as f:
+    metrics = json.load(f)
+print(f"  iter code pass@1 {metrics.get('pass_at_1_pct')}%  ({path})")
+PY
+    return 0
+  fi
+  if ! RGCTO_EVAL_TASK="$TASK_TYPE" "$PYTHON" eval/calculate_pass_at_k_from_completions.py \
     --verification_dir "$dir" \
     --k_values 1 \
     --output_file "${dir}/pass_at_1.json" \
@@ -256,7 +291,7 @@ maybe_pass1() {
     echo "  iter${iter} pass@1 skipped (see ${LOG_DIR}/pass1_iter${iter}.log)"
     return 0
   fi
-  python - "$dir" <<'PY'
+  "$PYTHON" - "$dir" <<'PY'
 import json, sys
 path = sys.argv[1] + "/pass_at_1.json"
 with open(path, encoding="utf-8") as f:
@@ -288,6 +323,7 @@ build_sampling_args() {
     --max-model-len "$SEARCH_MAX_MODEL_LEN"
     --gpu-memory-utilization "$SEARCH_GPU_MEMORY_UTILIZATION"
   )
+  SAMPLING_ARGS+=(--task-type "$TASK_TYPE")
   if [ -n "${DATASET:-}" ]; then
     SAMPLING_ARGS+=(--dataset "$DATASET")
   fi
@@ -313,6 +349,7 @@ build_distill_args() {
     --n-samples 1
     --experience_judge_mode "$EXPERIENCE_JUDGE_MODE"
   )
+  DISTILL_ARGS+=(--task-type "$TASK_TYPE")
   if [ -n "${DATASET:-}" ]; then
     DISTILL_ARGS+=(--dataset "$DATASET")
   fi
@@ -399,6 +436,7 @@ build_guided_args() {
       )
       ;;
   esac
+  GUIDED_ARGS+=(--task-type "$TASK_TYPE")
   if [ -n "${DATASET:-}" ]; then
     GUIDED_ARGS+=(--dataset "$DATASET")
   fi

@@ -109,6 +109,8 @@ export METHOD=rg_cto   # rg_cto | cto | rse
 bash scripts/run_8gpu.sh 0 60
 ```
 
+The same entry covers math, QA, code, and TravelPlanner. It resolves the task from `DATASET` or the question filename and passes that task type into sampling, distillation, and guided search. After each generation step it scores math and QA with pass@1, TravelPlanner with its constraint checker, and code by executing the saved tests.
+
 ## Method
 
 RG-CTO applies per-pitfall confidence gating before contrastive decoding:
