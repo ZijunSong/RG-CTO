@@ -23,19 +23,23 @@ export TOP_P="${TOP_P:-0.95}"
 export TOP_K="${TOP_K:-20}"
 export N_COMPLETIONS="${N_COMPLETIONS:-32}"
 export MAX_TOKENS="${MAX_TOKENS:-38912}"
+export DISTILL_MAX_TOKENS="${DISTILL_MAX_TOKENS:-8192}"
 export N_EXP_COMPLETIONS="${N_EXP_COMPLETIONS:-32}"
-export THRESHOLD="${THRESHOLD:-0.8}"
+export THRESHOLD="${THRESHOLD:-0.85}"
+export EXPERIENCE_JUDGE_MODE="${EXPERIENCE_JUDGE_MODE:-llm_judge}"
 export EMB_MODEL="${EMB_MODEL:-/data/ppnm/models/all-MiniLM-L6-v2}"
+export DISTILL_MAX_MODEL_LEN="${DISTILL_MAX_MODEL_LEN:-100000}"
+export DISTILL_GPU_MEMORY_UTILIZATION="${DISTILL_GPU_MEMORY_UTILIZATION:-0.90}"
+export DISTILL_MAX_NUM_SEQS="${DISTILL_MAX_NUM_SEQS:-128}"
+export SEARCH_MAX_MODEL_LEN="${SEARCH_MAX_MODEL_LEN:-100000}"
+export SEARCH_GPU_MEMORY_UTILIZATION="${SEARCH_GPU_MEMORY_UTILIZATION:-0.60}"
 export NCCL_P2P_DISABLE="${NCCL_P2P_DISABLE:-1}"
 export NCCL_NVLS_ENABLE="${NCCL_NVLS_ENABLE:-0}"
 
-vllm_extra_args() {
-  if [ -n "${MAX_MODEL_LEN:-}" ]; then
-    printf -- '--max-model-len %s' "$MAX_MODEL_LEN"
-  fi
-}
-
-VLLM_EXTRA="$(vllm_extra_args)"
+if [ -n "${MAX_MODEL_LEN:-}" ]; then
+  DISTILL_MAX_MODEL_LEN="$MAX_MODEL_LEN"
+  SEARCH_MAX_MODEL_LEN="$MAX_MODEL_LEN"
+fi
 
 echo "========== RSE Pipeline =========="
 echo "  MODEL_NAME=${MODEL_NAME}"
@@ -86,9 +90,10 @@ python code/standard_sampling.py \
   --top-p "$TOP_P" \
   --top-k "$TOP_K" \
   --max-tokens "$MAX_TOKENS" \
+  --max-model-len "$SEARCH_MAX_MODEL_LEN" \
+  --gpu-memory-utilization "$SEARCH_GPU_MEMORY_UTILIZATION" \
   --start-idx "$START_INDEX" \
-  --end-idx "$END_INDEX" \
-  $VLLM_EXTRA
+  --end-idx "$END_INDEX"
 
 # ---------- Step 2 ----------
 echo "---------- Step 2: Experience Distillation ----------"
@@ -104,11 +109,14 @@ python code/experience_distillation.py \
   --temperature "$TEMPERATURE" \
   --top-p "$TOP_P" \
   --top-k "$TOP_K" \
-  --max-tokens "$MAX_TOKENS" \
+  --max-model-len "$DISTILL_MAX_MODEL_LEN" \
+  --gpu-memory-utilization "$DISTILL_GPU_MEMORY_UTILIZATION" \
+  --max-num-seqs "$DISTILL_MAX_NUM_SEQS" \
+  --max-tokens "$DISTILL_MAX_TOKENS" \
   --n-samples 1 \
+  --experience_judge_mode "$EXPERIENCE_JUDGE_MODE" \
   --start-idx "$START_INDEX" \
-  --end-idx "$END_INDEX" \
-  $VLLM_EXTRA
+  --end-idx "$END_INDEX"
 
 # ---------- Step 2.5 ----------
 echo "---------- Step 2.5: Experience Deduplication ----------"
@@ -131,16 +139,17 @@ python code/experience_guided_search.py \
   --experience-dir "${OUT_PREFIX}_step2/results_dedup" \
   --output "${OUT_PREFIX}_step3/results" \
   --n-experience-completions "$N_EXP_COMPLETIONS" \
-  --n-completions 32 \
+  --n-completions "$N_COMPLETIONS" \
   --tensor-parallel-size "$TENSOR_PARALLEL_SIZE" \
   --batch-size "$BATCH_SIZE" \
   --temperature "$TEMPERATURE" \
   --top-p "$TOP_P" \
   --top-k "$TOP_K" \
   --max-tokens "$MAX_TOKENS" \
+  --max-model-len "$SEARCH_MAX_MODEL_LEN" \
+  --gpu-memory-utilization "$SEARCH_GPU_MEMORY_UTILIZATION" \
   --start-idx "$START_INDEX" \
-  --end-idx "$END_INDEX" \
-  $VLLM_EXTRA
+  --end-idx "$END_INDEX"
 
 # ---------- Step 4 ----------
 echo "---------- Step 4: Experience Distillation ----------"
@@ -156,11 +165,14 @@ python code/experience_distillation.py \
   --temperature "$TEMPERATURE" \
   --top-p "$TOP_P" \
   --top-k "$TOP_K" \
-  --max-tokens "$MAX_TOKENS" \
+  --max-model-len "$DISTILL_MAX_MODEL_LEN" \
+  --gpu-memory-utilization "$DISTILL_GPU_MEMORY_UTILIZATION" \
+  --max-num-seqs "$DISTILL_MAX_NUM_SEQS" \
+  --max-tokens "$DISTILL_MAX_TOKENS" \
   --n-samples 1 \
+  --experience_judge_mode "$EXPERIENCE_JUDGE_MODE" \
   --start-idx "$START_INDEX" \
-  --end-idx "$END_INDEX" \
-  $VLLM_EXTRA
+  --end-idx "$END_INDEX"
 
 mkdir -p "${OUT_PREFIX}_step4/results_dedup" "${OUT_PREFIX}_step4/results_dedup_debug"
 python code/experience_dedup.py \
@@ -182,16 +194,17 @@ python code/experience_guided_search.py \
   --experience-dir "${OUT_PREFIX}_step4/results_dedup" \
   --output "${OUT_PREFIX}_step5/results" \
   --n-experience-completions "$N_EXP_COMPLETIONS" \
-  --n-completions 32 \
+  --n-completions "$N_COMPLETIONS" \
   --tensor-parallel-size "$TENSOR_PARALLEL_SIZE" \
   --batch-size "$BATCH_SIZE" \
   --temperature "$TEMPERATURE" \
   --top-p "$TOP_P" \
   --top-k "$TOP_K" \
   --max-tokens "$MAX_TOKENS" \
+  --max-model-len "$SEARCH_MAX_MODEL_LEN" \
+  --gpu-memory-utilization "$SEARCH_GPU_MEMORY_UTILIZATION" \
   --start-idx "$START_INDEX" \
-  --end-idx "$END_INDEX" \
-  $VLLM_EXTRA
+  --end-idx "$END_INDEX"
 
 # ---------- Step 6 ----------
 echo "---------- Step 6: Experience Distillation ----------"
@@ -207,11 +220,14 @@ python code/experience_distillation.py \
   --temperature "$TEMPERATURE" \
   --top-p "$TOP_P" \
   --top-k "$TOP_K" \
-  --max-tokens "$MAX_TOKENS" \
+  --max-model-len "$DISTILL_MAX_MODEL_LEN" \
+  --gpu-memory-utilization "$DISTILL_GPU_MEMORY_UTILIZATION" \
+  --max-num-seqs "$DISTILL_MAX_NUM_SEQS" \
+  --max-tokens "$DISTILL_MAX_TOKENS" \
   --n-samples 1 \
+  --experience_judge_mode "$EXPERIENCE_JUDGE_MODE" \
   --start-idx "$START_INDEX" \
-  --end-idx "$END_INDEX" \
-  $VLLM_EXTRA
+  --end-idx "$END_INDEX"
 
 mkdir -p "${OUT_PREFIX}_step6/results_dedup" "${OUT_PREFIX}_step6/results_dedup_debug"
 python code/experience_dedup.py \
@@ -233,16 +249,17 @@ python code/experience_guided_search.py \
   --experience-dir "${OUT_PREFIX}_step6/results_dedup" \
   --output "${OUT_PREFIX}_step7/results" \
   --n-experience-completions "$N_EXP_COMPLETIONS" \
-  --n-completions 32 \
+  --n-completions "$N_COMPLETIONS" \
   --tensor-parallel-size "$TENSOR_PARALLEL_SIZE" \
   --batch-size "$BATCH_SIZE" \
   --temperature "$TEMPERATURE" \
   --top-p "$TOP_P" \
   --top-k "$TOP_K" \
   --max-tokens "$MAX_TOKENS" \
+  --max-model-len "$SEARCH_MAX_MODEL_LEN" \
+  --gpu-memory-utilization "$SEARCH_GPU_MEMORY_UTILIZATION" \
   --start-idx "$START_INDEX" \
-  --end-idx "$END_INDEX" \
-  $VLLM_EXTRA
+  --end-idx "$END_INDEX"
 
 # ---------- Evaluation ----------
 echo "---------- Pass@1 (iter0..3) ----------"

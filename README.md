@@ -62,12 +62,21 @@ bash scripts/run_rg_cto.sh 0 100
 
 ### RG-CTO hyperparameters
 
+`run_rse.sh`, `run_cto.sh`, and `run_rg_cto.sh` use the same defaults as the local Qwen3 runs. Calling the Python entry points without those flags falls back to the same values. The Phi-4 and 30B launchers override length, GPU memory, and a few hyperparameters themselves.
+
 | Flag | Default | Meaning |
 |------|---------|---------|
-| `--alpha` | 0.7 | Base suppression α₀ |
-| `--gate-delta` | 0.15 | Filter pitfalls with w(e) < δ |
+| `--temperature` | 0.6 | Sampling temperature |
+| `--n-completions` | 32 | Rollouts per question |
+| `--max-tokens` | 38912 | Generation length; distillation uses 8192 |
+| `--alpha` | 0.7 (RG-CTO), 0.55 (CTO) | Base suppression α₀ |
+| `--plausibility-top-k` | 8 | CTO candidate budget |
+| `--gate-delta` | 0.4 | Filter pitfalls with w(e) < δ |
+| `--tau-match` | 0.8 | Support match threshold |
+| `--n-experience-completions` | 48 (CTO / RG-CTO), 32 (RSE) | Experience records merged per question |
+| `--threshold` | 0.85 | Experience dedup cosine threshold |
 | `--min-pitfall-support` | 2 | Minimum rollout support u(e) |
-| `--pilot-n` | 4 | Pilot rollouts for conflict-risk proxy |
+| `--pilot-n` | 4 | Retained flag; ignored by the current gate |
 
 ## Reusing iter0 Results
 

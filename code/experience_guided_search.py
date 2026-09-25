@@ -229,25 +229,25 @@ def main():
     parser.add_argument('--output', type=str, required=True, help='Output directory')
     
     # NEW PARAMETER: Control how many raw experiences to aggregate
-    parser.add_argument('--n-experience-completions', type=int, default=5, 
+    parser.add_argument('--n-experience-completions', type=int, default=32, 
                         help='Number of raw experiences to aggregate per question')
 
-    parser.add_argument('--n-completions', type=int, default=1, help='Number of new rollouts to generate per question')
+    parser.add_argument('--n-completions', type=int, default=32, help='Number of new rollouts to generate per question')
     
     parser.add_argument('--tensor-parallel-size', '-tp', type=int, default=1)
-    parser.add_argument('--batch-size', '-b', type=int, default=100, help='Batch size for vLLM processing (number of questions)')
+    parser.add_argument('--batch-size', '-b', type=int, default=2048, help='Batch size for vLLM processing (number of questions)')
     
-    parser.add_argument('--temperature', type=float, default=0.7)
+    parser.add_argument('--temperature', type=float, default=0.6)
     parser.add_argument('--top-p', type=float, default=0.95)
     parser.add_argument('--top-k', type=int, default=20)
-    parser.add_argument('--max-tokens', type=int, default=2048)
+    parser.add_argument('--max-tokens', type=int, default=38912)
     parser.add_argument(
         '--max-model-len',
         type=int,
         default=None,
         help='vLLM: max sequence length (e.g. 32768 for Phi-4-reasoning)',
     )
-    parser.add_argument('--gpu-memory-utilization', type=float, default=0.85, help='vLLM KV cache memory fraction')
+    parser.add_argument('--gpu-memory-utilization', type=float, default=0.60, help='vLLM KV cache memory fraction')
 
     parser.add_argument('--start-idx', type=int, default=0)
     parser.add_argument('--end-idx', type=int, default=None)

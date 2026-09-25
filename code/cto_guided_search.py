@@ -1530,12 +1530,12 @@ def main():
     parser.add_argument("--input", type=str, required=True, help="Input JSONL (questions)")
     parser.add_argument("--experience-dir", type=str, required=True, help="Dedup experience JSONL dir")
     parser.add_argument("--output", type=str, required=True, help="Output directory")
-    parser.add_argument("--n-experience-completions", type=int, default=5)
-    parser.add_argument("--n-completions", type=int, default=1)
-    parser.add_argument("--alpha", "--contrastive-alpha", type=float, default=0.7, dest="alpha",
+    parser.add_argument("--n-experience-completions", type=int, default=48)
+    parser.add_argument("--n-completions", type=int, default=32)
+    parser.add_argument("--alpha", "--contrastive-alpha", type=float, default=0.55, dest="alpha",
                         help="CTO penalty: logits_CTO = logits_pos - alpha * logits_neg")
     parser.add_argument(
-        "--plausibility-top-k", type=int, default=20,
+        "--plausibility-top-k", type=int, default=8,
         help="Only apply CTO adjustment on top-K logits of the primary stream (HF path; vLLM uses this as default candidate-K budget).")
     parser.add_argument(
         "--cto-branch-mode",
@@ -1553,10 +1553,10 @@ def main():
             "prompt_both_no_contrast=both bullets in one system prompt + plain decoding (no logit subtraction)."
         ),
     )
-    parser.add_argument("--temperature", type=float, default=0.7)
+    parser.add_argument("--temperature", type=float, default=0.6)
     parser.add_argument("--top-p", type=float, default=0.95)
     parser.add_argument("--top-k", type=int, default=20)
-    parser.add_argument("--max-tokens", type=int, default=2048)
+    parser.add_argument("--max-tokens", type=int, default=38912)
     parser.add_argument("--start-idx", type=int, default=0)
     parser.add_argument("--end-idx", type=int, default=None)
     parser.add_argument(
@@ -1575,7 +1575,7 @@ def main():
         help="Inference backend. vllm = fast sequence-level rerank CTO; hf = exact token-level dual-logit CTO.",
     )
     parser.add_argument("--tensor-parallel-size", type=int, default=1, help="vLLM tensor parallel size")
-    parser.add_argument("--gpu-memory-utilization", type=float, default=0.85, help="vLLM: fraction of GPU memory for KV cache")
+    parser.add_argument("--gpu-memory-utilization", type=float, default=0.60, help="vLLM: fraction of GPU memory for KV cache")
     parser.add_argument("--max-model-len", type=int, default=100000, help="vLLM: cap model max sequence length to limit KV cache")
     parser.add_argument("--candidate-k", type=int, default=None, help="vLLM: number of P_pos candidates to generate before rerank (default: plausibility-top-k)")
     parser.add_argument(
@@ -1593,7 +1593,7 @@ def main():
     parser.add_argument(
         "--experience-retrieval",
         type=str,
-        default="first",
+        default="embedding_rerank",
         choices=[
             "first",
             "embedding",
@@ -1624,19 +1624,19 @@ def main():
     parser.add_argument(
         "--retrieval-rerank-pool-mult",
         type=int,
-        default=4,
+        default=8,
         help="For embedding_rerank: pool size = n_experience_completions * this (capped by #records)",
     )
     parser.add_argument(
         "--max-aggregated-propositions",
         type=int,
-        default=0,
+        default=96,
         help="After merging selected experience records, keep at most this many distinct propositions (0=unlimited).",
     )
     parser.add_argument(
         "--max-aggregated-pitfalls",
         type=int,
-        default=0,
+        default=96,
         help="After merging selected experience records, keep at most this many distinct pitfalls (0=unlimited).",
     )
     parser.add_argument(

@@ -564,7 +564,7 @@ def main():
     parser.add_argument('--answer-dir', type=str, required=True, help='Directory containing answer rollouts')
     parser.add_argument('--output-dir', type=str, required=True, help='Output directory')
     
-    parser.add_argument('--tensor-parallel-size', '-tp', type=int, default=8, help='Number of GPUs')
+    parser.add_argument('--tensor-parallel-size', '-tp', type=int, default=1, help='Number of GPUs')
     parser.add_argument(
         '--max-model-len',
         type=int,
@@ -588,19 +588,19 @@ def main():
         action='store_true',
         help='vLLM: use NCCL for TP all-reduce (avoids custom all-reduce kernel failures on some multi-GPU setups).',
     )
-    parser.add_argument('--batch-size', '-b', type=int, default=100, help='Batch size')
+    parser.add_argument('--batch-size', '-b', type=int, default=2048, help='Batch size')
     
-    parser.add_argument('--temperature', type=float, default=0.7)
+    parser.add_argument('--temperature', type=float, default=0.6)
     parser.add_argument('--top-p', type=float, default=0.95)
     parser.add_argument('--top-k', type=int, default=20)
-    parser.add_argument('--max-tokens', type=int, default=1024)
+    parser.add_argument('--max-tokens', type=int, default=8192)
     parser.add_argument(
         '--json-max-gen',
         type=int,
         default=int(os.environ.get('DISTILL_JSON_MAX_GEN', str(_DISTILL_JSON_MAX_GEN))),
         help='Cap on distillation JSON generation tokens; gen_cap = min(max-tokens, this).',
     )
-    parser.add_argument('--n-samples', type=int, default=3, help='Number of samples per inference (for robustness)')
+    parser.add_argument('--n-samples', type=int, default=1, help='Number of samples per inference (for robustness)')
     parser.add_argument(
         '--experience_judge_mode',
         type=str,

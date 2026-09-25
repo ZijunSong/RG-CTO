@@ -414,13 +414,13 @@ def main():
     parser.add_argument('--model', '-m', type=str, required=True, help='Model path')
     parser.add_argument('--input', '-i', type=str, required=True, help='Input JSONL file')
     parser.add_argument('--output', '-o', type=str, required=True, help='Output directory')
-    parser.add_argument('--n-completions', '-n', type=int, default=64)
-    parser.add_argument('--batch-size', '-b', type=int, default=8, help='Save every N questions')
-    parser.add_argument('--tensor-parallel-size', '-tp', type=int, default=8, help='vLLM: number of GPUs')
-    parser.add_argument('--temperature', '-t', type=float, default=0.7)
+    parser.add_argument('--n-completions', '-n', type=int, default=32)
+    parser.add_argument('--batch-size', '-b', type=int, default=2048, help='Save every N questions')
+    parser.add_argument('--tensor-parallel-size', '-tp', type=int, default=1, help='vLLM: number of GPUs')
+    parser.add_argument('--temperature', '-t', type=float, default=0.6)
     parser.add_argument('--top-p', '-p', type=float, default=0.95)
     parser.add_argument('--top-k', '-k', type=int, default=20)
-    parser.add_argument('--max-tokens', type=int, default=2048)
+    parser.add_argument('--max-tokens', type=int, default=38912)
     parser.add_argument('--system-prompt', type=str, default=None)
     add_task_args(parser)
     parser.add_argument('--start-idx', type=int, default=0)
@@ -434,7 +434,7 @@ def main():
     parser.add_argument(
         '--gpu-memory-utilization',
         type=float,
-        default=0.85,
+        default=0.60,
         help='vLLM GPU memory fraction for KV cache.',
     )
     parser.add_argument('--backend', type=str, default='vllm', choices=['vllm', 'hf'])

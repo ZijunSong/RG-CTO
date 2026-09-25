@@ -16,14 +16,18 @@ cd "$PROJECT_ROOT"
 
 pip install sentence-transformers -q
 
-BATCH_SIZE="${BATCH_SIZE:-30}"
+# Defaults match the local Qwen3 RG-CTO runs (run_rg_cto_qwen3_4b_from_iter0_iter2.sh).
+export TENSOR_PARALLEL_SIZE="${TENSOR_PARALLEL_SIZE:-1}"
+BATCH_SIZE="${BATCH_SIZE:-2048}"
 TEMPERATURE="${TEMPERATURE:-0.6}"
 TOP_P="${TOP_P:-0.95}"
 TOP_K="${TOP_K:-20}"
 N_COMPLETIONS="${N_COMPLETIONS:-32}"
 MAX_TOKENS="${MAX_TOKENS:-38912}"
-N_EXPERIENCE_COMPLETIONS="${N_EXPERIENCE_COMPLETIONS:-32}"
-THRESHOLD="${THRESHOLD:-0.8}"
+DISTILL_MAX_TOKENS="${DISTILL_MAX_TOKENS:-8192}"
+N_EXPERIENCE_COMPLETIONS="${N_EXPERIENCE_COMPLETIONS:-48}"
+THRESHOLD="${THRESHOLD:-0.85}"
+EXPERIENCE_JUDGE_MODE="${EXPERIENCE_JUDGE_MODE:-llm_judge}"
 
 ALPHA="${ALPHA:-0.7}"
 GATE_DELTA="${GATE_DELTA:-0.4}"
@@ -31,11 +35,22 @@ TAU_MATCH="${TAU_MATCH:-0.8}"
 LAMBDA_U="${LAMBDA_U:-0.5}"
 LAMBDA_L="${LAMBDA_L:-0.5}"
 PILOT_N="${PILOT_N:-4}"
+MIN_PITFALL_SUPPORT="${MIN_PITFALL_SUPPORT:-2}"
+CTO_AGG_MAX_PROP="${CTO_AGG_MAX_PROP:-96}"
+CTO_AGG_MAX_PIT="${CTO_AGG_MAX_PIT:-96}"
+CTO_RETRIEVAL_RERANK_POOL_MULT="${CTO_RETRIEVAL_RERANK_POOL_MULT:-8}"
+DISTILL_MAX_MODEL_LEN="${DISTILL_MAX_MODEL_LEN:-100000}"
+DISTILL_GPU_MEMORY_UTILIZATION="${DISTILL_GPU_MEMORY_UTILIZATION:-0.90}"
+DISTILL_MAX_NUM_SEQS="${DISTILL_MAX_NUM_SEQS:-128}"
+RGCTO_MAX_MODEL_LEN="${RGCTO_MAX_MODEL_LEN:-100000}"
+RGCTO_GPU_MEMORY_UTILIZATION="${RGCTO_GPU_MEMORY_UTILIZATION:-0.60}"
+MAX_PILOT_TOKENS="${MAX_PILOT_TOKENS:-$MAX_TOKENS}"
 
 : "${MODEL_NAME:?Set MODEL_NAME}"
 : "${QUESTION_FILE:?Set QUESTION_FILE}"
 : "${OUT_PREFIX:?Set OUT_PREFIX}"
 EMB_MODEL="${EMB_MODEL:-/data/ppnm/models/all-MiniLM-L6-v2}"
+RETRIEVAL_RERANK_MODEL="${RETRIEVAL_RERANK_MODEL:-/data/ppnm/models/cross-encoder-ms-marco-MiniLM-L-6-v2}"
 
 STEP_1="${OUT_PREFIX}_step1"
 STEP_2="${OUT_PREFIX}_step2"
@@ -56,10 +71,13 @@ python code/standard_sampling.py \
     --output "${STEP_1}/results" \
     --n-completions "$N_COMPLETIONS" \
     --batch-size "$BATCH_SIZE" \
+    --tensor-parallel-size "$TENSOR_PARALLEL_SIZE" \
     --temperature "$TEMPERATURE" \
     --top-p "$TOP_P" \
     --top-k "$TOP_K" \
     --max-tokens "$MAX_TOKENS" \
+    --max-model-len "$RGCTO_MAX_MODEL_LEN" \
+    --gpu-memory-utilization "$RGCTO_GPU_MEMORY_UTILIZATION" \
     --start-idx "$START_INDEX" \
     --end-idx "$END_INDEX"
 
@@ -75,11 +93,17 @@ for round in 2 4 6; do
         --question-file "$QUESTION_FILE" \
         --answer-dir "$prev_answer" \
         --output-dir "${exp_dir}/results" \
+        --tensor-parallel-size "$TENSOR_PARALLEL_SIZE" \
+        --max-model-len "$DISTILL_MAX_MODEL_LEN" \
+        --gpu-memory-utilization "$DISTILL_GPU_MEMORY_UTILIZATION" \
+        --max-num-seqs "$DISTILL_MAX_NUM_SEQS" \
+        --batch-size "$BATCH_SIZE" \
         --temperature "$TEMPERATURE" \
         --top-p "$TOP_P" \
         --top-k "$TOP_K" \
-        --max-tokens "$MAX_TOKENS" \
+        --max-tokens "$DISTILL_MAX_TOKENS" \
         --n-samples 1 \
+        --experience_judge_mode "$EXPERIENCE_JUDGE_MODE" \
         --start-idx "$START_INDEX" \
         --end-idx "$END_INDEX"
     dedup_args=(--experience-dir "${exp_dir}/results" --output-dir "${exp_dir}/results_dedup"
@@ -108,10 +132,21 @@ for guided_step in 3 5 7; do
         --lambda-u "$LAMBDA_U" \
         --lambda-l "$LAMBDA_L" \
         --pilot-n "$PILOT_N" \
+        --min-pitfall-support "$MIN_PITFALL_SUPPORT" \
+        --max-pilot-tokens "$MAX_PILOT_TOKENS" \
+        --tensor-parallel-size "$TENSOR_PARALLEL_SIZE" \
+        --max-model-len "$RGCTO_MAX_MODEL_LEN" \
+        --gpu-memory-utilization "$RGCTO_GPU_MEMORY_UTILIZATION" \
         --temperature "$TEMPERATURE" \
         --top-p "$TOP_P" \
         --top-k "$TOP_K" \
         --max-tokens "$MAX_TOKENS" \
+        --experience-retrieval embedding_rerank \
+        --retrieval-embedding-model "$EMB_MODEL" \
+        --retrieval-rerank-model "$RETRIEVAL_RERANK_MODEL" \
+        --retrieval-rerank-pool-mult "$CTO_RETRIEVAL_RERANK_POOL_MULT" \
+        --max-aggregated-propositions "$CTO_AGG_MAX_PROP" \
+        --max-aggregated-pitfalls "$CTO_AGG_MAX_PIT" \
         --start-idx "$START_INDEX" \
         --end-idx "$END_INDEX"
 done

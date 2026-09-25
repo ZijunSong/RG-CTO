@@ -289,7 +289,7 @@ def main() -> None:
     parser.add_argument("--input", type=str, required=True)
     parser.add_argument("--experience-dir", type=str, required=True)
     parser.add_argument("--output", type=str, required=True)
-    parser.add_argument("--n-completions", type=int, default=1)
+    parser.add_argument("--n-completions", type=int, default=32)
     parser.add_argument("--candidate-k", type=int, default=None)
     parser.add_argument("--alpha", type=float, default=0.7, help="alpha_0 base suppression")
     parser.add_argument(
@@ -335,11 +335,11 @@ def main() -> None:
         default=4,
         help="Deprecated; retained for CLI compatibility and ignored.",
     )
-    parser.add_argument("--max-pilot-tokens", type=int, default=2048)
-    parser.add_argument("--temperature", type=float, default=0.7)
+    parser.add_argument("--max-pilot-tokens", type=int, default=38912)
+    parser.add_argument("--temperature", type=float, default=0.6)
     parser.add_argument("--top-p", type=float, default=0.95)
     parser.add_argument("--top-k", type=int, default=20)
-    parser.add_argument("--max-tokens", type=int, default=2048)
+    parser.add_argument("--max-tokens", type=int, default=38912)
     parser.add_argument("--start-idx", type=int, default=0)
     parser.add_argument("--end-idx", type=int, default=None)
     parser.add_argument("--force-rerun", action="store_true")

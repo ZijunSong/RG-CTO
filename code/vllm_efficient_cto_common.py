@@ -19,11 +19,11 @@ logger = logging.getLogger(__name__)
 
 def add_experience_args(parser: argparse.ArgumentParser) -> None:
     tp.add_task_args(parser)
-    parser.add_argument("--n-experience-completions", type=int, default=5)
+    parser.add_argument("--n-experience-completions", type=int, default=48)
     parser.add_argument(
         "--experience-retrieval",
         type=str,
-        default="first",
+        default="embedding_rerank",
         choices=[
             "first",
             "embedding",
@@ -42,9 +42,9 @@ def add_experience_args(parser: argparse.ArgumentParser) -> None:
         type=str,
         default=cto._DEFAULT_RETRIEVAL_RERANK_MODEL,
     )
-    parser.add_argument("--retrieval-rerank-pool-mult", type=int, default=4)
-    parser.add_argument("--max-aggregated-propositions", type=int, default=0)
-    parser.add_argument("--max-aggregated-pitfalls", type=int, default=0)
+    parser.add_argument("--retrieval-rerank-pool-mult", type=int, default=8)
+    parser.add_argument("--max-aggregated-propositions", type=int, default=96)
+    parser.add_argument("--max-aggregated-pitfalls", type=int, default=96)
     parser.add_argument(
         "--experience-aggregation",
         type=str,
@@ -62,7 +62,7 @@ def add_vllm_args(parser: argparse.ArgumentParser) -> None:
         action="store_true",
         help="vLLM: use NCCL for TP all-reduce.",
     )
-    parser.add_argument("--gpu-memory-utilization", type=float, default=0.85)
+    parser.add_argument("--gpu-memory-utilization", type=float, default=0.60)
     parser.add_argument("--max-model-len", type=int, default=100000)
     parser.add_argument("--max-num-seqs", type=int, default=None)
     parser.add_argument("--vllm-max-num-batched-tokens", type=int, default=None)
