@@ -153,6 +153,14 @@ if [ "${PLAN_ONLY:-0}" = 1 ]; then
   exit 0
 fi
 
+mkdir -p "$LOG_DIR"
+for step in 1 2 3 4 5 6 7; do
+  mkdir -p "${OUT_PREFIX}_step${step}/results"
+done
+for step in 2 4 6; do
+  mkdir -p "${OUT_PREFIX}_step${step}/results_dedup" "${OUT_PREFIX}_step${step}/results_dedup_debug"
+done
+
 trap 'jobs -p | xargs -r kill 2>/dev/null || true' INT TERM
 
 run_vllm_step() {
