@@ -99,6 +99,16 @@ export OUT_PREFIX=runs/TravelPlanner_Val60_RG_CTO
 bash scripts/run_rg_cto.sh 0 60
 ```
 
+On a machine that grants GPUs in multiples of eight, `scripts/run_8gpu.sh` starts one single-GPU vLLM process per card. The question range is split into eight shards. Each step waits until every shard has written its files into the shared step directory, then the next step starts.
+
+```bash
+export MODEL_NAME=/path/to/Qwen3-4B-Thinking-2507
+export QUESTION_FILE=data/TravelPlanner_Val60.jsonl
+export OUT_PREFIX=runs/TravelPlanner_Val60_RG_CTO
+export METHOD=rg_cto   # rg_cto | cto | rse
+bash scripts/run_8gpu.sh 0 60
+```
+
 ## Method
 
 RG-CTO applies per-pitfall confidence gating before contrastive decoding:
