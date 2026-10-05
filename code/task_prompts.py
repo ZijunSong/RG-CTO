@@ -14,8 +14,11 @@ AGENT_DATASETS = frozenset({
     "TravelPlanner_Val60",
     "MeetingPlanning",
     "MeetingPlanning50",
+    "TripPlanning",
+    "TripPlanning50",
 })
 MEETING_DATASETS = frozenset({"MeetingPlanning", "MeetingPlanning50"})
+TRIP_DATASETS = frozenset({"TripPlanning", "TripPlanning50"})
 TRAVEL_DATASETS = frozenset({"TravelPlanner", "TravelPlanner_Val60"})
 
 # ---------------------------------------------------------------------------
@@ -1033,7 +1036,13 @@ def resolve_task_type(
             return "qa"
         if any(tag in name for tag in ("codecontest", "code_contest", "mbpp", "humaneval", "livecodebench")):
             return "code"
-        if "travelplanner" in name or "meetingplanning" in name or "meeting_planning" in name:
+        if any(tag in name for tag in (
+            "travelplanner",
+            "meetingplanning",
+            "meeting_planning",
+            "tripplanning",
+            "trip_planning",
+        )):
             return "agent"
         if any(tag in name for tag in ("hmmt", "hle", "math", "gpqa", "aime")):
             return "math"
@@ -1045,14 +1054,18 @@ def _is_meeting_dataset(dataset: Optional[str]) -> bool:
     return (dataset or "").strip() in MEETING_DATASETS
 
 
+def _is_trip_dataset(dataset: Optional[str]) -> bool:
+    return (dataset or "").strip() in TRIP_DATASETS
+
+
 def user_content(question: str, task_type: str, dataset: Optional[str] = None) -> str:
     """Attach the travel output contract to the user turn when needed.
 
     Phi-4's chat template drops the system role, so the TravelPlanner contract
-    has to travel in the user message. Meeting Planning already carries its
-    few-shot sentence format inside the question, so it is left unchanged.
+    has to travel in the user message. NATURAL PLAN questions already carry
+    their few-shot sentence format, so those are left unchanged.
     """
-    if task_type == "agent" and not _is_meeting_dataset(dataset):
+    if task_type == "agent" and not _is_meeting_dataset(dataset) and not _is_trip_dataset(dataset):
         return AGENT_OUTPUT_CONTRACT + "\n\nTrip request:\n" + (question or "")
     return question or ""
 
@@ -1104,6 +1117,55 @@ Student's Attempt:
 {{attempt}}
 """
 
+TRIP_BASELINE_SYSTEM_PROMPT = """You are planning a trip through European cities. The user message already states the stay lengths, direct flights, and the required day-by-day format.
+
+Write the solution exactly in that format:
+SOLUTION:
+Here is the trip plan for visiting the N European cities for TOTAL days:
+
+**Day START-END:** Arriving in CITY and visit CITY for DAYS days.
+**Day DAY:** Fly from CITY to CITY.
+**Day START-END:** Visit CITY for DAYS days.
+
+Use only cities and direct flights from the problem. Do not add a disclaimer or any text after the last day.
+"""
+
+TRIP_EXPERIENCE_GUIDED_SYSTEM_PROMPT = """You are planning a trip through European cities and you have an Experience Bank from earlier attempts on this same problem.
+
+Use propositions only when they match the stated stay lengths and direct flights. Do not repeat a pitfall. If two notes conflict, rebuild the route from the first city.
+
+The solution must keep the same day-by-day format as the examples in the user message:
+SOLUTION:
+Here is the trip plan for visiting the N European cities for TOTAL days:
+
+**Day START-END:** Arriving in CITY and visit CITY for DAYS days.
+**Day DAY:** Fly from CITY to CITY.
+**Day START-END:** Visit CITY for DAYS days.
+
+**Context from Previous Attempts:**
+{experience_context}
+"""
+
+TRIP_DISTILLATION_SYSTEM_PROMPT = """You are distilling an Experience Bank for the next attempt at the same trip-planning problem.
+Extract two lists and nothing else:
+1. Verified propositions: stay lengths, meeting windows, and direct flights that follow from the problem statement or from a valid earlier step.
+2. Critical pitfalls: wrong city order, a stay that does not cover the required days, a flight that is not direct, or a plan that does not use the required day format.
+
+You do not know whether the attempt is a fully correct plan. Judge each step only against the constraints in the question.
+
+Output ONLY a raw JSON object:
+{
+    "verified_propositions": ["<fact>. (Source: <problem or derivation>)"],
+    "critical_pitfalls": ["<step> -> <Dead End / Fatal Flaw / Potential Risk> -> <why it fails>"]
+}
+
+Question:
+{{question}}
+
+Student's Attempt:
+{{attempt}}
+"""
+
 
 def get_baseline_system_prompt(
     task_type: str,
@@ -1118,6 +1180,8 @@ def get_baseline_system_prompt(
         return CODE_BASELINE_SYSTEM_PROMPT
     if task_type == "agent" and _is_meeting_dataset(dataset):
         return MEETING_BASELINE_SYSTEM_PROMPT
+    if task_type == "agent" and _is_trip_dataset(dataset):
+        return TRIP_BASELINE_SYSTEM_PROMPT
     if task_type == "agent":
         return AGENT_BASELINE_SYSTEM_PROMPT
     return MATH_BASELINE_SYSTEM_PROMPT
@@ -1136,6 +1200,8 @@ def get_experience_guided_system_prompt(
         return CODE_EXPERIENCE_GUIDED_SYSTEM_PROMPT
     if task_type == "agent" and _is_meeting_dataset(dataset):
         return MEETING_EXPERIENCE_GUIDED_SYSTEM_PROMPT
+    if task_type == "agent" and _is_trip_dataset(dataset):
+        return TRIP_EXPERIENCE_GUIDED_SYSTEM_PROMPT
     if task_type == "agent":
         return AGENT_EXPERIENCE_GUIDED_SYSTEM_PROMPT
     return MATH_EXPERIENCE_GUIDED_SYSTEM_PROMPT
@@ -1193,6 +1259,8 @@ def get_distillation_prompt(
         prompts = code_map
     elif task_type == "agent" and _is_meeting_dataset(dataset):
         prompts = {"llm_judge": MEETING_DISTILLATION_SYSTEM_PROMPT}
+    elif task_type == "agent" and _is_trip_dataset(dataset):
+        prompts = {"llm_judge": TRIP_DISTILLATION_SYSTEM_PROMPT}
     elif task_type == "agent":
         prompts = agent_map
     else:
@@ -1232,6 +1300,18 @@ The solution must stay in the sentence format required by the user message.
 
 """,
             MEETING_BASELINE_SYSTEM_PROMPT,
+        )
+    if _is_trip_dataset(dataset):
+        return (
+            """You are planning a European trip and may use these verified notes when they match the stated stay lengths and direct flights.
+The solution must stay in the day-by-day format required by the user message.
+
+### Propositions (Verify before use):
+""",
+            """Please try to plan the following trip using these incorrect city orders or dead ends. You must follow at least one of them:
+
+""",
+            TRIP_BASELINE_SYSTEM_PROMPT,
         )
     if task_type == "qa":
         return (

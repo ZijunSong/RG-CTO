@@ -130,6 +130,17 @@ METHOD=cto bash scripts/run_meeting_planning_8gpu.sh
 METHOD=rg_cto MODEL_NAME=/data/ppnm/models/Phi-4-reasoning bash scripts/run_meeting_planning_8gpu.sh
 ```
 
+## Trip Planning (NATURAL PLAN, first 50)
+
+`data/TripPlanning50.jsonl` is the first 50 Trip Planning examples from [NATURAL PLAN](https://github.com/google-deepmind/natural-plan), in official order. Each record keeps the 5-shot prompt and the golden city order and stay lengths (`cities` and `durations`, joined by `**`). A completion is correct when the official parser recovers that exact plan. Rebuild the file with `python scripts/prepare_trip_planning50.py` after the parquet in `data/raw/` is present.
+
+```bash
+# RSE / CTO / RG-CTO, eight GPUs, iter0 through iter3
+bash scripts/run_trip_planning_8gpu.sh
+METHOD=cto bash scripts/run_trip_planning_8gpu.sh
+METHOD=rg_cto MODEL_NAME=/data/ppnm/models/Phi-4-reasoning bash scripts/run_trip_planning_8gpu.sh
+```
+
 The same entry covers math, QA, code, and TravelPlanner. It resolves the task from `DATASET` or the question filename and passes that task type into sampling, distillation, and guided search. After each generation step it scores math and QA with pass@1, TravelPlanner with its constraint checker, and code by executing the saved tests.
 
 ## Method

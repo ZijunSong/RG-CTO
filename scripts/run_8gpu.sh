@@ -267,12 +267,18 @@ run_dedup() {
 maybe_pass1() {
   local iter="$1"
   local dir="$2"
-  if [ "${DATASET:-}" = "MeetingPlanning50" ] || [ "${DATASET:-}" = "MeetingPlanning" ]; then
-    if ! "$PYTHON" - "$dir" "$QUESTION_FILE" <<'PY'
+  if [ "${DATASET:-}" = "MeetingPlanning50" ] || [ "${DATASET:-}" = "MeetingPlanning" ] \
+    || [ "${DATASET:-}" = "TripPlanning50" ] || [ "${DATASET:-}" = "TripPlanning" ]; then
+    if ! "$PYTHON" - "$dir" "$QUESTION_FILE" "${DATASET:-}" <<'PY'
 import json, sys
 from pathlib import Path
 sys.path.insert(0, "code")
-from meeting_planning_eval import evaluate_text
+if sys.argv[3].startswith("Trip"):
+    from trip_planning_eval import evaluate_text
+    label = "trip"
+else:
+    from meeting_planning_eval import evaluate_text
+    label = "meeting"
 
 results_dir = Path(sys.argv[1])
 questions = [json.loads(line) for line in open(sys.argv[2], encoding="utf-8") if line.strip()]
@@ -305,10 +311,10 @@ summary = {
 }
 out = results_dir / "pass_at_1.json"
 out.write_text(json.dumps(summary, indent=2), encoding="utf-8")
-print(f"  iter meeting pass@1 {summary['pass_at_1_pct']}%  ({out})")
+print(f"  iter {label} pass@1 {summary['pass_at_1_pct']}%  ({out})")
 PY
     then
-      echo "  iter${iter} meeting pass@1 failed"
+      echo "  iter${iter} plan pass@1 failed"
     fi
     return 0
   fi
