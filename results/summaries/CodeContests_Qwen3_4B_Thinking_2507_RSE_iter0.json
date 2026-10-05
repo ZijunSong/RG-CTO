@@ -1,0 +1,13 @@
+{
+  "dataset": "CodeContests",
+  "question_file": "data/CodeContests_Test_165.jsonl",
+  "model": "Qwen3-4B-Thinking-2507",
+  "method": "RSE",
+  "iteration": "iter0",
+  "n_problems": 165,
+  "n_completions": 32,
+  "metric": "solve@32: a problem counts if any of the 32 samples passes every public and private test",
+  "solve_at_32_pct": 71.5,
+  "avg_sample_pass_rate_pct": 45.0,
+  "rollouts": "results/runs/CodeContests_Qwen3_4B_Thinking_2507_RSE/run0_step1/results"
+}

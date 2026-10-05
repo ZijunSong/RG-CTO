@@ -109,6 +109,16 @@ export METHOD=rg_cto   # rg_cto | cto | rse
 bash scripts/run_8gpu.sh 0 60
 ```
 
+## CodeContests (Test 165)
+
+`data/CodeContests_Test_165.jsonl` is the 165-problem slice used for code evaluation. Pass@1 here is solve@32: a problem counts when any of the 32 samples passes every public test and every private test. Qwen3-4B-Thinking-2507 RSE iter0 is 71.5 (`results/summaries/CodeContests_Qwen3_4B_Thinking_2507_RSE_iter0.json`).
+
+```bash
+bash scripts/run_codecontests_8gpu.sh
+METHOD=cto bash scripts/run_codecontests_8gpu.sh
+METHOD=rg_cto MODEL_NAME=/data/ppnm/models/Phi-4-reasoning bash scripts/run_codecontests_8gpu.sh
+```
+
 ## Meeting Planning (NATURAL PLAN, first 50)
 
 `data/MeetingPlanning50.jsonl` is the first 50 Meeting Planning examples from [NATURAL PLAN](https://github.com/google-deepmind/natural-plan), in official order. Each record keeps the 5-shot prompt, the distance matrix, the time windows, and the golden sentence plan. A completion is correct when the official validator accepts as many meetings as it accepts in the golden plan. Rebuild the file with `python scripts/prepare_meeting_planning50.py` after the parquet in `data/raw/` is present.
