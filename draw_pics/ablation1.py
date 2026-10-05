@@ -4,7 +4,7 @@ import numpy as np
 # -----------------------------
 # Data
 # -----------------------------
-iters = ['Iter0', 'Iter1', 'Iter2']
+iters = ['iter0', 'iter1', 'iter2']
 x = np.arange(len(iters))
 
 ablation_data = {
@@ -82,7 +82,7 @@ ablation_data = {
 fig, axes = plt.subplots(2, 3, figsize=(15, 8), sharey=True)
 axes = axes.flatten()
 
-for ax, (title, d) in zip(axes, ablation_data.items()):
+for panel_idx, (ax, (title, d)) in enumerate(zip(axes, ablation_data.items())):
     params = d['params']
     values = d['values']
     default_idx = d['default_idx']
@@ -121,19 +121,25 @@ for ax, (title, d) in zip(axes, ablation_data.items()):
 
     ax.set_title(title, fontsize=16)
     ax.set_xticks(x)
-    ax.set_xticklabels(iters, fontsize=13)
-    ax.tick_params(axis='both', labelsize=13)
-    ax.set_ylabel('Pass@1 (%)', fontsize=14)
+    ax.set_xticklabels(iters, fontsize=15)
+    ax.tick_params(axis='both', labelsize=15)
+    if panel_idx % 3 == 0:
+        ax.set_ylabel('Pass@1 (%)', fontsize=16)
+    if panel_idx >= 3:
+        ax.set_xlabel('Iteration', fontsize=16)
     ax.set_ylim(40, 66)
-    ax.grid(True, linestyle='--', alpha=0.35)
+    ax.grid(True, linestyle='--', color='0.75', alpha=0.35)
+    ax.spines['top'].set_visible(True)
+    ax.spines['right'].set_visible(True)
 
     ax.legend(
         loc='lower right',
-        fontsize=11,
-        frameon=True
+        fontsize=13,
+        frameon=True,
+        edgecolor='0.8',
     )
 
 plt.tight_layout()
 plt.savefig('ablation_iter_xaxis_with_band.png', dpi=300, bbox_inches='tight')
 plt.savefig('ablation_iter_xaxis_with_band.pdf', bbox_inches='tight')
-plt.show()
+print('Saved: ablation_iter_xaxis_with_band.png / ablation_iter_xaxis_with_band.pdf')

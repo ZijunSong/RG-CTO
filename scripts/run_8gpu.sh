@@ -267,6 +267,51 @@ run_dedup() {
 maybe_pass1() {
   local iter="$1"
   local dir="$2"
+  if [ "${DATASET:-}" = "MeetingPlanning50" ] || [ "${DATASET:-}" = "MeetingPlanning" ]; then
+    if ! "$PYTHON" - "$dir" "$QUESTION_FILE" <<'PY'
+import json, sys
+from pathlib import Path
+sys.path.insert(0, "code")
+from meeting_planning_eval import evaluate_text
+
+results_dir = Path(sys.argv[1])
+questions = [json.loads(line) for line in open(sys.argv[2], encoding="utf-8") if line.strip()]
+files = sorted(
+    [p for p in results_dir.glob("[0-9]*.json") if p.stem.isdigit()],
+    key=lambda p: int(p.stem),
+)
+correct = 0
+scored = 0
+for path in files:
+    record = json.loads(path.read_text(encoding="utf-8"))
+    # Completions are saved without the checker fields; join the question record.
+    index = int(path.stem)
+    source = questions[index] if index < len(questions) else record
+    merged = dict(source)
+    merged["completions"] = record.get("completions") or []
+    hits = 0
+    total = 0
+    for comp in merged["completions"]:
+        text = comp.get("text") if isinstance(comp, dict) else str(comp)
+        total += 1
+        hits += int(bool(evaluate_text(merged, text or "").get("final_pass")))
+    if total:
+        correct += hits / total
+        scored += 1
+summary = {
+    "n_problems": scored,
+    "pass_at_1": (correct / scored) if scored else 0.0,
+    "pass_at_1_pct": round(100 * correct / scored, 2) if scored else 0.0,
+}
+out = results_dir / "pass_at_1.json"
+out.write_text(json.dumps(summary, indent=2), encoding="utf-8")
+print(f"  iter meeting pass@1 {summary['pass_at_1_pct']}%  ({out})")
+PY
+    then
+      echo "  iter${iter} meeting pass@1 failed"
+    fi
+    return 0
+  fi
   if [ "$TASK_TYPE" = "code" ]; then
     if ! "$PYTHON" scripts/eval_codecontests_pass1.py "$dir" "iter${iter}" \
       >"${LOG_DIR}/pass1_iter${iter}.log" 2>&1; then

@@ -15,7 +15,7 @@ from tqdm import tqdm
 import logging
 from collections import defaultdict
 
-from task_prompts import add_task_args, get_baseline_system_prompt, resolve_task_type
+from task_prompts import add_task_args, get_baseline_system_prompt, resolve_task_type, user_content
 
 # 兼容 vLLM 0.8.x 与新版 transformers：新版 transformers 移除了 all_special_tokens_extended，
 # 但 vLLM 的 get_cached_tokenizer 仍会访问该属性（如 Qwen2Tokenizer）。在导入 vLLM 前为基类补上该属性。
@@ -198,6 +198,8 @@ def batch_inference_hf(
     end_idx: int = None,
     device_map: str = "auto",
     dtype: str = "auto",
+    task_type: str = "math",
+    dataset: str = None,
 ):
     if AutoTokenizer is None or AutoModelForCausalLM is None:
         raise ImportError("HF backend selected but transformers is not installed: pip install transformers")
@@ -243,7 +245,7 @@ def batch_inference_hf(
 
     # HF generation is slow; generate sequentially (batch_size is kept for interface only).
     for original_idx, item in pending_questions:
-        question = item.get("question", "")
+        question = user_content(item.get("question", ""), task_type, dataset)
         messages = [
             {"role": "system", "content": DEFAULT_MATH_PROMPT if system_prompt is None else system_prompt},
             {"role": "user", "content": question},
@@ -304,6 +306,8 @@ def batch_inference(
     end_idx: int = None,
     max_model_len: Optional[int] = None,
     gpu_memory_utilization: float = 0.85,
+    task_type: str = "math",
+    dataset: str = None,
 ):
     output_path = Path(output_dir)
     output_path.mkdir(parents=True, exist_ok=True)
@@ -364,7 +368,7 @@ def batch_inference(
         prompt_metadata = []
         
         for original_idx, item in current_chunk:
-            question = item.get('question', '')
+            question = user_content(item.get('question', ''), task_type, dataset)
             messages = [
                 {"role": "system", "content": DEFAULT_MATH_PROMPT if system_prompt is None else system_prompt},
                 {"role": "user", "content": question}
@@ -447,7 +451,7 @@ def main():
         task_type=args.task_type,
         input_path=args.input,
     )
-    system_prompt = get_baseline_system_prompt(task_type, args.system_prompt)
+    system_prompt = get_baseline_system_prompt(task_type, args.system_prompt, dataset=args.dataset)
 
     if args.backend == "hf":
         batch_inference_hf(
@@ -465,6 +469,8 @@ def main():
             end_idx=args.end_idx,
             device_map=args.device_map,
             dtype=args.dtype,
+            task_type=task_type,
+            dataset=args.dataset,
         )
     else:
         batch_inference(
@@ -483,6 +489,8 @@ def main():
             end_idx=args.end_idx,
             max_model_len=args.max_model_len,
             gpu_memory_utilization=args.gpu_memory_utilization,
+            task_type=task_type,
+            dataset=args.dataset,
         )
 
 if __name__ == '__main__':

@@ -5,13 +5,13 @@ import numpy as np
 # Data
 # -----------------------------
 iters = ['iter0', 'iter1', 'iter2']
-methods = ['Neg-only', 'Global-Neg', 'RSE-64', 'RSE-32', 'Pos-only', 'CTO-base']
-colors = ['#1f77b4', '#2ca02c', '#8c564b', '#d62728', '#ff7f0e', '#9467bd']
+methods = ['Neg-only', 'Global-Neg', 'Pos-Plain', 'Pos-Context', 'RSE-32', 'RSE-64', 'CTO']
+colors = ['#1f77b4', '#2ca02c', '#17becf', '#ff7f0e', '#d62728', '#8c564b', '#9467bd']
 
 data = np.array([
-    [43.2, 43.2, 43.2, 43.2, 43.2, 43.2],   # iter0
-    [43.0, 58.5, 58.0, 58.3, 59.8, 60.0],   # iter1
-    [44.7, 55.0, 58.6, 59.1, 61.3, 62.2],   # iter2
+    [43.2, 43.2, 43.2, 43.2, 43.2, 43.2, 43.2],   # iter0
+    [43.0, 58.5, 59.0, 59.8, 58.3, 58.0, 60.0],   # iter1
+    [44.7, 55.0, 60.3, 61.3, 59.1, 58.6, 62.2],   # iter2
 ])
 
 # -----------------------------
@@ -19,10 +19,10 @@ data = np.array([
 # -----------------------------
 n_iters, n_methods = data.shape
 x = np.arange(n_iters)
-bar_width = 0.12
+bar_width = 0.11
 offsets = (np.arange(n_methods) - (n_methods - 1) / 2.0) * bar_width
 
-fig, ax = plt.subplots(figsize=(8.8, 4.8))
+fig, ax = plt.subplots(figsize=(9.6, 4.8))
 
 for i, (method, color) in enumerate(zip(methods, colors)):
     xs = x + offsets[i]
@@ -34,16 +34,16 @@ for i, (method, color) in enumerate(zip(methods, colors)):
             f'{val:.1f}',
             ha='center',
             va='center',
-            fontsize=11,
-            rotation=30,
+            fontsize=13,
+            rotation=50,
         )
 
-ax.set_xlabel('Iteration', fontsize=14)
-ax.set_ylabel('Pass@1 (%)', fontsize=14)
+ax.set_xlabel('Iteration', fontsize=16)
+ax.set_ylabel('Pass@1 (%)', fontsize=16)
 ax.set_xticks(x)
-ax.set_xticklabels(iters, fontsize=13)
-ax.tick_params(axis='both', labelsize=13)
-ax.set_ylim(38, 67)
+ax.set_xticklabels(iters, fontsize=15)
+ax.tick_params(axis='both', labelsize=15)
+ax.set_ylim(38, 69)
 ax.set_yticks(np.arange(40, 66, 5))
 ax.yaxis.grid(True, linestyle='--', color='0.75', zorder=0)
 ax.set_axisbelow(True)
@@ -53,7 +53,7 @@ ax.spines['right'].set_visible(True)
 ax.legend(
     loc='upper left',
     ncol=2,
-    fontsize=11,
+    fontsize=13,
     frameon=True,
     edgecolor='0.8',
 )

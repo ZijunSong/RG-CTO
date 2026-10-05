@@ -109,6 +109,17 @@ export METHOD=rg_cto   # rg_cto | cto | rse
 bash scripts/run_8gpu.sh 0 60
 ```
 
+## Meeting Planning (NATURAL PLAN, first 50)
+
+`data/MeetingPlanning50.jsonl` is the first 50 Meeting Planning examples from [NATURAL PLAN](https://github.com/google-deepmind/natural-plan), in official order. Each record keeps the 5-shot prompt, the distance matrix, the time windows, and the golden sentence plan. A completion is correct when the official validator accepts as many meetings as it accepts in the golden plan. Rebuild the file with `python scripts/prepare_meeting_planning50.py` after the parquet in `data/raw/` is present.
+
+```bash
+# RSE / CTO / RG-CTO, eight GPUs, iter0 through iter3
+bash scripts/run_meeting_planning_8gpu.sh
+METHOD=cto bash scripts/run_meeting_planning_8gpu.sh
+METHOD=rg_cto MODEL_NAME=/data/ppnm/models/Phi-4-reasoning bash scripts/run_meeting_planning_8gpu.sh
+```
+
 The same entry covers math, QA, code, and TravelPlanner. It resolves the task from `DATASET` or the question filename and passes that task type into sampling, distillation, and guided search. After each generation step it scores math and QA with pass@1, TravelPlanner with its constraint checker, and code by executing the saved tests.
 
 ## Method

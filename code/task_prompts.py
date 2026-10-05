@@ -9,7 +9,14 @@ from typing import Optional
 QA_DATASETS = frozenset({"BambooQA", "HotpotQA"})
 MATH_DATASETS = frozenset({"HMMT24", "HMMT25", "HLE_math_text", "GPQA", "MATH", "AIME"})
 CODE_DATASETS = frozenset({"CodeContests", "CodeContests_Test_165", "MBPP", "HumanEval", "LiveCodeBench"})
-AGENT_DATASETS = frozenset({"TravelPlanner", "TravelPlanner_Val60"})
+AGENT_DATASETS = frozenset({
+    "TravelPlanner",
+    "TravelPlanner_Val60",
+    "MeetingPlanning",
+    "MeetingPlanning50",
+})
+MEETING_DATASETS = frozenset({"MeetingPlanning", "MeetingPlanning50"})
+TRAVEL_DATASETS = frozenset({"TravelPlanner", "TravelPlanner_Val60"})
 
 # ---------------------------------------------------------------------------
 # Baseline (step1)
@@ -32,9 +39,15 @@ CODE_BASELINE_SYSTEM_PROMPT = (
     "```python fenced code block."
 )
 
-AGENT_BASELINE_SYSTEM_PROMPT = """You are a proficient travel planner. Using only the given information, write a day-by-day plan that satisfies the query, the budget, and ordinary travel constraints.
+AGENT_OUTPUT_CONTRACT = """Output contract (mandatory):
+The solution must be ONLY a JSON array, one object per day, and nothing else.
+Do not write a disclaimer, title, overview, markdown, or explanation before or after the array.
+The solution must start with [ and end with ].
 
-Rules:
+Each object uses exactly these keys:
+[{"current_city":"...","transportation":"...","breakfast":"...","lunch":"...","dinner":"...","attraction":"...","accommodation":"..."}]
+
+Field rules:
 - Every flight number, restaurant, attraction, accommodation, and driving route must come from the given information. Do not invent names.
 - Use "-" when a field is unnecessary. The last day has no accommodation. A day that stays in one city uses "-" for transportation. A day that changes city may use "-" for meals and attractions.
 - When a day moves between cities, set current_city to "from Origin to Destination".
@@ -42,10 +55,11 @@ Rules:
 - Self-driving and taxi must name both cities, for example "Self-driving, from Origin to Destination".
 - Meals and accommodation use "Name, City". List attractions as "Name, City;Name, City;" and end that field with a semicolon.
 - Do not repeat a restaurant or an attraction. Keep the same transportation mode for the whole trip. Stay at least the accommodation's minimum nights. Respect house rules, room type, cuisine, and transportation restrictions in the query.
-
-Output ONLY a JSON array, one object per day, in order:
-[{"current_city":"...","transportation":"...","breakfast":"...","lunch":"...","dinner":"...","attraction":"...","accommodation":"..."}]
 """
+
+AGENT_BASELINE_SYSTEM_PROMPT = """You are a proficient travel planner. Using only the given information, write a day-by-day plan that satisfies the query, the budget, and ordinary travel constraints.
+
+""" + AGENT_OUTPUT_CONTRACT
 
 # ---------------------------------------------------------------------------
 # Experience-guided search (step3/5/7)
@@ -176,8 +190,9 @@ Your goal is to write a plan that uses only the given information and satisfies 
 {experience_context}
 
 **Instruction:**
-Plan from the given information. Consult the Experience Bank critically: avoid pitfalls and use propositions only when they match the tables. Output ONLY a JSON array of days with keys current_city, transportation, breakfast, lunch, dinner, attraction, and accommodation.
-"""
+Plan from the given information. Consult the Experience Bank critically: avoid pitfalls and use propositions only when they match the tables.
+
+""" + AGENT_OUTPUT_CONTRACT.replace("{", "{{").replace("}", "}}")
 
 # ---------------------------------------------------------------------------
 # Experience distillation
@@ -930,6 +945,7 @@ CODE_CTO_NEG_SYSTEM_PREFIX = """Please try to solve the following programming pr
 
 AGENT_CTO_POS_SYSTEM_PREFIX = """You are a proficient travel planner augmented with verified intermediate results from prior attempts.
 Use the following propositions as anchors when they match the given information. Verify any premise before use.
+The final solution must still obey the JSON output contract in the user message. Do not copy a proposition that breaks the field format.
 
 ### Propositions (Verify before use):
 """
@@ -1017,7 +1033,7 @@ def resolve_task_type(
             return "qa"
         if any(tag in name for tag in ("codecontest", "code_contest", "mbpp", "humaneval", "livecodebench")):
             return "code"
-        if "travelplanner" in name:
+        if "travelplanner" in name or "meetingplanning" in name or "meeting_planning" in name:
             return "agent"
         if any(tag in name for tag in ("hmmt", "hle", "math", "gpqa", "aime")):
             return "math"
@@ -1025,25 +1041,101 @@ def resolve_task_type(
     return "math"
 
 
-def get_baseline_system_prompt(task_type: str, override: Optional[str] = None) -> str:
+def _is_meeting_dataset(dataset: Optional[str]) -> bool:
+    return (dataset or "").strip() in MEETING_DATASETS
+
+
+def user_content(question: str, task_type: str, dataset: Optional[str] = None) -> str:
+    """Attach the travel output contract to the user turn when needed.
+
+    Phi-4's chat template drops the system role, so the TravelPlanner contract
+    has to travel in the user message. Meeting Planning already carries its
+    few-shot sentence format inside the question, so it is left unchanged.
+    """
+    if task_type == "agent" and not _is_meeting_dataset(dataset):
+        return AGENT_OUTPUT_CONTRACT + "\n\nTrip request:\n" + (question or "")
+    return question or ""
+
+
+MEETING_BASELINE_SYSTEM_PROMPT = """You are scheduling a day of meetings. The user message already states the distances, constraints, and the required sentence format.
+
+Write the solution exactly in that format:
+SOLUTION:
+You start at LOCATION at TIME.
+You travel to LOCATION in MINUTES minutes and arrive at TIME.
+You wait until TIME.
+You meet NAME for MINUTES minutes from TIME to TIME.
+
+Use only locations and people from the problem. Do not add a disclaimer or any text after the last step.
+"""
+
+MEETING_EXPERIENCE_GUIDED_SYSTEM_PROMPT = """You are scheduling a day of meetings and you have an Experience Bank from earlier attempts on this same problem.
+
+Use propositions only when they match the stated distances and time windows. Do not repeat a pitfall. If two notes conflict, rebuild the route from the start location.
+
+The solution must keep the same sentence format as the examples in the user message:
+SOLUTION:
+You start at LOCATION at TIME.
+You travel to LOCATION in MINUTES minutes and arrive at TIME.
+You wait until TIME.
+You meet NAME for MINUTES minutes from TIME to TIME.
+
+**Context from Previous Attempts:**
+{experience_context}
+"""
+
+MEETING_DISTILLATION_SYSTEM_PROMPT = """You are distilling an Experience Bank for the next attempt at the same meeting-planning problem.
+Extract two lists and nothing else:
+1. Verified propositions: travel minutes, arrival times, availability windows, and meeting durations that follow from the problem statement or from a valid earlier step.
+2. Critical pitfalls: impossible orders, missed travel time, meetings outside the person's window, or steps that do not use the required sentence format.
+
+You do not know whether the attempt is a fully correct plan. Judge each step only against the distances and constraints in the question.
+
+Output ONLY a raw JSON object:
+{
+    "verified_propositions": ["<fact>. (Source: <problem or derivation>)"],
+    "critical_pitfalls": ["<step> -> <Dead End / Fatal Flaw / Potential Risk> -> <why it fails>"]
+}
+
+Question:
+{{question}}
+
+Student's Attempt:
+{{attempt}}
+"""
+
+
+def get_baseline_system_prompt(
+    task_type: str,
+    override: Optional[str] = None,
+    dataset: Optional[str] = None,
+) -> str:
     if override:
         return override
     if task_type == "qa":
         return QA_BASELINE_SYSTEM_PROMPT
     if task_type == "code":
         return CODE_BASELINE_SYSTEM_PROMPT
+    if task_type == "agent" and _is_meeting_dataset(dataset):
+        return MEETING_BASELINE_SYSTEM_PROMPT
     if task_type == "agent":
         return AGENT_BASELINE_SYSTEM_PROMPT
     return MATH_BASELINE_SYSTEM_PROMPT
 
 
-def get_experience_guided_system_prompt(task_type: str, mode: str = "default") -> str:
+def get_experience_guided_system_prompt(
+    task_type: str,
+    mode: str = "default",
+    dataset: Optional[str] = None,
+) -> str:
     if mode == "ed_cto" and task_type == "math":
         return MATH_ED_CTO_EXPERIENCE_GUIDED_SYSTEM_PROMPT
     if task_type == "qa":
         return QA_EXPERIENCE_GUIDED_SYSTEM_PROMPT
     if task_type == "code":
         return CODE_EXPERIENCE_GUIDED_SYSTEM_PROMPT
+    if task_type == "agent" and _is_meeting_dataset(dataset):
+        return MEETING_EXPERIENCE_GUIDED_SYSTEM_PROMPT
     if task_type == "agent":
         return AGENT_EXPERIENCE_GUIDED_SYSTEM_PROMPT
     return MATH_EXPERIENCE_GUIDED_SYSTEM_PROMPT
@@ -1069,7 +1161,11 @@ def get_ed_cto_micro_distillation_prompt(task_type: str = "math", mode: str = "l
     return MATH_ED_CTO_MICRO_DISTILLATION_SYSTEM_PROMPT
 
 
-def get_distillation_prompt(task_type: str, mode: str = "llm_judge") -> str:
+def get_distillation_prompt(
+    task_type: str,
+    mode: str = "llm_judge",
+    dataset: Optional[str] = None,
+) -> str:
     math_map = {
         "llm_judge": MATH_DISTILLATION_SYSTEM_PROMPT,
         "cf_exp": MATH_CF_DISTILLATION_SYSTEM_PROMPT,
@@ -1095,6 +1191,8 @@ def get_distillation_prompt(task_type: str, mode: str = "llm_judge") -> str:
         prompts = qa_map
     elif task_type == "code":
         prompts = code_map
+    elif task_type == "agent" and _is_meeting_dataset(dataset):
+        prompts = {"llm_judge": MEETING_DISTILLATION_SYSTEM_PROMPT}
     elif task_type == "agent":
         prompts = agent_map
     else:
@@ -1122,7 +1220,19 @@ def get_ac_cto_neg_branch_prefix(task_type: str = "math") -> str:
     return MATH_AC_CTO_NEG_BRANCH_PREFIX
 
 
-def get_cto_prefixes(task_type: str) -> tuple[str, str, str]:
+def get_cto_prefixes(task_type: str, dataset: Optional[str] = None) -> tuple[str, str, str]:
+    if _is_meeting_dataset(dataset):
+        return (
+            """You are scheduling meetings and may use these verified notes when they match the stated distances and time windows.
+The solution must stay in the sentence format required by the user message.
+
+### Propositions (Verify before use):
+""",
+            """Please try to plan the following day using these incorrect orders or dead ends. You must follow at least one of them:
+
+""",
+            MEETING_BASELINE_SYSTEM_PROMPT,
+        )
     if task_type == "qa":
         return (
             QA_CTO_POS_SYSTEM_PREFIX,

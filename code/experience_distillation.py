@@ -21,6 +21,7 @@ from sal.utils.math import extract_answer
 from task_prompts import add_task_args, get_distillation_prompt, resolve_task_type
 
 _TASK_TYPE = "math"
+_DATASET = None
 
 # 兼容 vLLM 0.8.x 与新版 transformers：新版 transformers 移除了 all_special_tokens_extended，
 # 但 vLLM 的 get_cached_tokenizer 仍会访问该属性（如 Qwen2Tokenizer）。在导入 vLLM 前为基类补上该属性。
@@ -315,7 +316,7 @@ def save_to_jsonl(file_path, data):
             f.write('\n')
 
 def format_prompt(question: str, attempt: str) -> str:
-    template = get_distillation_prompt(_TASK_TYPE, "llm_judge")
+    template = get_distillation_prompt(_TASK_TYPE, "llm_judge", dataset=_DATASET)
     return template.replace("{{question}}", question).replace("{{attempt}}", attempt)
 
 def shared_prefix_word_len(a: List[str], b: List[str]) -> int:
@@ -645,7 +646,8 @@ def main():
     add_task_args(parser)
     args = parser.parse_args()
 
-    global _TASK_TYPE
+    global _TASK_TYPE, _DATASET
+    _DATASET = args.dataset
     _TASK_TYPE = resolve_task_type(
         dataset=args.dataset,
         task_type=args.task_type,

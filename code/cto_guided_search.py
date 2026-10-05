@@ -35,7 +35,7 @@ logging.basicConfig(
     format="%(asctime)s - %(levelname)s - %(message)s",
     handlers=[logging.StreamHandler()],
 )
-from task_prompts import add_task_args, get_cto_prefixes, resolve_task_type
+from task_prompts import add_task_args, get_cto_prefixes, resolve_task_type, user_content
 
 logger = logging.getLogger(__name__)
 
@@ -1689,7 +1689,9 @@ def main():
         task_type=args.task_type,
         input_path=args.input,
     )
-    P_POS_SYSTEM_PREFIX, P_NEG_SYSTEM_PREFIX, P_BOTH_SYSTEM_FALLBACK = get_cto_prefixes(task_type)
+    P_POS_SYSTEM_PREFIX, P_NEG_SYSTEM_PREFIX, P_BOTH_SYSTEM_FALLBACK = get_cto_prefixes(
+        task_type, dataset=args.dataset
+    )
     _CTO_FALLBACK_SYSTEM_PROMPT = P_BOTH_SYSTEM_FALLBACK
     logger.info("Task type: %s (dataset=%s)", task_type, args.dataset)
 
@@ -1816,7 +1818,7 @@ def main():
 
     for item in iter_items:
         orig_idx = item["index"]
-        question_text = item.get("question", "")
+        question_text = user_content(item.get("question", ""), task_type, args.dataset)
         if args.cto_branch_mode == "global_neg":
             experience_data = load_and_aggregate_global_neg_experiences(
                 experience_path,

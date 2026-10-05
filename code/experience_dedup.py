@@ -308,40 +308,55 @@ def main():
         logger.info(f"Debug mode ON. Reports will be saved to {debug_dir_path}")
 
     files = list(input_path.glob("*.jsonl"))
-    
-    with ProcessPoolExecutor(
-        max_workers=args.workers,
-        initializer=init_worker,
-        initargs=(args.model_path, True)
-    ) as executor:
-        
-        worker_func = partial(
-            process_single_file,
-            n_completions=args.n_experience,
-            threshold=args.threshold,
-            debug_dir=debug_dir_path,
-            previous_dir=previous_path,
-            keep_order=args.keep_order,
-            head_preference=args.head_preference,
+    worker_func = partial(
+        process_single_file,
+        n_completions=args.n_experience,
+        threshold=args.threshold,
+        debug_dir=debug_dir_path,
+        previous_dir=previous_path,
+        keep_order=args.keep_order,
+        head_preference=args.head_preference,
+    )
+
+    def _store(result):
+        if not result:
+            return
+        filename, record = result
+        out_file = output_path / filename
+        with open(out_file, 'w', encoding='utf-8') as f:
+            json.dump(record, f, ensure_ascii=False)
+            f.write('\n')
+
+    try:
+        executor = ProcessPoolExecutor(
+            max_workers=args.workers,
+            initializer=init_worker,
+            initargs=(args.model_path, True),
         )
-        
+    except PermissionError as exc:
+        logger.warning(
+            "Process pool unavailable (%s); deduplicating serially on CPU.",
+            exc,
+        )
+        init_worker(args.model_path, True)
+        for file_path in tqdm(files):
+            try:
+                _store(worker_func(file_path))
+            except Exception as e:
+                logger.error(f"Error: {e}")
+        return
+
+    with executor:
         future_to_file = {executor.submit(worker_func, f): f for f in files}
         pbar = tqdm(total=len(files))
-        
         for future in future_to_file:
             try:
-                result = future.result()
-                if result:
-                    filename, record = result
-                    out_file = output_path / filename
-                    with open(out_file, 'w', encoding='utf-8') as f:
-                        json.dump(record, f, ensure_ascii=False)
-                        f.write('\n')
+                _store(future.result())
             except Exception as e:
                 logger.error(f"Error: {e}")
             finally:
                 pbar.update(1)
-    pbar.close()
+        pbar.close()
 
 if __name__ == "__main__":
     main()

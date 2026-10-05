@@ -32,6 +32,7 @@ _CODE_ROOT = Path(__file__).resolve().parent.parent / "code"
 if str(_CODE_ROOT) not in sys.path:
     sys.path.insert(0, str(_CODE_ROOT))
 from travelplanner_eval import evaluate_text as evaluate_travelplanner_text
+from meeting_planning_eval import evaluate_text as evaluate_meeting_text
 
 try:
     from transformers import AutoTokenizer
@@ -139,8 +140,13 @@ def check_answer(text: str, ground_truth: str, data_name: str = "math") -> bool:
 
 
 def check_agent_answer(text: str, record: Dict) -> Dict:
+    checker = str(record.get("checker") or "")
+    dataset = str(record.get("dataset") or "")
     try:
-        scored = evaluate_travelplanner_text(record, text)
+        if checker == "meeting_planning" or dataset in {"MeetingPlanning", "MeetingPlanning50"}:
+            scored = evaluate_meeting_text(record, text)
+        else:
+            scored = evaluate_travelplanner_text(record, text)
     except Exception:
         scored = {
             "delivered": False,

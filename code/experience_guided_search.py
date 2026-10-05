@@ -22,7 +22,7 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-from task_prompts import add_task_args, get_experience_guided_system_prompt, resolve_task_type
+from task_prompts import add_task_args, get_experience_guided_system_prompt, resolve_task_type, user_content
 
 # ==========================================
 # Prompt Templates
@@ -259,7 +259,7 @@ def main():
         task_type=args.task_type,
         input_path=args.input,
     )
-    guided_prompt = get_experience_guided_system_prompt(task_type)
+    guided_prompt = get_experience_guided_system_prompt(task_type, dataset=args.dataset)
     logger.info("Task type: %s (dataset=%s)", task_type, args.dataset)
 
     # Setup directories
@@ -340,7 +340,7 @@ def main():
         
         for item in batch_items:
             original_idx = item['index']
-            question_text = item['question']
+            question_text = user_content(item['question'], task_type, args.dataset)
             
             # 1. Load and Dynamically Aggregate Raw experiences
             experience_data = load_and_aggregate_raw_experiences(
